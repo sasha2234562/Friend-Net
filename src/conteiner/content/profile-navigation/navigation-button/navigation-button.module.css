@@ -1,0 +1,14 @@
+.nawBtn{
+    color: blanchedalmond;
+    font-size: 4vh;
+    margin-left: 7% ;
+    margin-top: 5%;
+    cursor: pointer;
+    display: inline-block;
+}
+.nawBtn div{
+    margin: 2%;
+}
+.nawBtn div:hover{
+    color: #f1b76b;
+}
