@@ -7,13 +7,13 @@ import  nb from "./navigation-button.module.css"
 
 function NavigationButton() {
     return (
-        <div className={nb.nawBtn}>
-            <Profile/>
-            <Messages/>
-            <News/>
-            <Music/>
-            <Settings/>
-        </div>
+            <div className={nb.nawBtn}>
+                <a href={'/profile'}><Profile/></a>
+                <a href={'/dialogs'}><Messages/></a>
+                <a href={'/news'}><News/></a>
+                <a href={'/music'}><Music/></a>
+                <a href={'/settings'}><Settings/></a>
+            </div>
     )
 }
 
