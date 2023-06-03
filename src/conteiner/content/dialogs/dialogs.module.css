@@ -1,1 +1,22 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    margin-top: 13%;
+    color: #2a1010;
 
+}
+.dialogsItem{
+text-align: center;
+}
+.dialog{
+    font-size: 25px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+}
+.messangesItem{
+
+}
+.messange{
+    font-size: 25px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
