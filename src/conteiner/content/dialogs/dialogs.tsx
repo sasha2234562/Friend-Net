@@ -6,7 +6,7 @@ export const Dialods = function (props: any) {
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsItem}>
-                <div className={d.dialog}><NavLink to={'/dialogs/1'}>Masha</NavLink></div>
+                <div className={d.dialog}><NavLink  to={'/dialogs/1'}>Masha</NavLink></div>
                 <div className={d.dialog}><NavLink to={'/dialogs/2'}>Dasha</NavLink></div>
                 <div className={d.dialog}><NavLink to={'/dialogs/3'}>Sasha</NavLink></div>
                 <div className={d.dialog}><NavLink to={'/dialogs/4'}>Sveta</NavLink></div>
