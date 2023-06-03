@@ -1,5 +1,4 @@
 .nawBtn{
-    color: blanchedalmond;
     font-size: 4vh;
     margin-left: 7% ;
     margin-top: 5%;
@@ -14,7 +13,11 @@
 }
 .nawBtn a {
     text-decoration: none;
+    color: #00ff2a;
 }
 .nawBtn div:active {
-    color: #02ffa8;
+    color: #ff0000;
+}
+.nawBtn>.activeLink{
+    color: #020fff;
 }

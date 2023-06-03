@@ -9,11 +9,11 @@ import {NavLink} from "react-router-dom";
 function NavigationButton() {
     return (
         <div className={nb.nawBtn}>
-            <NavLink to={'/profile'}><Profile/></NavLink>
-            <NavLink to={'/dialogs'}><Messages/></NavLink>
-            <NavLink to={'/news'}><News/></NavLink>
-            <NavLink to={'/music'}><Music/></NavLink>
-            <NavLink to={'/settings'}><Settings/></NavLink>
+            <NavLink to={'/profile'} activeClassName={nb.activeLink}><Profile/></NavLink>
+            <NavLink to={'/dialogs'} activeClassName={nb.activeLink}><Messages/></NavLink>
+            <NavLink to={'/news'} activeClassName={nb.activeLink}><News/></NavLink>
+            <NavLink to={'/music'} activeClassName={nb.activeLink}><Music/></NavLink>
+            <NavLink to={'/settings'} activeClassName={nb.activeLink}><Settings/></NavLink>
         </div>
     )
 }
