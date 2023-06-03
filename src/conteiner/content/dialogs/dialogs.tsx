@@ -1,7 +1,11 @@
-const Dialods = function () {
+import React from "react";
+
+
+export const Dialods = function (props : any) {
     return (
-        <div></div>
+        <div>
+            Dialogs
+        </div>
     )
 }
 
-export  default Dialods;

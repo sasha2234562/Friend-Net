@@ -4,7 +4,7 @@ import Beach from "./well-beach/beach";
 
 function Well() {
     return (
-        <div className={w.well}>
+        <div >
             <Beach/>
         </div>
     )

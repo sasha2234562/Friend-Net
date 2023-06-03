@@ -1,12 +1,16 @@
 import ProfileNavigation from "./profile-navigation/ profile-navigation";
 import Well from "./well/well";
-import  c from  "./content.module.css";
+import c from "./content.module.css";
+import {Dialods} from "./dialogs/dialogs";
 
 function Content() {
     return (
-        <div className={c.content}>
+        <div className={c.nawbar}>
             <ProfileNavigation/>
-            <Well/>
+            <div className={c.content}>
+                <Well/>
+                {/*<Dialods/>*/}
+            </div>
         </div>
     )
 }
