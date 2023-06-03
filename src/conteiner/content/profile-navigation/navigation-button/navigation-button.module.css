@@ -12,3 +12,9 @@
 .nawBtn div:hover{
     color: #f1b76b;
 }
+.nawBtn a {
+    text-decoration: none;
+}
+.nawBtn div:active {
+    color: #02ffa8;
+}

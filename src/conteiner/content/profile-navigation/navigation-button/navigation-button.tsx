@@ -3,17 +3,18 @@ import Messages from "./messages/messages";
 import News from "./news/news";
 import Music from "./music/music";
 import Settings from "./settings/settings";
-import  nb from "./navigation-button.module.css"
+import nb from "./navigation-button.module.css"
+import {NavLink} from "react-router-dom";
 
 function NavigationButton() {
     return (
-            <div className={nb.nawBtn}>
-                <a href={'/profile'}><Profile/></a>
-                <a href={'/dialogs'}><Messages/></a>
-                <a href={'/news'}><News/></a>
-                <a href={'/music'}><Music/></a>
-                <a href={'/settings'}><Settings/></a>
-            </div>
+        <div className={nb.nawBtn}>
+            <NavLink to={'/profile'}><Profile/></NavLink>
+            <NavLink to={'/dialogs'}><Messages/></NavLink>
+            <NavLink to={'/news'}><News/></NavLink>
+            <NavLink to={'/music'}><Music/></NavLink>
+            <NavLink to={'/settings'}><Settings/></NavLink>
+        </div>
     )
 }
 
