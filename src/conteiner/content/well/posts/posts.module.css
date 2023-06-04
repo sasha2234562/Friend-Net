@@ -1,0 +1,37 @@
+.posts {
+    margin: 5%;
+}
+
+.posts textarea {
+    display: flex;
+    width: 53%;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.textarea_input {
+    display: flex;
+}
+
+.textarea_input input {
+    margin-left: 13px;
+    border-radius: 3px;
+    border: 0;
+}
+
+.content_posts div {
+    margin: 0 32px;
+    display: flex;
+    align-items: center;
+    color: #002810;
+    font-family: "JetBrains Mono Medium";
+    font-size: 50px;
+    padding: 2% 0;
+}
+
+.content_posts div > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 5%;
+}

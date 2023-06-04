@@ -2,15 +2,29 @@ import React from "react";
 import d from "./dialogs.module.css"
 import {NavLink} from "react-router-dom";
 
-export const Dialods = function (props: any) {
+type DialogsType = {
+    name: string
+    id: number
+
+}
+
+
+const DilogsComponent = (props: DialogsType) => {
+    debugger
+    return (
+        <div className={d.dialog}><NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink></div>
+    )
+}
+export const Dialods = function () {
+    debugger
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsItem}>
-                <div className={d.dialog}><NavLink  to={'/dialogs/1'}>Masha</NavLink></div>
-                <div className={d.dialog}><NavLink to={'/dialogs/2'}>Dasha</NavLink></div>
-                <div className={d.dialog}><NavLink to={'/dialogs/3'}>Sasha</NavLink></div>
-                <div className={d.dialog}><NavLink to={'/dialogs/4'}>Sveta</NavLink></div>
-                <div className={d.dialog}><NavLink to={'/dialogs/5'}>Nastya</NavLink></div>
+                <DilogsComponent id={1} name={"Masha"}/>
+                <DilogsComponent id={2} name={"Dasha"}/>
+                <DilogsComponent id={3} name={"Sasha"}/>
+                <DilogsComponent id={4} name={"Alina"}/>
+                <DilogsComponent id={5} name={"Arina"}/>
             </div>
             <div className={d.messangesItem}>
                 <div className={d.messange}>Hello</div>
