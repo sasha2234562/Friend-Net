@@ -1,8 +1,8 @@
-import d from "./dialogs.module.css";
+import d from "../dialogs.module.css";
 import {NavLink} from "react-router-dom";
 
 type messageType = {
-    messasge : Array<DialogsType>
+    dialodsName : Array<DialogsType>
 }
 
 type DialogsType = {
@@ -14,7 +14,7 @@ type DialogsType = {
 export const DilogsComponent = (props: messageType) => {
         return (
         <div>
-            {props.messasge.map((item)=> {
+            {props.dialodsName.map((item)=> {
                 return(
                     <div key={item.id} className={d.dialog}><NavLink to={`/dialogs/${item.id}`}>{item.name}</NavLink></div>
                 )
