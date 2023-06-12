@@ -8,6 +8,8 @@ import {Music} from "./music/music";
 import Settings from "./profile-navigation/navigation-button/settings/settings";
 
 function Content() {
+
+
     return (
         <BrowserRouter>
             <div className={c.nawbar}>
