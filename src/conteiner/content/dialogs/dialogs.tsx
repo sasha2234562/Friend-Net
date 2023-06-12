@@ -8,9 +8,9 @@ type DialogsType = {
     name: string
     id: string
 }
-type messangesValueType= {
-    value : string
-    id : string
+type messangesValueType = {
+    value: string
+    id: string
 }
 
 export const Dialods = function () {
@@ -25,11 +25,11 @@ export const Dialods = function () {
     ])
 
     const [messangesValue, setMassangesValue] = useState<Array<messangesValueType>>([
-        {value: 'Hello',id: v1()},
-        {value: 'Bye',id: v1()},
-        {value: 'Good',id: v1()},
-        {value: 'Yo',id: v1()},
-        {value: 'Thank you',id: v1()}
+        {value: 'Hello', id: v1()},
+        {value: 'Bye', id: v1()},
+        {value: 'Good', id: v1()},
+        {value: 'Yo', id: v1()},
+        {value: 'Thank you', id: v1()}
     ])
 
     return (

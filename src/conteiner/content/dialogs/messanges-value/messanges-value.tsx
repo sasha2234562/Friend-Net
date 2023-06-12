@@ -18,12 +18,5 @@ export const MessangesValue= (props : messangesType)=> {
                     )
             })}
         </div>
-        // <div className={d.messangesItem}>
-        //     <div className={d.messange}>Hello</div>
-        //     <div className={d.messange}>Bye</div>
-        //     <div className={d.messange}>How are you?</div>
-        //     <div className={d.messange}>Good</div>
-        //     <div className={d.messange}>Go to bed</div>
-        // </div>
     )
 }

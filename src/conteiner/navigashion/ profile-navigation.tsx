@@ -1,5 +1,5 @@
 import n from "./navigation.module.css";
-import NavigationButton from "./navigation-button/navigation-button";
+import NavigationButton from "./navigashion-button/navigation-button";
 
 function ProfileNavigation() {
     return (
