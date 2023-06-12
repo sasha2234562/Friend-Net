@@ -17,7 +17,7 @@ function Well() {
 
     return (
         <div>
-            <Beach/>
+            <Beach />
             <Posts post={posts}/>
         </div>
     );
