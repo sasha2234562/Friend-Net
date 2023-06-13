@@ -1,10 +1,9 @@
 import Conteiner from "./conteiner/conteiner";
+function App(props : { posts: { img: string; comment: string; }[]; }) {
 
-
-function App() {
     return (
         <div className="App">
-            <Conteiner/>
+            <Conteiner posts={props.posts}/>
         </div>
     );
 }

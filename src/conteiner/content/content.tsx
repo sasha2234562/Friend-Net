@@ -8,13 +8,13 @@ import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
 
 
-function Content() {
+function Content(props : { posts: { img: string; comment: string; }[]; }) {
     return (
         <BrowserRouter>
             <div className={c.nawbar}>
                 <ProfileNavigation/>
                 <div className={c.content}>
-                    <Route path={'/profile'} render={() => <Well />}/>
+                    <Route path={'/profile'} render={() => <Well posts={props.posts}/>}/>
                     <Route path={'/dialogs'} render={() => <Dialods/>}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>

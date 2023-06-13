@@ -1,12 +1,12 @@
 import Header from "./header/header-bacground";
 import Content from "./content/content";
 
+function Conteiner(props : { posts: { img: string; comment: string; }[]; }) {
 
-function Conteiner() {
     return (
         <div>
             <Header/>
-            <Content/>
+            <Content posts={props.posts}/>
         </div>
     )
 }
