@@ -7,14 +7,14 @@ import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
 
+
 function Content() {
-    let name = "Masha"
     return (
         <BrowserRouter>
             <div className={c.nawbar}>
                 <ProfileNavigation/>
                 <div className={c.content}>
-                    <Route path={'/profile'} render={() => <Well/>}/>
+                    <Route path={'/profile'} render={() => <Well />}/>
                     <Route path={'/dialogs'} render={() => <Dialods/>}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>

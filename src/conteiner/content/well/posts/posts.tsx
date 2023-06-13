@@ -10,6 +10,7 @@ type post = {
     comment: string
 }
 
+
 export const Posts = (props: propsType) => {
     return (
         <div className={p.posts}>
@@ -18,12 +19,13 @@ export const Posts = (props: propsType) => {
                 <input type={"button"} value={"Publication"}/>
             </div>
             <div className={p.content_posts}>
-                {/* eslint-disable-next-line array-callback-return */}
                 {props.post.map((item, index) => {
-                 return    <div key={index}>
-                        <img src={`${item.img}`}/>
-                        <span>{item.comment}</span>
-                    </div>
+                    return (
+                        <div key={index}>
+                            <img src={`${item.img}`}/>
+                            <span>{item.comment}</span>
+                        </div>
+                    )
                 })}
             </div>
         </div>
