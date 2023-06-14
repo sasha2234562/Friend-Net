@@ -11,7 +11,8 @@ type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
     messages: Array<MessagesType>
 }
-type  DialogsNameType = {
+export type  DialogsNameType = {
+    src : string
     name: string
     id: string
 }
