@@ -1,44 +1,39 @@
-import React, {useState} from "react";
+import React from "react";
 import d from "./dialogs.module.css"
-import {DilogsComponent} from "./dialodsName/dialogs-components";
-import {v1} from "uuid";
 import {MessangesValue} from "./messanges-value/messanges-value";
+import {DialogsComponent} from "./dialodsName/dialogs-components";
 
-type DialogsType = {
-    name: string
-    id: string
+// type dialogsPageType = {
+//     dialogs : {
+//         dialogsName: Array<DialogsType>
+//         messanges: Array<messangesValueType>
+//     }
+// }
+//
+// type DialogsType = {
+//     name: string
+//     id: string
+// }
+// type messangesValueType = {
+//     value: string
+//     id: string
+// }
+
+type propsType = {
+    messages: Array<messagesType>
 }
-type messangesValueType = {
+type messagesType = {
     value: string
     id: string
 }
-
-export const Dialods = function () {
-
-
-    const [dialodsName, setMessage] = useState<Array<DialogsType>>([
-        {name: "Masha", id: v1()},
-        {name: "Dasha", id: v1()},
-        {name: "Sasha", id: v1()},
-        {name: "Eva", id: v1()},
-        {name: "Nastya", id: v1()}
-    ])
-
-    const [messangesValue, setMassangesValue] = useState<Array<messangesValueType>>([
-        {value: 'Hello', id: v1()},
-        {value: 'Bye', id: v1()},
-        {value: 'Good', id: v1()},
-        {value: 'Yo', id: v1()},
-        {value: 'Thank you', id: v1()}
-    ])
-
+export const Dialods = function (props: propsType) {
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsItem}>
-                <DilogsComponent dialodsName={dialodsName}/>
+                {/*<DialogsComponent dialodsName={props.dialogs.dialogsName}/>*/}
             </div>
             <div>
-                <MessangesValue messangesValue={messangesValue}/>
+                <MessangesValue messangesValue={props.messages}/>
             </div>
         </div>
     )
