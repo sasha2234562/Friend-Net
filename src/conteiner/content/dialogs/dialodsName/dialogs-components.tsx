@@ -8,17 +8,18 @@ type messageType = {
 type DialogsType = {
     name: string
     id: string
-
+    src: string
 }
 
 export const DialogsComponent = (props: messageType) => {
+    debugger
     return (
         <div>
             {props.dialodsName.map((item) => {
                 return (
                     <div key={item.id} className={d.dialog}>
                         <img
-                            src={'https://hips.hearstapps.com/hmg-prod/images/gh-2023-girl-name-trends-wednesday-resize-1671220446.jpeg?crop=0.565xw:1.00xh;0.218xw,0&resize=980:*'}/>
+                            src={item.src}/>
                         <>
                             <NavLink to={`/dialogs/${item.id}`}>  {item.name}</NavLink>
                         </>

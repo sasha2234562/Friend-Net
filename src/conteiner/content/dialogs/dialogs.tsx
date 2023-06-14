@@ -2,17 +2,14 @@ import React from "react";
 import d from "./dialogs.module.css"
 import {MessangesValue} from "./messanges-value/messanges-value";
 import {DialogsComponent} from "./dialodsName/dialogs-components";
+import {DialogsNameType} from "../../../App";
 type propsType = {
     messages: Array<messagesType>
-    dialogsName : Array<dialogsNameType>
+    dialogsName : Array<DialogsNameType>
 }
 type messagesType = {
     value: string
     id: string
-}
-type dialogsNameType = {
-    name: string
-    id : string
 }
 export const Dialods = function (props: propsType) {
     return (
