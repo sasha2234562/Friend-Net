@@ -12,8 +12,6 @@ type DialogsType = {
 }
 
 export const DialogsComponent = (props: messageType) => {
-    debugger
-    debugger
         return (
         <div>
             {props.dialodsName.map((item)=> {
