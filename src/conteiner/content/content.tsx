@@ -16,7 +16,11 @@ function Content(props: stateType) {
                 <ProfileNavigation/>
                 <div className={c.content}>
                     <Route path={'/profile'} render={() => <Well posts={props.state.profilePage.posts}/>}/>
-                    <Route path={'/dialogs'} render={() => <Dialods messages={props.state.dialogsPage.messages}/>}/>
+                    <Route path={'/dialogs'} render={() =>
+                        <Dialods
+                            messages={props.state.dialogsPage.messages}
+                            dialogsName={props.state.dialogsPage.dialogsName}
+                        />}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>
