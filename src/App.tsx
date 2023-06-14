@@ -1,9 +1,39 @@
 import Conteiner from "./conteiner/conteiner";
-function App(props : { posts: { img: string; comment: string; }[]; }) {
+
+
+export type stateType = {
+    state: {
+        dialogsPage: DialogsPageType,
+        profilePage: ProfilePage
+    }
+}
+type DialogsPageType = {
+    dialogsName: Array<DialogsNameType>
+    messages: Array<MessagesType>
+}
+type  DialogsNameType = {
+    name: string
+    id: string
+}
+type MessagesType = {
+    value: string
+    id: string
+}
+
+type ProfilePage = {
+    posts: Array<PostsType>
+}
+type PostsType = {
+    comment: string
+    img: string
+}
+
+
+function App(props: stateType) {
 
     return (
         <div className="App">
-            <Conteiner posts={props.posts}/>
+            <Conteiner state={props.state}/>
         </div>
     );
 }
