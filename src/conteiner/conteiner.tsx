@@ -1,12 +1,14 @@
 import Header from "./header/header-bacground";
 import Content from "./content/content";
+import {stateType} from "../App";
 
-function Conteiner(props : { posts: { img: string; comment: string; }[]; }) {
+
+function Conteiner(props : stateType) {
 
     return (
         <div>
             <Header/>
-            <Content posts={props.posts}/>
+            <Content state={props.state}/>
         </div>
     )
 }
