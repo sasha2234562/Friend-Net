@@ -6,23 +6,24 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
+import {stateType} from "../../App";
 
 
-function Content(props : { posts: { img: string; comment: string; }[]; }) {
+function Content(props: stateType) {
     return (
         <BrowserRouter>
             <div className={c.nawbar}>
                 <ProfileNavigation/>
                 <div className={c.content}>
-                    <Route path={'/profile'} render={() => <Well posts={props.posts}/>}/>
-                    <Route path={'/dialogs'} render={() => <Dialods/>}/>
+                    <Route path={'/profile'} render={() => <Well posts={props.state.profilePage.posts}/>}/>
+                    <Route path={'/dialogs'} render={() => <Dialods messages={props.state.dialogsPage.messages}/>}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>
-                        </div>
-                        </div>
-                        </BrowserRouter>
-                        )
-                    }
+                </div>
+            </div>
+        </BrowserRouter>
+    )
+}
 
 export default Content;
