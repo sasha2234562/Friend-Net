@@ -10,12 +10,18 @@ import {stateType} from "../../App";
 
 
 function Content(props: stateType) {
+    debugger
     return (
         <div className={c.nawbar}>
             <ProfileNavigation/>
             <div className={c.content}>
                 <Route path={'/profile'} render={() =>
-                    <Well posts={props.state.profilePage.posts} addPost={props.addPost}/>}/>
+                    <Well posts={
+                          props.state.profilePage.posts}
+                          newPostText={props.state.profilePage.newPostText}
+                          addPost={props.addPost}
+                    />
+                }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods
                         messages={props.state.dialogsPage.messages}
