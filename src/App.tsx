@@ -5,7 +5,8 @@ export type stateType = {
     state: {
         dialogsPage: DialogsPageType,
         profilePage: ProfilePage
-    }
+    },
+    addPost: (text : string )=>void
 }
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
@@ -34,7 +35,7 @@ function App(props: stateType) {
 
     return (
         <div className="App">
-            <Conteiner state={props.state}/>
+            <Conteiner state={props.state} addPost={props.addPost}/>
         </div>
     );
 }

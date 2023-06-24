@@ -14,7 +14,8 @@ function Content(props: stateType) {
         <div className={c.nawbar}>
             <ProfileNavigation/>
             <div className={c.content}>
-                <Route path={'/profile'} render={() => <Well posts={props.state.profilePage.posts}/>}/>
+                <Route path={'/profile'} render={() =>
+                    <Well posts={props.state.profilePage.posts} addPost={props.addPost}/>}/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods
                         messages={props.state.dialogsPage.messages}

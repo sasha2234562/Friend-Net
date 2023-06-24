@@ -1,13 +1,18 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
 
+type postsType = {
+    posts: { img: string; comment: string; }[],
+    addPost: (text : string )=>void
+}
 
 
-function Well(props: { posts: { img: string; comment: string; }[]; }) {
+
+function Well(props:  postsType) {
     return (
         <div>
             <Beach />
-            <Posts post={props.posts}/>
+            <Posts addPost={props.addPost} post={props.posts}/>
         </div>
     );
 }
