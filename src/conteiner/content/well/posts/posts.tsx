@@ -14,19 +14,22 @@ type post = {
 
 
 export const Posts = (props: propsType) => {
+    let [text, setText] = useState('')
 
-    let newPostElem = React.createRef<HTMLTextAreaElement>();
-
+    function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
+        console.log(event.currentTarget.value)
+        setText(event.currentTarget.value);
+    }
 
     function onClickHandler() {
-        let text = newPostElem.current?.value;
-        text && props.addPost(text)
+        props.addPost(text)
+        setText('')
     }
 
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
-                <textarea ref={newPostElem} placeholder={"Hello, people"}></textarea>
+                <textarea value={text} onChange={onChangeHandler} placeholder={"Hello, people"}></textarea>
                 <input onClick={onClickHandler} type={"button"} value={"Publication"}/>
             </div>
             <div className={p.content_posts}>
