@@ -1,10 +1,16 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
 
-type postsType = {
-    posts: { img: string; comment: string; }[],
-    addPost: (text : string )=>void
+type propsType = {
+    post: Array<post>,
+    addPost: (text: string) => void
     newPostText: string
+}
+
+
+type post = {
+    img: string
+    comment: string
 }
 
 
