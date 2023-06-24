@@ -69,14 +69,14 @@ export function addPost(text :  string ) {
     render()
 }
 
-export function changeNEw postText(newText ) {
-    let newPost = {
-        img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
-        comment: text
-    }
+// export function changeNEw postText(newText ) {
+//     let newPost = {
+//         img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
+//         comment: newText
+//     }
 
-    state.profilePage.posts.unshift(newPost);
-    render()
-}
+//     state.profilePage.posts.unshift(newPost);
+//     render()
+// }
 
 export default state;
