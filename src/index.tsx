@@ -6,11 +6,4 @@ import {BrowserRouter} from "react-router-dom";
 import {addPost} from "./state/state";
 import {render} from "./render";
 
-// ReactDOM.render(
-//     <BrowserRouter>
-//         <App state={state} addPost={addPost}/>
-//     </BrowserRouter>,
-//     document.getElementById('root')
-// );
-
 render()
