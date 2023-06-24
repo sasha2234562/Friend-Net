@@ -4,6 +4,7 @@ import {Posts} from "./posts/posts";
 type postsType = {
     posts: { img: string; comment: string; }[],
     addPost: (text : string )=>void
+    newPostText: string
 }
 
 
