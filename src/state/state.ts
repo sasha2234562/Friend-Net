@@ -21,7 +21,8 @@ const state = {
                 img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyRvLjFK4n05DP0OuzXiZA8fOPQ2B_Ha9XLKHRCIcgWV8P4J3KU2Q52nIH9huW_K8EhOI&usqp=CAU',
                 comment: 'My fourth post'
             },
-        ]
+        ],
+        newPostText: 'Sasha is so lazy'
     },
 
     dialogsPage: {
@@ -68,7 +69,7 @@ export function addPost(text :  string ) {
     render()
 }
 
-export function changeNEw postText(text :  string ) {
+export function changeNEw postText(newText ) {
     let newPost = {
         img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
         comment: text
