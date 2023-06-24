@@ -10,7 +10,6 @@ import {stateType} from "../../App";
 
 
 function Content(props: stateType) {
-    debugger
     return (
         <div className={c.nawbar}>
             <ProfileNavigation/>

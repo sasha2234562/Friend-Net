@@ -1,8 +1,8 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
 
-type propsType = {
-    post: Array<post>,
+export type propsType = {
+    posts: Array<post>
     addPost: (text: string) => void
     newPostText: string
 }
@@ -15,11 +15,11 @@ type post = {
 
 
 
-function Well(props:  postsType) {
+function Well(props:  propsType) {
     return (
         <div>
             <Beach />
-            <Posts addPost={props.addPost} post={props.posts}/>
+            <Posts newPostText={props.newPostText} addPost={props.addPost} posts={props.posts}/>
         </div>
     );
 }
