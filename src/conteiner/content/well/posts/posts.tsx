@@ -1,10 +1,9 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent, useState} from "react";
-import {text} from "stream/consumers";
 
 type propsType = {
     post: Array<post>,
-    addPost: (text : string )=>void
+    addPost: (text: string) => void
 }
 
 
@@ -17,21 +16,17 @@ type post = {
 export const Posts = (props: propsType) => {
 
     let newPostElem = React.createRef<HTMLTextAreaElement>();
-    // let [valueTextarea, setValueTextarea] = useState('')
-    function onChangeHandler() {
-       let text = newPostElem.current?.value
-        text && props.addPost(text)
-    }
 
 
     function onClickHandler() {
-        onChangeHandler()
+        let text = newPostElem.current?.value;
+        text && props.addPost(text)
     }
 
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
-                <textarea onChange={onChangeHandler} ref={newPostElem} placeholder={"Hello, people"}></textarea>
+                <textarea ref={newPostElem} placeholder={"Hello, people"}></textarea>
                 <input onClick={onClickHandler} type={"button"} value={"Publication"}/>
             </div>
             <div className={p.content_posts}>
