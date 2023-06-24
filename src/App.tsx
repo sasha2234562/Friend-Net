@@ -5,8 +5,8 @@ export type stateType = {
     state: {
         dialogsPage: DialogsPageType,
         profilePage: ProfilePage
-    },
-    addPost: (text : string )=>void
+    }
+    addPost: (text : string )=>void,
 }
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
@@ -24,6 +24,7 @@ type MessagesType = {
 
 type ProfilePage = {
     posts: Array<PostsType>
+    newPostText: string
 }
 type PostsType = {
     comment: string
