@@ -1,5 +1,6 @@
 import d from "../dialogs.module.css";
-import React from "react";
+import React, {useState} from "react";
+import {ButtonUniversal} from "../../well/posts/posts";
 
 type messangesType = {
     messangesValue: Array<messangesValueType>
@@ -14,22 +15,32 @@ export const MessangesValue = (props: messangesType) => {
 
     let addPost = () => {
         let text = newPostElem.current!.value;
-        console.log(text)
+
+    }
+    let [es, setEs] = useState('')
+
+    const onClickHandler = () => {
+        console.log(es)
+        setEs('')
+    }
+    const onChangeEventHandler = (e : string) => {
+        setEs(e)
     }
 
     return (
         <div>
             {props.messangesValue.map((item) => {
                 return (
-                    <div>
+                    <div key={item.id}>
                         <div key={item.id} className={d.messange} id={item.id}>{item.value}</div>
                     </div>
                 )
             })}
-            <div>
-                <textarea ref={newPostElem} placeholder={'write text'}></textarea>
-                <button onClick={addPost}>Click</button>
-            </div>
+            {/*<div>*/}
+            {/*    <textarea value={newPostElem.current?.value} ref={newPostElem} placeholder={'write text'}></textarea>*/}
+            {/*    <button onClick={addPost}>Click</button>*/}
+            {/*</div>*/}
+            <ButtonUniversal value={es} title={'Click me'} onClick={onClickHandler} onChange={onChangeEventHandler}/>
         </div>
     )
 }
