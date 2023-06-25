@@ -1,4 +1,5 @@
 import Conteiner from "./conteiner/conteiner";
+import {changeNewpostText} from "./state/state";
 
 
 export type stateType = {
@@ -6,14 +7,15 @@ export type stateType = {
         dialogsPage: DialogsPageType,
         profilePage: ProfilePage
     }
-    addPost: (text : string )=>void,
+    addPost: (text: string) => void
+    changeNewpostText: (newText: string ) => void
 }
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
     messages: Array<MessagesType>
 }
 export type  DialogsNameType = {
-    src : string
+    src: string
     name: string
     id: string
 }
@@ -36,7 +38,7 @@ function App(props: stateType) {
 
     return (
         <div className="App">
-            <Conteiner state={props.state} addPost={props.addPost}/>
+            <Conteiner changeNewpostText={changeNewpostText} state={props.state} addPost={props.addPost}/>
         </div>
     );
 }
