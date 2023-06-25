@@ -3,22 +3,25 @@ import React, {ChangeEvent, useState} from "react";
 import {propsType} from "../well";
 
 export const Posts = (props: propsType) => {
-    let [text, setText] = useState('')
 
+
+    let [text, setText] = useState(props.newPostText)
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         setText(event.currentTarget.value);
-        console.log(event.currentTarget.value)
+
     }
 
     function onClickHandler() {
-       text&& props.addPost(text)
+        text&& props.addPost(text)
+        // setText('')
+        // props.changeNewpostText(text)
         setText('')
     }
 
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
-                <textarea value={props.newPostText} onChange={onChangeHandler} placeholder={"Hello, people"}></textarea>
+                <textarea value={text} onChange={onChangeHandler} placeholder={"Hello, people"}></textarea>
                 <input onClick={onClickHandler} type={"button"} value={"Publication"}/>
             </div>
             <div className={p.content_posts}>
