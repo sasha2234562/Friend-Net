@@ -1,6 +1,10 @@
 import {v1} from "uuid";
-import {render} from "../render";
+// import {render} from "../render";
 
+
+let rerenderEntireTree= ()=>{
+console.log('Sasha')
+}
 
 const state = {
     profilePage: {
@@ -22,7 +26,7 @@ const state = {
                 comment: 'My fourth post'
             },
         ],
-        newPostText: 'Sasha is so lazy'
+        newPostText: 'Sasha is too lazy'
     },
 
     dialogsPage: {
@@ -66,17 +70,19 @@ export function addPost(text :  string ) {
     }
 
     state.profilePage.posts.unshift(newPost);
-    render()
+    // render()
+    rerenderEntireTree()
+
 }
 
-// export function changeNEw postText(newText ) {
-//     let newPost = {
-//         img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
-//         comment: newText
-//     }
+export function changeNewpostText(newText: string ) {
 
-//     state.profilePage.posts.unshift(newPost);
-//     render()
-// }
+    state.profilePage.newPostText = newText
+    // render()
+}
+
+export const subscribe = (observer : ()=>void)=> {
+    rerenderEntireTree = observer
+}
 
 export default state;
