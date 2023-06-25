@@ -7,6 +7,7 @@ import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
 import {stateType} from "../../App";
+import {changeNewpostText} from "../../state/state";
 
 
 function Content(props: stateType) {
@@ -19,6 +20,7 @@ function Content(props: stateType) {
                           props.state.profilePage.posts}
                           newPostText={props.state.profilePage.newPostText}
                           addPost={props.addPost}
+                          changeNewpostText={changeNewpostText}
                     />
                 }/>
                 <Route path={'/dialogs'} render={() =>
