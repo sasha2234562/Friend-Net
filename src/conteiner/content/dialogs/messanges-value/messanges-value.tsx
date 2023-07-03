@@ -44,3 +44,8 @@ export const MessangesValue = (props: messangesType) => {
         </div>
     )
 }
+function hi() {
+    console.log('go to bed')
+    // hi()
+}
+hi()
