@@ -1,6 +1,6 @@
 import Conteiner from "./conteiner/conteiner";
 // import {changeNewpostText} from "./state/state";
-import store from "./state/state";
+import store from "./state/store";
 
 
 export type stateType = {
