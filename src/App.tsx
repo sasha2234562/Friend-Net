@@ -1,5 +1,6 @@
 import Conteiner from "./conteiner/conteiner";
-import {changeNewpostText} from "./state/state";
+// import {changeNewpostText} from "./state/state";
+import store from "./state/state";
 
 
 export type stateType = {
@@ -38,7 +39,7 @@ function App(props: stateType) {
 
     return (
         <div className="App">
-            <Conteiner changeNewpostText={changeNewpostText} state={props.state} addPost={props.addPost}/>
+            <Conteiner changeNewpostText={store.changeNewpostText} state={props.state} addPost={props.addPost}/>
         </div>
     );
 }
