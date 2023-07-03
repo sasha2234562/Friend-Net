@@ -1,6 +1,5 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
-import {changeNewpostText} from "../../../state/state";
 
 export type propsType = {
     posts: Array<post>
@@ -22,7 +21,7 @@ function Well(props:  propsType) {
         <div>
             <Beach />
             <Posts
-                changeNewpostText={changeNewpostText}
+                changeNewpostText={props.changeNewpostText}
                 newPostText={props.newPostText}
                 addPost={props.addPost}
                 posts={props.posts}
