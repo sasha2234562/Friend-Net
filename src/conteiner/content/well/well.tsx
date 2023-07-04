@@ -1,11 +1,12 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
+import {actionType} from "../../../state/store";
 
 export type propsType = {
     posts: Array<post>
-    addPost: (text: string) => void
+    dispatch: (action: actionType) => void
     newPostText: string
-    changeNewpostText: (newText: string)=>void
+    // changeNewpostText: (newText: string)=>void
 }
 
 
@@ -21,9 +22,9 @@ function Well(props:  propsType) {
         <div>
             <Beach />
             <Posts
-                changeNewpostText={props.changeNewpostText}
+                // changeNewpostText={props.changeNewpostText}
                 newPostText={props.newPostText}
-                addPost={props.addPost}
+                dispatch={props.dispatch}
                 posts={props.posts}
             />
         </div>
