@@ -1,7 +1,11 @@
 import {v1} from "uuid";
 
-
+export type actionType= {
+    type: string ,
+    text: string
+}
 let store = {
+
     _state: {
         profilePage: {
             posts: [
@@ -59,29 +63,44 @@ let store = {
         }
 
     },
-    getState() {
-        return this._state
-    },
     _callSenscriber() {
         console.log('Sasha')
     },
-    addPost(text: string) {
-        let newPost = {
-            img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
-            comment: text
-        }
-
-        this._state.profilePage.posts.unshift(newPost);
-        this._callSenscriber()
-
-    },
-    changeNewpostText(newText: string) {
-
-        this._state.profilePage.newPostText = newText
+    getState() {
+        return this._state
     },
     subscribe (observer: () => void){
         this._callSenscriber = observer
+    },
+    // addPost(text: string) {
+    //     let newPost = {
+    //         img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
+    //         comment: text
+    //     }
+    //
+    //     this._state.profilePage.posts.unshift(newPost);
+    //     this._callSenscriber()
+    //
+    // },
+    // changeNewpostText(newText: string) {
+    //
+    //     this._state.profilePage.newPostText = newText
+    // },
+    dispatch(action: actionType ) {
+        if(action.type === 'ADD-POST') {
+            let newPost = {
+                img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
+                comment: action.text
+            }
+
+            this._state.profilePage.posts.unshift(newPost);
+            this._callSenscriber()
+debugger
+        } else  if(action.type === 'CHANGENEWPOSTTEXT') {
+            // this._state.profilePage.newPostText = action.newText
+        }
     }
+
 }
 
 export default store;
