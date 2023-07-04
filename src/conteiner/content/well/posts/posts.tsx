@@ -13,9 +13,7 @@ export const Posts = (props: propsType) => {
     }
 
     function onClickHandler() {
-        text && props.addPost(text)
-        // setText('')
-        // props.changeNewpostText(text)
+        text && props.dispatch({type: 'ADD-POST', text : text})
         setText('')
     }
 
@@ -35,35 +33,6 @@ export const Posts = (props: propsType) => {
                     )
                 })}
             </div>
-        </div>
-    )
-}
-export type ButtonUnuversalPropsType = {
-    title: string
-    onClick: () => void
-    onChange: (e: string) => void
-    value: string
-}
-
-export const ButtonUniversal = (props: ButtonUnuversalPropsType) => {
-    const {
-        title,
-        onClick,
-        onChange,
-        value
-    } = props;
-
-    const onClickHandler = () => {
-        onClick()
-    }
-    const onChangeEventHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange(e.currentTarget.value)
-    }
-
-    return (
-        <div>
-            <input value={value} onChange={onChangeEventHandler}/>
-            <button onClick={onClickHandler}>{title}</button>
         </div>
     )
 }
