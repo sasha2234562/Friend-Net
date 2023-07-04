@@ -18,8 +18,8 @@ function Content(props: stateType) {
                     <Well posts={
                           props.state.profilePage.posts}
                           newPostText={props.state.profilePage.newPostText}
-                          addPost={props.addPost}
-                          changeNewpostText={props.changeNewpostText}
+                          dispatch={props.dispatch}
+                          // changeNewpostText={props.changeNewpostText}
                     />
                 }/>
                 <Route path={'/dialogs'} render={() =>
