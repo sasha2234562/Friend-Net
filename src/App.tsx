@@ -1,6 +1,6 @@
 import Conteiner from "./conteiner/conteiner";
 // import {changeNewpostText} from "./state/state";
-import store from "./state/store";
+import store, {actionType} from "./state/store";
 
 
 export type stateType = {
@@ -8,8 +8,8 @@ export type stateType = {
         dialogsPage: DialogsPageType,
         profilePage: ProfilePage
     }
-    addPost: (text: string) => void
-    changeNewpostText: (newText: string ) => void
+    dispatch: (action: actionType) => void
+    // changeNewpostText: (newText: string ) => void
 }
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
@@ -39,7 +39,10 @@ function App(props: stateType) {
 
     return (
         <div className="App">
-            <Conteiner changeNewpostText={store.changeNewpostText} state={props.state} addPost={props.addPost}/>
+            <Conteiner
+                // changeNewpostText={store.changeNewpostText}
+                state={props.state}
+                dispatch={props.dispatch}/>
         </div>
     );
 }
