@@ -1,6 +1,6 @@
 import d from "../dialogs.module.css";
 import React, {useState} from "react";
-import {ButtonUniversal} from "../../well/posts/posts";
+import {ButtonUniversal} from "../../../../universal-component/universal-component";
 
 type messangesType = {
     messangesValue: Array<messangesValueType>
