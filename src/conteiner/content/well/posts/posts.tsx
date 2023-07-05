@@ -1,6 +1,9 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent, useState} from "react";
 import {propsType} from "../well";
+import {AddPostActionCreator, ChangeNewPostText} from "../../../../state/store";
+
+
 
 export const Posts = (props: propsType) => {
 
@@ -9,14 +12,14 @@ export const Posts = (props: propsType) => {
 
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         setText(event.currentTarget.value);
+        // event.currentTarget.value&&  props.dispatch(ChangeNewPostText(event.currentTarget.value))
 
     }
 
     function onClickHandler() {
-        text && props.dispatch({type: 'ADD-POST', text : text})
+        // text && props.dispatch(AddPostActionCreator(text))
         setText('')
     }
-
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
