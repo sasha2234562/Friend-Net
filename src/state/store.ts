@@ -2,7 +2,8 @@ import {v1} from "uuid";
 
 export type actionType= {
     type: string ,
-    text: string
+    text: string,
+    newText: string
 }
 let store = {
 
@@ -31,7 +32,10 @@ let store = {
 
         dialogsPage: {
             dialogsName: [
-                {name: "Masha", id: v1(), src: 'https://pbs.twimg.com/media/Fk7QddhakAACAhj.jpg:large'},
+                {
+                    name: "Masha",
+                    id: v1(),
+                    src: 'https://pbs.twimg.com/media/Fk7QddhakAACAhj.jpg:large'},
                 {
                     name: "Dasha",
                     id: v1(),
@@ -96,11 +100,23 @@ let store = {
             this._state.profilePage.posts.unshift(newPost);
             this._callSenscriber()
 debugger
-        } else  if(action.type === 'CHANGENEWPOSTTEXT') {
-            // this._state.profilePage.newPostText = action.newText
+        } else  if(action.type === 'CHANGE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
         }
     }
 
 }
 
+
+export const AddPostActionCreator = (text :string) => {
+    return {
+        type: 'ADD-POST', text : text
+    }
+}
+
+export const ChangeNewPostText = (newText: string) => {
+    return{
+        type: 'CHANGE-NEW-POST-TEXT', newText
+    }
+}
 export default store;
