@@ -1,6 +1,7 @@
 import Conteiner from "./conteiner/conteiner";
 // import {changeNewpostText} from "./state/state";
 import store, {actionType} from "./state/store";
+import c from "./conteiner/conteiner.module.css"
 
 
 export type stateType = {
@@ -38,7 +39,7 @@ type PostsType = {
 function App(props: stateType) {
 
     return (
-        <div className="App">
+        <div className={c.conteiner}>
             <Conteiner
                 // changeNewpostText={store.changeNewpostText}
                 state={props.state}
