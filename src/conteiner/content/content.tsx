@@ -6,10 +6,10 @@ import {Route} from "react-router-dom";
 import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
-import {stateType} from "../../App";
+import {storeType} from "../../index";
 
 
-function Content(props: stateType) {
+function Content(props: storeType) {
     return (
         <div className={c.nawbar}>
             <ProfileNavigation/>

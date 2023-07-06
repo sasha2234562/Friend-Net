@@ -54,7 +54,7 @@ let store = {
                 {
                     name: "Sasha",
                     id: v1(),
-                    src: 'https://media.glamour.com/photos/637d12aa28410df29dcde4ab/1:1/w_844,h_844,c_limit/Wednesday_S1_E1_00_02_28_14R.jpg'
+                    src: 'https://hips.hearstapps.com/hmg-prod/images/jenna-ortega-wednesday-1671450978.jpg?crop=0.5xw:1xh;center,top&resize=1200:*'
                 },
                 {
                     name: "Eva",

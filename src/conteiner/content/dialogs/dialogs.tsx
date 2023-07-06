@@ -2,8 +2,8 @@ import React from "react";
 import d from "./dialogs.module.css"
 import {MessangesValue} from "./messanges-value/messanges-value";
 import {DialogsComponent} from "./dialodsName/dialogs-components";
-import {DialogsNameType} from "../../../App";
 import {ActionType} from "../../../state/store";
+import {DialogsNameType} from "../../../index";
 type propsType = {
     messages: Array<messagesType>
     dialogsName : Array<DialogsNameType>

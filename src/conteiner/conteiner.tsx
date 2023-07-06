@@ -1,9 +1,9 @@
 import Header from "./header/header-bacground";
 import Content from "./content/content";
-import {stateType} from "../App";
+import {storeType} from "../index";
 
 
-function Conteiner(props: stateType) {
+function Conteiner(props: storeType) {
 
     return (
         <div>
