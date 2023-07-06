@@ -1,9 +1,19 @@
 import {v1} from "uuid";
 
-export type actionType= {
-    type: string ,
-    text: string,
+export type ActionType = ActionNewPostType | ActionNewText | ActionNewMessage
+
+export type ActionNewPostType = {
+    type: 'ADD-POST'
+    text: string
+}
+export  type ActionNewText = {
+    type: 'CHANGE-NEW-POST-TEXT'
     newText: string
+}
+
+export type ActionNewMessage = {
+    type: 'ADD-MESSAGE'
+    newMessage: string
 }
 let store = {
 
@@ -19,7 +29,7 @@ let store = {
                     comment: 'My second post'
                 },
                 {
-                    img: 'https://static.riafan.ru/upload/images/2022/11/2/1045150_full.jpeg',
+                    img: 'https://hips.hearstapps.com/hmg-prod/images/jenna-ortega-wednesday-1671450978.jpg?crop=0.5xw:1xh;center,top&resize=1200:*',
                     comment: 'My third post'
                 },
                 {
@@ -73,24 +83,10 @@ let store = {
     getState() {
         return this._state
     },
-    subscribe (observer: () => void){
+    subscribe(observer: () => void) {
         this._callSenscriber = observer
     },
-    // addPost(text: string) {
-    //     let newPost = {
-    //         img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
-    //         comment: text
-    //     }
-    //
-    //     this._state.profilePage.posts.unshift(newPost);
-    //     this._callSenscriber()
-    //
-    // },
-    // changeNewpostText(newText: string) {
-    //
-    //     this._state.profilePage.newPostText = newText
-    // },
-    dispatch(action: actionType ) {
+    dispatch(action: ActionType ) {
         if(action.type === 'ADD-POST') {
             let newPost = {
                 img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
@@ -99,24 +95,28 @@ let store = {
 
             this._state.profilePage.posts.unshift(newPost);
             this._callSenscriber()
-debugger
         } else  if(action.type === 'CHANGE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
+        } else if(action.type === 'ADD-MESSAGE'){
+            let newMessage = {
+                value: action.newMessage,
+                id: v1()
+            }
+            this._state.dialogsPage.messages.push(newMessage)
         }
     }
-
 }
 
 
-export const AddPostActionCreator = (text :string) => {
-    return {
-        type: 'ADD-POST', text : text
-    }
-}
+// export const AddPostActionCreator = (text: string) => {
+//     return {
+//         type: 'ADD-POST', text : text
+//     }
+// }
 
-export const ChangeNewPostText = (newText: string) => {
-    return{
-        type: 'CHANGE-NEW-POST-TEXT', newText
-    }
-}
+// export const ChangeNewPostText = (newText: string) => {
+//     return{
+//         type: 'CHANGE-NEW-POST-TEXT', newText
+//     }
+// }
 export default store;

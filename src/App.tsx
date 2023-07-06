@@ -1,7 +1,6 @@
 import Conteiner from "./conteiner/conteiner";
-// import {changeNewpostText} from "./state/state";
-import store, {actionType} from "./state/store";
 import c from "./conteiner/conteiner.module.css"
+import {ActionType} from "./state/store";
 
 
 export type stateType = {
@@ -9,8 +8,7 @@ export type stateType = {
         dialogsPage: DialogsPageType,
         profilePage: ProfilePage
     }
-    dispatch: (action: actionType) => void
-    // changeNewpostText: (newText: string ) => void
+    dispatch: (action: ActionType) => void
 }
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>

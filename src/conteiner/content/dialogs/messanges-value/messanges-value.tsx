@@ -1,9 +1,13 @@
 import d from "../dialogs.module.css";
 import React, {useState} from "react";
-import {ButtonUniversal} from "../../../../universal-component/universal-component";
+import {
+    ButtonUniversal
+} from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
+import {ActionType} from "../../../../state/store";
 
 type messangesType = {
     messangesValue: Array<messangesValueType>
+    dispatch: (action: ActionType)=>void
 }
 type messangesValueType = {
     value: string
@@ -11,21 +15,18 @@ type messangesValueType = {
 }
 export const MessangesValue = (props: messangesType) => {
 
-    let newPostElem = React.createRef<HTMLTextAreaElement>();
+    let [newMessage, setNewMessage] = useState('')
 
-    let addPost = () => {
-        let text = newPostElem.current!.value;
-
+    const onChangeHandler = (event: string) => {
+        setNewMessage(event);
     }
-    let [es, setEs] = useState('')
 
     const onClickHandler = () => {
-        console.log(es)
-        setEs('')
+        props.dispatch({type: 'ADD-MESSAGE', newMessage: newMessage})
+        console.log(newMessage)
+        setNewMessage('')
     }
-    const onChangeEventHandler = (e : string) => {
-        setEs(e)
-    }
+
 
     return (
         <div>
@@ -36,16 +37,9 @@ export const MessangesValue = (props: messangesType) => {
                     </div>
                 )
             })}
-            {/*<div>*/}
-            {/*    <textarea value={newPostElem.current?.value} ref={newPostElem} placeholder={'write text'}></textarea>*/}
-            {/*    <button onClick={addPost}>Click</button>*/}
-            {/*</div>*/}
-            <ButtonUniversal value={es} title={'Click me'} onClick={onClickHandler} onChange={onChangeEventHandler}/>
+            <div>
+            <ButtonUniversal title={'Send messange'} onClick={onClickHandler} onChange={onChangeHandler} value={newMessage}/>
+            </div>
         </div>
     )
 }
-function hi() {
-    console.log('go to bed')
-    // hi()
-}
-hi()

@@ -9,7 +9,6 @@ function Conteiner(props: stateType) {
         <div>
             <Header/>
             <Content
-                // changeNewpostText={props.changeNewpostText}
                 state={props.state}
                 dispatch={props.dispatch}/>
         </div>

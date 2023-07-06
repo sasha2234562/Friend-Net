@@ -19,13 +19,13 @@ function Content(props: stateType) {
                           props.state.profilePage.posts}
                           newPostText={props.state.profilePage.newPostText}
                           dispatch={props.dispatch}
-                          // changeNewpostText={props.changeNewpostText}
                     />
                 }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods
                         messages={props.state.dialogsPage.messages}
                         dialogsName={props.state.dialogsPage.dialogsName}
+                        dispatch={props.dispatch}
                     />}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>

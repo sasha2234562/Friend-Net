@@ -3,9 +3,11 @@ import d from "./dialogs.module.css"
 import {MessangesValue} from "./messanges-value/messanges-value";
 import {DialogsComponent} from "./dialodsName/dialogs-components";
 import {DialogsNameType} from "../../../App";
+import {ActionType} from "../../../state/store";
 type propsType = {
     messages: Array<messagesType>
     dialogsName : Array<DialogsNameType>
+    dispatch: (action: ActionType)=>void
 }
 type messagesType = {
     value: string
@@ -18,7 +20,7 @@ export const Dialods = function (props: propsType) {
                 <DialogsComponent dialodsName={props.dialogsName}/>
             </div>
             <div>
-                <MessangesValue messangesValue={props.messages}/>
+                <MessangesValue messangesValue={props.messages} dispatch={props.dispatch}/>
             </div>
         </div>
     )
