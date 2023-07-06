@@ -30,7 +30,7 @@ function Content(props: storeType) {
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>
                 <Route path={'/settings'} render={() => <Settings/>}/>
-            </div>
+        </div>
         </div>
     )
 }
