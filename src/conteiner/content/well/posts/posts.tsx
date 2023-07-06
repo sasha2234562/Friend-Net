@@ -1,6 +1,7 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent, useState} from "react";
 import {propsType} from "../well";
+import {ActionNewMessage, AddPostActionCreator} from "../../../../state/store";
 
 
 export const Posts = (props: propsType) => {
@@ -10,11 +11,11 @@ export const Posts = (props: propsType) => {
 
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         setText(event.currentTarget.value);
+        // event.currentTarget.value && props.dispatch(ActionNewMessage({type: 'CHANGE-NEW-POST-TEXT', newText: text}))
         event.currentTarget.value && props.dispatch({
             type: 'CHANGE-NEW-POST-TEXT',
             newText: event.currentTarget.value
         })
-
     }
 
     function onClickHandler() {

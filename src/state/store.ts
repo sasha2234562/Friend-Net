@@ -114,7 +114,6 @@ let store = {
             this._callSenscriber()
         } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
-            console.log(action.newText)
         } else if (action.type === 'ADD-MESSAGE') {
             let newMessage = {
                 value: action.newMessage,
@@ -126,11 +125,11 @@ let store = {
     }
 }
 
-// export const AddPostActionCreator = (type: string, text: string) => {
-//     return {
-//         type: 'ADD-POST', text : text
-//     }
-// }
+export const AddPostActionCreator = (type: string, text: string) => {
+    return {
+        type: 'ADD-POST', text : text
+    }
+}
 
 // export const ChangeNewPostText = (newText: string) => {
 //     return{
