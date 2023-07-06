@@ -3,7 +3,6 @@ import React, {ChangeEvent, useState} from "react";
 import {propsType} from "../well";
 
 
-
 export const Posts = (props: propsType) => {
 
 
@@ -11,7 +10,10 @@ export const Posts = (props: propsType) => {
 
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         setText(event.currentTarget.value);
-        event.currentTarget.value&&  props.dispatch({type: 'CHANGE-NEW-POST-TEXT', newText: event.currentTarget.value})
+        event.currentTarget.value && props.dispatch({
+            type: 'CHANGE-NEW-POST-TEXT',
+            newText: event.currentTarget.value
+        })
 
     }
 
@@ -19,6 +21,7 @@ export const Posts = (props: propsType) => {
         text && props.dispatch({type: 'ADD-POST', text: text})
         setText('')
     }
+
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>

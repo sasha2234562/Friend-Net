@@ -7,7 +7,8 @@ import {ActionType} from "../../../../state/store";
 
 type messangesType = {
     messangesValue: Array<messangesValueType>
-    dispatch: (action: ActionType)=>void
+    dispatch: (action: ActionType)=>void,
+    newMessage: string
 }
 type messangesValueType = {
     value: string
@@ -22,8 +23,10 @@ export const MessangesValue = (props: messangesType) => {
     }
 
     const onClickHandler = () => {
-        props.dispatch({type: 'ADD-MESSAGE', newMessage: newMessage})
-        console.log(newMessage)
+        props.dispatch({
+            type: 'ADD-MESSAGE',
+            newMessage: newMessage
+        })
         setNewMessage('')
     }
 
@@ -38,7 +41,8 @@ export const MessangesValue = (props: messangesType) => {
                 )
             })}
             <div>
-            <ButtonUniversal title={'Send messange'} onClick={onClickHandler} onChange={onChangeHandler} value={newMessage}/>
+                <ButtonUniversal placeholderValue={props.newMessage} title={'Send messange'} onClick={onClickHandler} onChange={onChangeHandler}
+                                 value={newMessage}/>
             </div>
         </div>
     )

@@ -23,8 +23,7 @@ function Content(props: storeType) {
                 }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods
-                        messages={props.state.dialogsPage.messages}
-                        dialogsName={props.state.dialogsPage.dialogsName}
+                        dialogsPage={props.state.dialogsPage}
                         dispatch={props.dispatch}
                     />}/>
                 <Route path={'/news'} render={() => <News/>}/>
@@ -34,5 +33,4 @@ function Content(props: storeType) {
         </div>
     )
 }
-
 export default Content;

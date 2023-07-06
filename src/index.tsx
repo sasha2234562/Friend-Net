@@ -14,6 +14,7 @@ export type storeType = {
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
     messages: Array<MessagesType>
+    newMessage: string
 }
 export type  DialogsNameType = {
     src: string

@@ -5,6 +5,7 @@ export type ButtonUnuversalPropsType = {
     onClick: () => void
     onChange: (e: string) => void
     value: string
+    placeholderValue: string
 }
 
 export const ButtonUniversal = (props: ButtonUnuversalPropsType) => {
@@ -12,7 +13,8 @@ export const ButtonUniversal = (props: ButtonUnuversalPropsType) => {
         title,
         onClick,
         onChange,
-        value
+        value,
+        placeholderValue
     } = props;
 
     const onClickHandler = () => {
@@ -24,7 +26,7 @@ export const ButtonUniversal = (props: ButtonUnuversalPropsType) => {
 
     return (
         <div>
-            <input value={value} onChange={onChangeEventHandler}/>
+            <input placeholder={placeholderValue} value={value} onChange={onChangeEventHandler}/>
             <button onClick={onClickHandler}>{title}</button>
         </div>
     )

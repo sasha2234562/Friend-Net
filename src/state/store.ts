@@ -45,7 +45,8 @@ let store = {
                 {
                     name: "Masha",
                     id: v1(),
-                    src: 'https://pbs.twimg.com/media/Fk7QddhakAACAhj.jpg:large'},
+                    src: 'https://pbs.twimg.com/media/Fk7QddhakAACAhj.jpg:large'
+                },
                 {
                     name: "Dasha",
                     id: v1(),
@@ -68,12 +69,28 @@ let store = {
                 }
             ],
             messages: [
-                {value: 'Hello', id: v1()},
-                {value: 'Bye', id: v1()},
-                {value: 'Good', id: v1()},
-                {value: 'Yo', id: v1()},
-                {value: 'Thank you', id: v1()}
-            ]
+                {
+                    value: 'Hello',
+                    id: v1()
+                },
+                {
+                    value: 'Bye',
+                    id: v1()
+                },
+                {
+                    value: 'Good',
+                    id: v1()
+                },
+                {
+                    value: 'Yo',
+                    id: v1()
+                },
+                {
+                    value: 'Thank you',
+                    id: v1()
+                },
+            ],
+            newMessage : "hello"
         }
 
     },
@@ -86,29 +103,30 @@ let store = {
     subscribe(observer: () => void) {
         this._callSenscriber = observer
     },
-    dispatch(action: ActionType ) {
-        if(action.type === 'ADD-POST') {
+    dispatch(action: ActionType) {
+        if (action.type === 'ADD-POST') {
             let newPost = {
                 img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
                 comment: action.text
             }
-
             this._state.profilePage.posts.unshift(newPost);
+            this._state.profilePage.newPostText= ''
             this._callSenscriber()
-        } else  if(action.type === 'CHANGE-NEW-POST-TEXT') {
+        } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
-        } else if(action.type === 'ADD-MESSAGE'){
+            console.log(action.newText)
+        } else if (action.type === 'ADD-MESSAGE') {
             let newMessage = {
                 value: action.newMessage,
                 id: v1()
             }
             this._state.dialogsPage.messages.push(newMessage)
+
         }
     }
 }
 
-
-// export const AddPostActionCreator = (text: string) => {
+// export const AddPostActionCreator = (type: string, text: string) => {
 //     return {
 //         type: 'ADD-POST', text : text
 //     }
