@@ -6,7 +6,10 @@
     display: inline-block;
 }
 .nawBtn div{
-    margin: 2%;
+    margin: 15px;
+    box-shadow: 1px 3px 2px 2px yellow, 1px -3px 2px 2px yellow, -1px 3px 2px 2px yellow, 1px 3px 2px  -2px yellow;
+    padding: 9px 23px;
+    border-radius: 21px;
 }
 .nawBtn div:hover{
     color: #f1b76b;
