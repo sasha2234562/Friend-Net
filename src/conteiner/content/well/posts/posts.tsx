@@ -1,7 +1,8 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent, useState} from "react";
 import {propsType} from "../well";
-import {ActionNewMessage, AddPostActionCreator} from "../../../../state/store";
+import {ActionNewMessage} from "../../../../state/store";
+
 
 
 export const Posts = (props: propsType) => {

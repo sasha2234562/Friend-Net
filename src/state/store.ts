@@ -90,7 +90,7 @@ let store = {
                     id: v1()
                 },
             ],
-            newMessage : "hello"
+            newMessage: "hello"
         }
 
     },
@@ -110,7 +110,7 @@ let store = {
                 comment: action.text
             }
             this._state.profilePage.posts.unshift(newPost);
-            this._state.profilePage.newPostText= ''
+            this._state.profilePage.newPostText = ''
             this._callSenscriber()
         } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
@@ -120,16 +120,21 @@ let store = {
                 id: v1()
             }
             this._state.dialogsPage.messages.push(newMessage)
-
+            this._callSenscriber()
         }
     }
 }
 
-export const AddPostActionCreator = (type: string, text: string) => {
-    return {
-        type: 'ADD-POST', text : text
-    }
-}
+// export const AddPostActionCreator = (text: string) => {
+//     return {
+//         type: 'ADD-POST', text : text
+//     }
+// }
+// export const ActionNewMessage = (text: string) => {
+//     return {
+//         type: 'ADD-MESSAGE', text : text
+//     }
+// }
 
 // export const ChangeNewPostText = (newText: string) => {
 //     return{
