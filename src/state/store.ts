@@ -95,7 +95,7 @@ let store = {
 
     },
     _callSenscriber() {
-        console.log('Sasha')
+        console.log("Hello, people")
     },
     getState() {
         return this._state
