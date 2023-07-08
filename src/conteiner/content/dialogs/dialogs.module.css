@@ -5,10 +5,6 @@
     color: #2a1010;
 
 }
-
-.dialogsItem{
-/*text-align: center;*/
-}
 .dialog{
     display: flex;
     justify-content: start;
