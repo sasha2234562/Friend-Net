@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from "react";
 
-export type ButtonUnuversalPropsType = {
+export type ButtonUniversalPropsType = {
     title: string
     onClick: () => void
     onChange: (e: string) => void
@@ -8,7 +8,7 @@ export type ButtonUnuversalPropsType = {
     placeholderValue: string
 }
 
-export const ButtonUniversal = (props: ButtonUnuversalPropsType) => {
+export const ButtonUniversal = (props: ButtonUniversalPropsType) => {
     const {
         title,
         onClick,
