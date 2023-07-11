@@ -1,16 +1,5 @@
 import {ActionType} from "./store";
 
-// export type propsType = {
-//     posts: Array<post>
-//     newPostText: string
-// }
-//
-//
-// type post = {
-//     img: string
-//     comment: string
-// }
-
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
 
