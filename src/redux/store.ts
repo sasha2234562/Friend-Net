@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {profileReducer} from "./profile-reduser";
+import {messageReducer} from "./message-reduser";
 
 export type ActionType = ActionNewPostType | ActionNewText | ActionNewMessage
 
@@ -69,26 +71,11 @@ let store = {
                 }
             ],
             messages: [
-                {
-                    value: 'Hello',
-                    id: v1()
-                },
-                {
-                    value: 'Bye',
-                    id: v1()
-                },
-                {
-                    value: 'Good',
-                    id: v1()
-                },
-                {
-                    value: 'Yo',
-                    id: v1()
-                },
-                {
-                    value: 'Thank you',
-                    id: v1()
-                },
+                {value: 'Hello',id: v1()},
+                {value: 'Bye',id: v1()},
+                {value: 'Good',id: v1()},
+                {value: 'Yo',id: v1()},
+                {value: 'Thank you',id: v1()},
             ],
             newMessage: "hello"
         }
@@ -104,24 +91,31 @@ let store = {
         this._callSenscriber = observer
     },
     dispatch(action: ActionType) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
-                comment: action.text
-            }
-            this._state.profilePage.posts.unshift(newPost);
-            this._state.profilePage.newPostText = ''
-            this._callSenscriber()
-        } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-        } else if (action.type === 'ADD-MESSAGE') {
-            let newMessage = {
-                value: action.newMessage,
-                id: v1()
-            }
-            this._state.dialogsPage.messages.push(newMessage)
-            this._callSenscriber()
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+
+        this._state.dialogsPage = messageReducer(this._state.dialogsPage, action)
+
+        this._callSenscriber()
+
+
+        // if (action.type === 'ADD-POST') {
+        //     let newPost = {
+        //         img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
+        //         comment: action.text
+        //     }
+        //     this._state.profilePage.posts.unshift(newPost);
+        //     this._state.profilePage.newPostText = ''
+        //     this._callSenscriber()
+        // } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
+        //     this._state.profilePage.newPostText = action.newText
+        // } else if (action.type === 'ADD-MESSAGE') {
+        //     let newMessage = {
+        //         value: action.newMessage,
+        //         id: v1()
+        //     }
+        //     this._state.dialogsPage.messages.push(newMessage)
+        //     this._callSenscriber()
+        // }
     }
 }
 
@@ -135,7 +129,7 @@ let store = {
 //         type: 'ADD-MESSAGE', text : text
 //     }
 // }
-
+//
 // export const ChangeNewPostText = (newText: string) => {
 //     return{
 //         type: 'CHANGE-NEW-POST-TEXT', newText

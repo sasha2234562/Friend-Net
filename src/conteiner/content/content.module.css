@@ -2,7 +2,7 @@
     margin-top: 2%;
     display: grid;
     grid-template-columns: 1fr 3fr;
-
+    height: 100% ;
 }
 .content{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9SGIYeCCe6soZRMf-C967ZCr83srEAcnpTo8rBRhoGHWqN5KS9mTKzPx_7Ay_xdeCkzQ&usqp=CAU");
