@@ -1,6 +1,7 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
 import {ActionType} from "../../../redux/store";
+import {ConteinerPosts} from "./posts/posts-conteiner";
 
 export type propsType = {
     posts: Array<post>
@@ -20,7 +21,7 @@ function Well(props:  propsType) {
     return (
         <div>
             <Beach />
-            <Posts
+            <ConteinerPosts
                 newPostText={props.newPostText}
                 dispatch={props.dispatch}
                 posts={props.posts}
