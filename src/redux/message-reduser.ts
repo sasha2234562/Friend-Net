@@ -1,20 +1,6 @@
 import {ActionType} from "./store";
 import {v1} from "uuid";
 
-// type messangesType = {
-//     dialogsName: Array<DialogsNameType>;
-//     messages: Array<messangesValueType>
-//     newMessage: string
-// }
-// type messangesValueType = {
-//     value: string
-//     id: string
-// }
-// export type  DialogsNameType = {
-//     src: string
-//     name: string
-//     id: string
-// }
 let initialState =  {
     dialogsName: [
         {
