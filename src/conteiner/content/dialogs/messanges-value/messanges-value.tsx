@@ -3,37 +3,33 @@ import React, {useState} from "react";
 import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
-import {ActionType} from "../../../../redux/store";
 
-type messangesType = {
-    messangesValue: Array<messangesValueType>
-    dispatch: (action: ActionType)=>void,
+type messageValueType = {
+    onChange: (e: string) => void
+    onClick: () => void
+    messages: Array<MessagesType>
     newMessage: string
+    value: string
 }
-type messangesValueType = {
+type MessagesType = {
     value: string
     id: string
 }
-export const MessangesValue = (props: messangesType) => {
+export const MessangesValue = (props: messageValueType) => {
 
-    let [newMessage, setNewMessage] = useState('')
 
     const onChangeHandler = (event: string) => {
-        setNewMessage(event);
+        props.onChange(event);
     }
 
     const onClickHandler = () => {
-        props.dispatch({
-            type: 'ADD-MESSAGE',
-            newMessage: newMessage
-        })
-        setNewMessage('')
+        props.onClick()
     }
 
 
     return (
         <div>
-            {props.messangesValue.map((item) => {
+            {props.messages.map((item) => {
                 return (
                     <div key={item.id}>
                         <div key={item.id} className={d.messange} id={item.id}>{item.value}</div>
@@ -41,8 +37,11 @@ export const MessangesValue = (props: messangesType) => {
                 )
             })}
             <div>
-                <ButtonUniversal placeholderValue={props.newMessage} title={'Send messange'} onClick={onClickHandler} onChange={onChangeHandler}
-                                 value={newMessage}/>
+                <ButtonUniversal
+                    placeholderValue={props.newMessage}
+                    title={'Send messange'} onClick={onClickHandler}
+                    onChange={onChangeHandler}
+                    value={props.value}/>
             </div>
         </div>
     )

@@ -1,28 +1,20 @@
-import d from "../dialogs.module.css";
 import React, {useState} from "react";
-import {
-    ButtonUniversal
-} from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
-import {ActionType} from "../../../../redux/store";
+import {MessangesValue} from "./messanges-value";
+import {storeType} from "../../../../index";
 
-type messangesType = {
-    messangesValue: Array<messangesValueType>
-    dispatch: (action: ActionType)=>void,
-    newMessage: string
-}
-type messangesValueType = {
-    value: string
-    id: string
-}
-export const MessangesValue = (props: messangesType) => {
+
+export const ConteinerMessangesValue = (props: storeType) => {
+
+    let dialogs = props.state
+
 
     let [newMessage, setNewMessage] = useState('')
 
-    const onChangeHandler = (event: string) => {
+    const onChange= (event: string) => {
         setNewMessage(event);
     }
 
-    const onClickHandler = () => {
+    const onClick = () => {
         props.dispatch({
             type: 'ADD-MESSAGE',
             newMessage: newMessage
@@ -31,19 +23,12 @@ export const MessangesValue = (props: messangesType) => {
     }
 
 
-    return (
-        <div>
-            {props.messangesValue.map((item) => {
-                return (
-                    <div key={item.id}>
-                        <div key={item.id} className={d.messange} id={item.id}>{item.value}</div>
-                    </div>
-                )
-            })}
-            <div>
-                <ButtonUniversal placeholderValue={props.newMessage} title={'Send messange'} onClick={onClickHandler} onChange={onChangeHandler}
-                                 value={newMessage}/>
-            </div>
-        </div>
-    )
+    return <MessangesValue
+        onClick={onClick}
+        messages={dialogs.dialogsPage.messages}
+        onChange={onChange}
+        newMessage={dialogs.dialogsPage.newMessage}
+        value={newMessage}
+    />
+
 }

@@ -23,7 +23,7 @@ function Content(props: storeType) {
                 }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods
-                        dialogsPage={props.state.dialogsPage}
+                        state={props.state}
                         dispatch={props.dispatch}
                     />}/>
                 <Route path={'/news'} render={() => <News/>}/>
