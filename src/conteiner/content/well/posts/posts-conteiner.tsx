@@ -6,7 +6,6 @@ import {Posts} from "./posts";
 export const ConteinerPosts = (props: propsType) => {
 
     let state = props.posts
-    debugger
     let [text, setText] = useState(props.newPostText)
 
     function onChange(e: string) {

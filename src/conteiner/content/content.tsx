@@ -33,4 +33,5 @@ function Content(props: storeType) {
         </div>
     )
 }
+
 export default Content;
