@@ -96,26 +96,6 @@ let store = {
         this._state.dialogsPage = messageReducer(this._state.dialogsPage, action)
 
         this._callSenscriber()
-
-
-        // if (action.type === 'ADD-POST') {
-        //     let newPost = {
-        //         img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
-        //         comment: action.text
-        //     }
-        //     this._state.profilePage.posts.unshift(newPost);
-        //     this._state.profilePage.newPostText = ''
-        //     this._callSenscriber()
-        // } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-        //     this._state.profilePage.newPostText = action.newText
-        // } else if (action.type === 'ADD-MESSAGE') {
-        //     let newMessage = {
-        //         value: action.newMessage,
-        //         id: v1()
-        //     }
-        //     this._state.dialogsPage.messages.push(newMessage)
-        //     this._callSenscriber()
-        // }
     }
 }
 
