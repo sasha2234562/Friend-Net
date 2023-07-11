@@ -1,8 +1,9 @@
-
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import store, {ActionType} from "./redux/store";
+// import store, {ActionType} from "./redux/store";
+import {store} from "./redux/redux-store"
+import {ActionType} from "./redux/store";
 
 export type storeType = {
     state: {
