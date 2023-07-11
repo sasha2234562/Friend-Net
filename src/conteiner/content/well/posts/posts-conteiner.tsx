@@ -9,20 +9,17 @@ export const ConteinerPosts = (props: propsType) => {
     debugger
     let [text, setText] = useState(props.newPostText)
 
-    function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
-        event.currentTarget.value && props.dispatch({
+    function onChange(e: string) {
+        e && props.dispatch({
             type: 'CHANGE-NEW-POST-TEXT',
-            newText: event.currentTarget.value
+            newText: e
         })
-    }
-    function onClickHandler() {
-        // text && props.dispatch({type: 'ADD-POST', text: text})
-        // setText('')
+        setText(e)
     }
     function addPost() {
         text && props.dispatch({type: 'ADD-POST', text: text})
         setText('')
     }
 
-    return <Posts posts={state} addPost={addPost}/>
+    return <Posts posts={state} onChange={onChange} addPost={addPost} text={text}/>
 }
