@@ -1,25 +1,35 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent, useState} from "react";
-import {propsType} from "../well";
+import {ActionType} from "../../../../redux/store";
+
+export type propsType = {
+    posts: Array<post>
+    addPost: ()=> void
+    // newPostText: string
+}
 
 
+type post = {
+    img: string
+    comment: string
+}
 
 export const Posts = (props: propsType) => {
 
-
-    let [text, setText] = useState(props.newPostText)
+    // let [text, setText] = useState(props.newPostText)
 
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
-        setText(event.currentTarget.value);
-        event.currentTarget.value && props.dispatch({
-            type: 'CHANGE-NEW-POST-TEXT',
-            newText: event.currentTarget.value
-        })
+        props.addPost(event.currentTarget.value);
+        // event.currentTarget.value && props.dispatch({
+        //     type: 'CHANGE-NEW-POST-TEXT',
+        //     newText: event.currentTarget.value
+        // })
     }
 
     function onClickHandler() {
-        text && props.dispatch({type: 'ADD-POST', text: text})
-        setText('')
+        props.addPost();
+        // text && props.dispatch({type: 'ADD-POST', text: text})
+        // setText('')
     }
 
     return (
