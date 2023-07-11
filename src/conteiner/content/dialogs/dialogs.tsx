@@ -2,7 +2,7 @@ import React from "react";
 import d from "./dialogs.module.css"
 import {MessangesValue} from "./messanges-value/messanges-value";
 import {DialogsComponent} from "./dialodsName/dialogs-components";
-import {ActionType} from "../../../state/store";
+import {ActionType} from "../../../redux/store";
 import {DialogsNameType} from "../../../index";
 
 type propsType = {

@@ -1,6 +1,6 @@
 import Beach from "./well-beach/beach";
 import {Posts} from "./posts/posts";
-import {ActionType} from "../../../state/store";
+import {ActionType} from "../../../redux/store";
 
 export type propsType = {
     posts: Array<post>

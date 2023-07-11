@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
-import {ActionType} from "../../../../state/store";
+import {ActionType} from "../../../../redux/store";
 
 type messangesType = {
     messangesValue: Array<messangesValueType>
