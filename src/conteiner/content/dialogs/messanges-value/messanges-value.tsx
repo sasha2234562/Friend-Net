@@ -1,5 +1,5 @@
 import d from "../dialogs.module.css";
-import React, {useState} from "react";
+import React from "react";
 import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
