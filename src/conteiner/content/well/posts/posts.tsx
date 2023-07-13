@@ -3,8 +3,8 @@ import React, {ChangeEvent, useState} from "react";
 
 export type propsType = {
     posts: Array<post>
-    addPost: ()=> void
-    onChange: (e: string)=> void
+    addPost: () => void
+    onChange: (e: string) => void
     text: string
 }
 
