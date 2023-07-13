@@ -1,6 +1,7 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent, useState} from "react";
 
+
 export type propsType = {
     posts: Array<post>
     addPost: () => void
