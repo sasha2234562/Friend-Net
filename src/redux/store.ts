@@ -71,11 +71,11 @@ let store = {
                 }
             ],
             messages: [
-                {value: 'Hello',id: v1()},
-                {value: 'Bye',id: v1()},
-                {value: 'Good',id: v1()},
-                {value: 'Yo',id: v1()},
-                {value: 'Thank you',id: v1()},
+                {value: 'Hello', id: v1()},
+                {value: 'Bye', id: v1()},
+                {value: 'Good', id: v1()},
+                {value: 'Yo', id: v1()},
+                {value: 'Thank you', id: v1()},
             ],
             newMessage: "hello"
         }
