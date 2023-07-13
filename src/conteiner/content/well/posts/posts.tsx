@@ -16,6 +16,7 @@ type post = {
 
 export const Posts = (props: propsType) => {
 
+
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         props.onChange(event.currentTarget.value);
     }
