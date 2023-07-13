@@ -10,7 +10,7 @@ let initialState = {
             comment: 'My first post'
         },
         {
-            img: 'https://www.soyuz.ru/public/uploads/files/2/7615320/202212191629123ffc8dd5e1.jpg',
+            img: 'https://www.glamour.pl/media/cache/default_view/uploads/media/default/0006/69/wednesday-addams_1.jpg',
             comment: 'My second post'
         },
         {
