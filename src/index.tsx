@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import {store} from "./redux/redux-store"
 import {ActionType} from "./redux/store";
+import React from "react";
 
 export type storeType = {
     state: {
@@ -39,10 +40,10 @@ type PostsType = {
 export const rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App
-                state={store.getState()}
-                dispatch={store.dispatch.bind(store)}
-            />
+                <App
+                    state={store.getState()}
+                    dispatch={store.dispatch.bind(store)}
+                />
         </BrowserRouter>,
         document.getElementById('root')
     )
