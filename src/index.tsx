@@ -2,8 +2,9 @@ import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import {store} from "./redux/redux-store"
-import {ActionType} from "./redux/store";
+import {ActionNewMessage, ActionNewPostType, ActionNewText} from "./redux/store";
 import React from "react";
+import {Provider} from "./store-context";
 
 export type storeType = {
     state: {
@@ -12,6 +13,7 @@ export type storeType = {
     }
     dispatch: (action: ActionType) => void
 }
+type ActionType = ActionNewPostType | ActionNewText | ActionNewMessage
 type DialogsPageType = {
     dialogsName: Array<DialogsNameType>
     messages: Array<MessagesType>
@@ -36,14 +38,15 @@ type PostsType = {
     img: string
 }
 
-
 export const rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
+            <Provider store={store}>
                 <App
                     state={store.getState()}
                     dispatch={store.dispatch.bind(store)}
                 />
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     )

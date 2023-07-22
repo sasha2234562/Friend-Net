@@ -18,7 +18,6 @@ export type ActionNewMessage = {
     newMessage: string
 }
 let store = {
-
     _state: {
         profilePage: {
             posts: [

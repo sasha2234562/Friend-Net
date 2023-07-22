@@ -1,34 +1,19 @@
 import Beach from "./well-beach/beach";
-import {Posts} from "./posts/posts";
-import {ActionType} from "../../../redux/store";
 import {ConteinerPosts} from "./posts/posts-conteiner";
-import {storeType} from "../../../index";
-
-export type propsType = {
-    posts: Array<post>
-    dispatch: (action: ActionType) => void
-    newPostText: string
-}
+import StoreContext from "../../../store-context";
 
 
-type post = {
-    img: string
-    comment: string
-}
-
-
-
-function Well(props:  propsType) {
-    return (
-        <div>
-            <Beach />
-            <ConteinerPosts
-                newPostText={props.newPostText}
-                dispatch={props.dispatch}
-                posts={props.posts}
-            />
-        </div>
-    );
+function Well() {
+        return <StoreContext.Consumer>{
+            (store)=>   <div>
+                <Beach/>
+                <ConteinerPosts
+                    newPostText={store.getState().profilePage.newPostText}
+                    dispatch={store.dispatch}
+                    posts={store.getState().profilePage.posts}
+                />
+            </div>}
+            </StoreContext.Consumer>
 }
 
 export default Well;

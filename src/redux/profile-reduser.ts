@@ -14,7 +14,7 @@ let initialState = {
             comment: 'My second post'
         },
         {
-            img: 'https://hips.hearstapps.com/hmg-prod/images/jenna-ortega-wednesday-1671450978.jpg?crop=0.5xw:1xh;center,top&resize=1200:*',
+            img: '',
             comment: 'My third post'
         },
         {
