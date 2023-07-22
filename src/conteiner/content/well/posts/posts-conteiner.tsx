@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
 import {Posts} from "./posts";
 import {ActionType} from "../../../../redux/store";
+import StoreContext from "../../../../store-context";
 
 export type propsType = {
     posts: Array<post>
@@ -15,7 +16,6 @@ type post = {
 }
 
 export const ConteinerPosts = (props: propsType) => {
-
     let state = props.posts
     let [text, setText] = useState(props.newPostText)
 
@@ -31,5 +31,9 @@ export const ConteinerPosts = (props: propsType) => {
         setText('')
     }
 
-    return <Posts posts={state} onChange={onChange} addPost={addPost} text={text}/>
+    return <StoreContext.Consumer>{
+        (store) => <Posts posts={state} onChange={onChange} addPost={addPost} text={text}/>
+}
+    </StoreContext.Consumer>
+
 }
