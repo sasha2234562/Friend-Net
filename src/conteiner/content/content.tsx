@@ -6,10 +6,9 @@ import {Route} from "react-router-dom";
 import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
-import {storeType} from "../../index";
 
 
-function Content(props: storeType) {
+function Content() {
     return (
         <div className={c.nawbar}>
             <ProfileNavigation/>
@@ -19,8 +18,6 @@ function Content(props: storeType) {
                 }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods
-                        state={props.state}
-                        dispatch={props.dispatch}
                     />}/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>
