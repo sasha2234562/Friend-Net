@@ -1,5 +1,4 @@
 import React from "react";
-import {storeType} from "./index";
 import {store} from "./redux/redux-store";
 
 
