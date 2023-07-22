@@ -15,11 +15,7 @@ function Content(props: storeType) {
             <ProfileNavigation/>
             <div className={c.content}>
                 <Route path={'/profile'} render={() =>
-                    <Well posts={
-                          props.state.profilePage.posts}
-                          newPostText={props.state.profilePage.newPostText}
-                          dispatch={props.dispatch}
-                    />
+                    <Well />
                 }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialods

@@ -3,6 +3,7 @@ import d from "./dialogs.module.css"
 import {DialogsComponent} from "./dialodsName/dialogs-components";
 import {storeType} from "../../../index";
 import {ConteinerMessangesValue} from "./messanges-value/conteiner-messanges-value";
+import StoreContext from "../../../store-context";
 
 // export type dialogsType = {
 //     dialogsPage: {
@@ -19,8 +20,8 @@ import {ConteinerMessangesValue} from "./messanges-value/conteiner-messanges-val
 
 
 export const Dialods = function (props: storeType) {
-    return (
-        <div className={d.dialogs}>
+    return <StoreContext.Consumer>{
+        (store) => <div className={d.dialogs}>
             <div className={d.dialogsItem}>
                 <DialogsComponent dialodsName={props.state.dialogsPage.dialogsName}/>
             </div>
@@ -31,6 +32,7 @@ export const Dialods = function (props: storeType) {
                 />
             </div>
         </div>
-    )
+    }
+    </StoreContext.Consumer>
 }
 
