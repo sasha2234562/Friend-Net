@@ -7,11 +7,7 @@ function Well() {
         return <StoreContext.Consumer>{
             (store)=>   <div>
                 <Beach/>
-                <ConteinerPosts
-                    newPostText={store.getState().profilePage.newPostText}
-                    dispatch={store.dispatch}
-                    posts={store.getState().profilePage.posts}
-                />
+                <ConteinerPosts/>
             </div>}
             </StoreContext.Consumer>
 }
