@@ -1,7 +1,18 @@
 import React, {ChangeEvent, useState} from "react";
-import {propsType} from "../well";
 import {Posts} from "./posts";
+import {ActionType} from "../../../../redux/store";
 
+export type propsType = {
+    posts: Array<post>
+    dispatch: (action: ActionType) => void
+    newPostText: string
+}
+
+
+type post = {
+    img: string
+    comment: string
+}
 
 export const ConteinerPosts = (props: propsType) => {
 
