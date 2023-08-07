@@ -1,5 +1,5 @@
 import p from "./posts.module.css"
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
 
 
 export type propsType = {
@@ -17,8 +17,7 @@ type post = {
 
 export const Posts = (props: propsType) => {
 
-
-    function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
+            function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         props.onChange(event.currentTarget.value);
     }
 

@@ -5,9 +5,14 @@ import StoreContext from "../../../store-context";
 
 function Well() {
         return <StoreContext.Consumer>{
-            (store)=>   <div>
+            (store)=>   
+                <div>
                 <Beach/>
-                <ConteinerPosts/>
+                <ConteinerPosts
+                    newPostText={store.getState().profilePage.newPostText}
+                    dispatch={store.dispatch}
+                    posts={store.getState().profilePage.posts}
+                />
             </div>}
             </StoreContext.Consumer>
 }
