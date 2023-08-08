@@ -2,33 +2,45 @@ import p from "./posts.module.css"
 import React, {ChangeEvent} from "react";
 
 
-export type propsType = {
-    posts: Array<post>
-    addPost: () => void
+// export type propsType = {
+//     posts: Array<post>
+//     addPost: () => void
+//     onChange: (e: string) => void
+//     text: string
+// }
+//
+//
+// type post = {
+//     img: string
+//     comment: string
+// }
+type MapPropsType = MapStateToPropsType & MapDispatchToProps
+type MapStateToPropsType = {
+    posts: Array<{
+        img: string
+        comment: string
+    }>
+    newPostText: string
+}
+type MapDispatchToProps = {
     onChange: (e: string) => void
-    text: string
+    addPost: (newPostText: string) => void
 }
 
+export const Posts = (props: MapPropsType) => {
 
-type post = {
-    img: string
-    comment: string
-}
-
-export const Posts = (props: propsType) => {
-
-            function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
+    function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
         props.onChange(event.currentTarget.value);
     }
 
     function onClickHandler() {
-        props.addPost();
+        props.addPost(props.newPostText);
     }
 
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
-                <textarea value={props.text} onChange={onChangeHandler} placeholder={"Hello, people"}></textarea>
+                <textarea value={props.newPostText} onChange={onChangeHandler} placeholder={"Hello, people"}></textarea>
                 <input onClick={onClickHandler} type={"button"} value={"Publication"}/>
             </div>
             <div className={p.content_posts}>

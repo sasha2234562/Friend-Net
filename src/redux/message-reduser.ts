@@ -1,7 +1,7 @@
 import {ActionType} from "./store";
 import {v1} from "uuid";
 
-let initialState =  {
+let initialState = {
     dialogsName: [
         {
             name: "Masha",
@@ -30,22 +30,62 @@ let initialState =  {
         }
     ],
     messages: [
-        {value: 'Hello',id: v1()},
-        {value: 'Bye',id: v1()},
-        {value: 'Good',id: v1()},
-        {value: 'Yo',id: v1()},
-        {value: 'Thank you',id: v1()},
+        {value: 'Hello', id: v1()},
+        {value: 'Bye', id: v1()},
+        {value: 'Good', id: v1()},
+        {value: 'Yo', id: v1()},
+        {value: 'Thank you', id: v1()},
     ],
     newMessage: "hello"
 }
 
-export const messageReducer = (state= initialState, action: ActionType) => {
-    if (action.type === 'ADD-MESSAGE') {
+export const messageReducer = (state = initialState, action: AllActions) => {
+    switch (action.type) {
+        case 'CHANGE-NEW-MESSAGE':
+            state.newMessage = action.newText
+            return state
+        case 'ADD-MESSAGE':
             let newMessage = {
-                value: action.newMessage,
+                value: action.text,
                 id: v1()
             }
             state.messages.push(newMessage)
-        }
-    return state
+            state.newMessage = ''
+            return state
+
+        default:
+            return  state
+    }
 }
+
+type AddMessageACType = ReturnType<typeof testAC>
+type ChangeMessageACType = ReturnType<typeof changeMessageAC>
+
+
+
+type AllActions = AddMessageACType | ChangeMessageACType
+
+// export const addPostActionCreator = (text: string) => {
+//     return {
+//         type: 'ADD-POST', text : text
+//     } as const
+// }
+// export const actionNewMessage = (text: string) => {
+//     return {
+//         type: 'ADD-MESSAGE', text : text
+//     } as const
+// }
+
+
+export const testAC = (text: string) => ({type:'ADD-MESSAGE', text } as const )
+export const changeMessageAC = (newText: string) => ({type:'CHANGE-NEW-MESSAGE', newText } as const )
+
+
+// export const changeMessageAC = (newText: string) => {
+//     return {
+//         type: 'CHANGE-NEW-MESSAGE', newText
+//     } as const
+// }
+
+
+//

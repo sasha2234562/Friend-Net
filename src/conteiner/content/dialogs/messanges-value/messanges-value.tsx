@@ -41,7 +41,8 @@ export const MessangesValue = (props: messageValueType) => {
                     placeholderValue={props.newMessage}
                     title={'Send messange'} onClick={onClickHandler}
                     onChange={onChangeHandler}
-                    value={props.value}/>
+                    value={props.value}
+                />
             </div>
         </div>
     )

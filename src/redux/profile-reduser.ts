@@ -1,4 +1,5 @@
 import {ActionType} from "./store";
+import {Readable} from "stream";
 
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
@@ -25,6 +26,18 @@ let initialState = {
     newPostText: 'Sasha is too lazy'
 }
 
+
+export const AddPostActionCreator = (text: string) => {
+    return {
+        type: 'ADD-POST', text
+    }
+}
+
+export const ChangeNewPostTextAC = (newText: string) => {
+    return{
+        type: 'CHANGE-NEW-POST-TEXT', newText
+    }
+}
 export const profileReducer = (state = initialState, action: ActionType) => {
 
     switch (action.type) {

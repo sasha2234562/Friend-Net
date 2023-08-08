@@ -2,7 +2,7 @@ import {v1} from "uuid";
 import {profileReducer} from "./profile-reduser";
 import {messageReducer} from "./message-reduser";
 
-export type ActionType = ActionNewPostType | ActionNewText | ActionNewMessage
+export type ActionType = ActionNewPostType | ActionNewText | ActionNewMessage | ActionNewMessageText
 
 export type ActionNewPostType = {
     type: 'ADD-POST'
@@ -16,6 +16,10 @@ export  type ActionNewText = {
 export type ActionNewMessage = {
     type: 'ADD-MESSAGE'
     newMessage: string
+}
+export type ActionNewMessageText = {
+    type: 'CHANGE-NEW-MESSAGE',
+    newText: string
 }
 let store = {
     _state: {
@@ -92,7 +96,7 @@ let store = {
     dispatch(action: ActionType) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
 
-        this._state.dialogsPage = messageReducer(this._state.dialogsPage, action)
+        //this._state.dialogsPage = messageReducer(this._state.dialogsPage, action)
 
         this._callSenscriber()
     }

@@ -1,35 +1,45 @@
-import React, {useState} from "react";
+import React from "react";
 import {MessangesValue} from "./messanges-value";
-import {storeType} from "../../../../index";
-import {connect} from "react-redux";
-import {Dialods} from "../dialogs";
-import {AppStateType} from "../../../../redux/redux-store";
+// import {storeType} from "../../../../index";
+//import {actionNewMessage} from "../../../../redux/message-reduser";
+import {text} from "stream/consumers";
+import {testAC} from "../../../../redux/message-reduser";
 
 
-export const ConteinerMessangesValue = (props: storeType) => {
+
+
+export const ConteinerMessangesValue = (props: any) => {
 
     let dialogs = props.state
-
-    let [newMessage, setNewMessage] = useState('')
+    console.log(dialogs.dialogsPage.newMessage)
+    // let [newMessage, setNewMessage] = useState('')
 
     const onChange = (event: string) => {
-        setNewMessage(event);
+        // setNewMessage(event);
+       event && props.dispatch({
+            type: 'CHANGE-NEW-MESSAGE',
+            newText: event
+        })
+        dialogs.dialogsPage.newMessage = event
     }
 
     const onClick = () => {
-        props.dispatch({
-            type: 'ADD-MESSAGE',
-            newMessage: newMessage
-        })
-        setNewMessage('')
-    }
+        props.dispatch(
+        //     {//
+        //     type: 'ADD-MESSAGE',
+        //     newMessage: dialogs.dialogsPage.newMessage
+        //     // newMessage: 'dfsfsdf'
+        // }
+testAC(dialogs.dialogsPage.newMessage))
+        // setNewMessage('')
+   }
 
     return <MessangesValue
         onClick={onClick}
         messages={dialogs.dialogsPage.messages}
         onChange={onChange}
         newMessage={dialogs.dialogsPage.newMessage}
-        value={newMessage}
+        value={dialogs.dialogsPage.newMessage}
     />
 
 }
