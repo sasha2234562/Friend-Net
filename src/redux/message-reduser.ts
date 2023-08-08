@@ -41,7 +41,6 @@ let initialState = {
 export const messageReducer = (state = initialState, action: AllActions) => {
     switch (action.type) {
         case 'CHANGE-NEW-MESSAGE':
-console.log(state)
             const copyStatenewMessage = {
                 ...state
             }

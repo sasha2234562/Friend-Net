@@ -14,7 +14,7 @@ let initialState = {
             comment: 'My second post'
         },
         {
-            img: '',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM4Jnx9uYxp6Cf-JgtB7wmcAVto0aYhrVmpf--h1B44kBDcV79HKHtCLDPdaw0PUevqG0&usqp=CAU',
             comment: 'My third post'
         },
         {
@@ -33,7 +33,7 @@ export const AddPostActionCreator = (text: string) => {
 }
 
 export const ChangeNewPostTextAC = (newText: string) => {
-    return{
+    return {
         type: 'CHANGE-NEW-POST-TEXT', newText
     }
 }
@@ -45,12 +45,19 @@ export const profileReducer = (state = initialState, action: ActionType) => {
                 img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
                 comment: action.text
             }
-            state.posts.unshift(newPost);
-            state.newPostText = ''
-            return state
+            const copyStateNewPost = {
+                ...state,
+                posts: [...state.posts]
+            }
+            copyStateNewPost.posts.unshift(newPost);
+            copyStateNewPost.newPostText = ''
+            return copyStateNewPost
         case CHANGE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            return state
+            const  copuStateNewPostText = {
+                ...state
+            }
+            copuStateNewPostText.newPostText = action.newText
+            return copuStateNewPostText
     }
     return state
 }
