@@ -45,19 +45,19 @@ export const profileReducer = (state = initialState, action: ActionType) => {
                 img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
                 comment: action.text
             }
-            const copyStateNewPost = {
+            return  {
                 ...state,
-                posts: [...state.posts]
+                posts: [newPost, ...state.posts],
+                newPostText: ''
             }
-            copyStateNewPost.posts.unshift(newPost);
-            copyStateNewPost.newPostText = ''
-            return copyStateNewPost
+            break
+
         case CHANGE_NEW_POST_TEXT:
-            const  copuStateNewPostText = {
-                ...state
+            return  {
+                ...state,
+                newPostText: action.newText
             }
-            copuStateNewPostText.newPostText = action.newText
-            return copuStateNewPostText
+            break
     }
     return state
 }

@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {profileReducer} from "./profile-reduser";
+import {profileReducer} from "./profile-reducer";
 import {messageReducer} from "./message-reduser";
 
 export type ActionType = ActionNewPostType | ActionNewText | ActionNewMessage | ActionNewMessageText
