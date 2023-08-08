@@ -27,7 +27,11 @@ export const Posts = (props: MapPropsType) => {
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
-                <textarea value={props.newPostText} onChange={onChangeHandler} placeholder={"Hello, people"}></textarea>
+                <textarea
+                    value={props.newPostText}
+                    onChange={onChangeHandler}
+                    placeholder={"Hello, people"}
+                ></textarea>
                 <input onClick={onClickHandler} type={"button"} value={"Publication"}/>
             </div>
             <div className={p.content_posts}>

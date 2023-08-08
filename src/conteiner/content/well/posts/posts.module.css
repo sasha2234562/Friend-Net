@@ -7,6 +7,9 @@
     width: 53%;
     height: 35px;
     border-radius: 5px;
+    font-size: 18px;
+    line-height: 1.7;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 
 .textarea_input {
