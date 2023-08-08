@@ -3,19 +3,19 @@ import React from "react";
 import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
+import {v1} from "uuid";
 
-type messageValueType = {
-    onChange: (e: string) => void
-    onClick: () => void
-    messages: Array<MessagesType>
+type MapPropsType = MapStateToPropsType & MapDispatchToProps
+
+type MapStateToPropsType = {
+    messages: Array<{ value: string, id: string }>
     newMessage: string
-    value: string
 }
-type MessagesType = {
-    value: string
-    id: string
+type MapDispatchToProps= {
+    onChange: (e: string) => void
+    addPost: (newPostText: string) => void
 }
-export const MessangesValue = (props: messageValueType) => {
+export const MessagesValue = (props: MapPropsType) => {
 
 
     const onChangeHandler = (event: string) => {
@@ -23,7 +23,7 @@ export const MessangesValue = (props: messageValueType) => {
     }
 
     const onClickHandler = () => {
-        props.onClick()
+        props.addPost(props.newMessage)
     }
 
 
@@ -41,7 +41,7 @@ export const MessangesValue = (props: messageValueType) => {
                     placeholderValue={props.newMessage}
                     title={'Send messange'} onClick={onClickHandler}
                     onChange={onChangeHandler}
-                    value={props.value}
+                    value={props.newMessage}
                 />
             </div>
         </div>

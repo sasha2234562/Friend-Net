@@ -4,8 +4,6 @@ import {AppStateType} from "../../../../redux/redux-store";
 import {Dispatch} from "redux";
 import {AddPostActionCreator, ChangeNewPostTextAC} from "../../../../redux/profile-reduser";
 
-
-
 let mapStateToProps = (state: AppStateType) => {
     return {
         posts: state.profilePage.posts,

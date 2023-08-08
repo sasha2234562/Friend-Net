@@ -1,7 +1,7 @@
 import ProfileNavigation from "../navigashion/ profile-navigation";
 import Well from "./well/well";
 import c from "./content.module.css";
-import {Dialods} from "./dialogs/dialogs";
+import Dialods from "./dialogs/dialogs";
 import {Route} from "react-router-dom";
 import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";

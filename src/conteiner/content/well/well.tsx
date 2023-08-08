@@ -4,16 +4,14 @@ import StoreContext from "../../../store-context";
 
 
 function Well() {
-        return (
-
-                <div>
+        return <div>
                 <Beach/>
                 <ContainerPosts
                     // newPostText={store.getState().profilePage.newPostText}
                     // dispatch={store.dispatch}
                     // posts={store.getState().profilePage.posts}
                 />
-            </div>)
+            </div>
 }
 
 export default Well;

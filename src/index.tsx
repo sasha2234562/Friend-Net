@@ -2,9 +2,23 @@ import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import {store} from "./redux/redux-store"
-import {ActionNewMessage, ActionNewPostType, ActionNewText} from "./redux/store";
 import React from "react";
 import {Provider} from "react-redux";
+
+
+export const rerenderEntireTree = () => {
+    ReactDOM.render(
+        <BrowserRouter>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </BrowserRouter>,
+        document.getElementById('root')
+    )
+}
+rerenderEntireTree()
+
+store.subscribe(rerenderEntireTree)
 // import {Provider} from "./store-context";
 
 // export type storeType = {
@@ -39,16 +53,3 @@ import {Provider} from "react-redux";
 //     img: string
 // }
 
-export const rerenderEntireTree = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>,
-        document.getElementById('root')
-    )
-}
-rerenderEntireTree()
-
-store.subscribe(rerenderEntireTree)

@@ -1,19 +1,6 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent} from "react";
 
-
-// export type propsType = {
-//     posts: Array<post>
-//     addPost: () => void
-//     onChange: (e: string) => void
-//     text: string
-// }
-//
-//
-// type post = {
-//     img: string
-//     comment: string
-// }
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
     posts: Array<{

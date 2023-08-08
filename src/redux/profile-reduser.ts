@@ -1,5 +1,4 @@
 import {ActionType} from "./store";
-import {Readable} from "stream";
 
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";

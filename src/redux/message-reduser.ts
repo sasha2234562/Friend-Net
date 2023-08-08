@@ -58,34 +58,13 @@ export const messageReducer = (state = initialState, action: AllActions) => {
     }
 }
 
-type AddMessageACType = ReturnType<typeof testAC>
+type AddMessageACType = ReturnType<typeof AddMessageAC>
 type ChangeMessageACType = ReturnType<typeof changeMessageAC>
 
 
 
 type AllActions = AddMessageACType | ChangeMessageACType
 
-// export const addPostActionCreator = (text: string) => {
-//     return {
-//         type: 'ADD-POST', text : text
-//     } as const
-// }
-// export const actionNewMessage = (text: string) => {
-//     return {
-//         type: 'ADD-MESSAGE', text : text
-//     } as const
-// }
 
-
-export const testAC = (text: string) => ({type:'ADD-MESSAGE', text } as const )
+export const AddMessageAC = (text: string) => ({type:'ADD-MESSAGE', text } as const )
 export const changeMessageAC = (newText: string) => ({type:'CHANGE-NEW-MESSAGE', newText } as const )
-
-
-// export const changeMessageAC = (newText: string) => {
-//     return {
-//         type: 'CHANGE-NEW-MESSAGE', newText
-//     } as const
-// }
-
-
-//
