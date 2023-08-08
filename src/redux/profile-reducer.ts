@@ -28,13 +28,13 @@ let initialState = {
 
 export const AddPostActionCreator = (text: string) => {
     return {
-        type: 'ADD-POST', text
+        type: ADD_POST, text
     }
 }
 
 export const ChangeNewPostTextAC = (newText: string) => {
     return {
-        type: 'CHANGE-NEW-POST-TEXT', newText
+        type: CHANGE_NEW_POST_TEXT, newText
     }
 }
 export const profileReducer = (state = initialState, action: ActionType) => {

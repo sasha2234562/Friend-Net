@@ -17,11 +17,11 @@ type MapDispatchToProps = {
 export const Posts = (props: MapPropsType) => {
 
     function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
-        props.onChange(event.currentTarget.value);
+        event.currentTarget.value && props.onChange(event.currentTarget.value);
     }
 
     function onClickHandler() {
-        props.addPost(props.newPostText);
+       props.newPostText && props.addPost(props.newPostText);
     }
 
     return (
