@@ -1,4 +1,3 @@
-import {ActionType} from "./store";
 import {v1} from "uuid";
 
 let initialState = {
@@ -42,16 +41,24 @@ let initialState = {
 export const messageReducer = (state = initialState, action: AllActions) => {
     switch (action.type) {
         case 'CHANGE-NEW-MESSAGE':
-            state.newMessage = action.newText
-            return state
+console.log(state)
+            const copyStatenewMessage = {
+                ...state
+            }
+            copyStatenewMessage.newMessage = action.newText
+            return copyStatenewMessage
         case 'ADD-MESSAGE':
             let newMessage = {
                 value: action.text,
                 id: v1()
             }
-            state.messages.push(newMessage)
-            state.newMessage = ''
-            return state
+            const copyStateMessages= {
+                ...state,
+                messages: [...state.messages]
+            }
+            copyStateMessages.messages.push(newMessage)
+            copyStateMessages.newMessage = ''
+            return copyStateMessages
 
         default:
             return  state

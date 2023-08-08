@@ -3,7 +3,7 @@ import d from "./dialogs.module.css"
 import {ContainerMessagesValue} from "./messanges-value/container-messages-value";
 
 
-function Dialods () {
+function Dialogs () {
     return (
         <div className={d.dialogs}>
             {/*<div className={d.Item}>*/}
@@ -17,4 +17,4 @@ function Dialods () {
     )
 }
 
-export default Dialods;
+export default Dialogs;
