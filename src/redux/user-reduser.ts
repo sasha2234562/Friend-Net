@@ -1,5 +1,4 @@
 import {v1} from "uuid";
-import {AddMessageAC, changeMessageAC} from "./message-reduser";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -65,7 +64,10 @@ export const usersReduser = (state = initialState, action: AllType) => {
             return {
                 ...state, users: [...state.users, ...action.users]
             }
+
+
     }
+    return state
 }
 
 export const followAC = (userID: string) => ({type: FOLLOW, userID} as const)
