@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-const UsersConteiner = connect(mapStateToProps, mapDispatchToProps)(Users)
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)

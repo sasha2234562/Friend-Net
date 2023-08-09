@@ -1,4 +1,3 @@
-
 type StatePropsType = MapStateToPropsUsers & MapDispatchToProps
 
 type MapStateToPropsUsers = {
@@ -31,7 +30,9 @@ export const Users = (props: StatePropsType) => {
             {props.uses.map(item => {
                 return <div key={item.id}>
                     <img src={item.photo}/>
-                    <button onClick={() => props.follow(item.id)}>{item.followed}</button>
+                    {item.followed
+                        ? <button onClick={() => props.follow(item.id)}>{item.followed}</button>
+                        : <button onClick={() => props.follow(item.id)}>{item.followed}</button>}
                     <span>{item.status}</span>
                     <span>{item.location.country}</span>
                     <span>{item.location.cityName}</span>
