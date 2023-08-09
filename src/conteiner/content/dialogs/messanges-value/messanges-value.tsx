@@ -3,7 +3,6 @@ import React from "react";
 import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
-import {v1} from "uuid";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 

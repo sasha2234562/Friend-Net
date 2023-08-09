@@ -68,11 +68,11 @@ export const usersReduser = (state = initialState, action: AllType) => {
     }
 }
 
-export const followAC = (userID) => ({type: FOLLOW, userID} as const)
+export const followAC = (userID: string) => ({type: FOLLOW, userID} as const)
 
-export const unFollowAC = (userID) => ({type: UNFOLLOW, userID} as const)
+export const unFollowAC = (userID: string) => ({type: UNFOLLOW, userID} as const)
 
-export const setUsersAC = (users) => ({type: SET_USERS, users} as const)
+export const setUsersAC = (users: any) => ({type: SET_USERS, users} as const)
 
 type followACType = ReturnType<typeof followAC>
 type unFollowACType = ReturnType<typeof unFollowAC>
