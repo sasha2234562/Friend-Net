@@ -2,6 +2,7 @@ import {MessagesValue} from "./messanges-value";
 import {AppStateType} from "../../../../redux/redux-store";
 import {connect} from "react-redux";
 import {AddMessageAC, changeMessageAC} from "../../../../redux/message-reduser";
+import {Dispatch} from "redux";
 
 let mapStateToProps = (state: AppStateType) => {
     return {
@@ -9,7 +10,7 @@ let mapStateToProps = (state: AppStateType) => {
         newMessage: state.dialogsPage.newMessage
     }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         onChange: (newText: string) => {
             dispatch(changeMessageAC(newText));

@@ -2,12 +2,12 @@ import {connect} from "react-redux";
 import {AppStateType} from "../redux/redux-store";
 import {Dispatch} from "redux";
 import {Users} from "./users";
-import {followAC, setUsersAC, unFollowAC} from "../redux/user-reduser";
+import {followAC, unFollowAC} from "../redux/user-reduser";
 
 
 const mapStateToProps = (state: AppStateType) => {
     return {
-        photo: state.users.users
+        users: state.users.users
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
