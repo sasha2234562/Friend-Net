@@ -1,2 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 
+.appearance {
+    display: flex;
+    flex-direction: column;
+    font-size: 21px;
+    margin: 2%;
+}
 
+.appearance button {
+    width: 15%;
+    margin: 2% 0;
+    padding: 5px;
+}
+
+.img {
+    width: 15%;
+    height: 15vh;
+}

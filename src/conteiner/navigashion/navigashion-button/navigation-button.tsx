@@ -5,6 +5,7 @@ import Music from "./music/music";
 import Settings from "./settings/settings";
 import nb from "./navigation-button.module.css"
 import {NavLink} from "react-router-dom";
+import {UsersNavigation} from "./users-navigation";
 
 function NavigationButton() {
     return (
@@ -14,6 +15,7 @@ function NavigationButton() {
             <NavLink to={'/news'} activeClassName={nb.activeLink}><News/></NavLink>
             <NavLink to={'/music'} activeClassName={nb.activeLink}><Music/></NavLink>
             <NavLink to={'/settings'} activeClassName={nb.activeLink}><Settings/></NavLink>
+            <NavLink to={'/users'} activeClassName={nb.activeLink}><UsersNavigation/></NavLink>
         </div>
     )
 }

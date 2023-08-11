@@ -6,6 +6,7 @@ import {Route} from "react-router-dom";
 import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
+import {UsersContainer} from "../../users/users-conteiner";
 
 
 function Content() {
@@ -22,6 +23,7 @@ function Content() {
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>
                 <Route path={'/settings'} render={() => <Settings/>}/>
+                <Route path={'/users'} render={()=> <UsersContainer/>}/>
             </div>
         </div>
     )

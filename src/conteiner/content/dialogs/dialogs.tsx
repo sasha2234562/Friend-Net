@@ -7,14 +7,14 @@ import {UsersContainer} from "../../../users/users-conteiner";
 function Dialogs () {
     return (
         <div className={d.dialogs}>
-            <UsersContainer />
+            {/*<UsersContainer />*/}
             {/*<div className={d.Item}>*/}
             {/*    <DialogsComponent*/}
-                {/*    dialodsName={store.getState().dialogsPage.dialogsName}/>*/}
+                {/*    dialogsName={store.getState().dialogsPage.dialogsName}/>*/}
             {/*</div>*/}
-            <div>
+            {/*<div>*/}
                 <ContainerMessagesValue/>
-            </div>
+            {/*</div>*/}
         </div>
     )
 }

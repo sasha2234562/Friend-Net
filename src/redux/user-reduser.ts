@@ -7,7 +7,7 @@ const SET_USERS = 'SET-USERS'
 const initialState = {
    users:  [
        {
-           id: v1(), name: 'Sasha', followed: true, status: 'I\'am man ',
+           id: v1(), name: 'Sasha', followed: false, status: 'I\'am man ',
            location: {
                cityName: 'Hanoi',
                country: 'Vietnam'
@@ -31,7 +31,7 @@ const initialState = {
            photo: 'https://img.freepik.com/free-photo/the-girl-in-the-sky_1340-27755.jpg'
        },
        {
-           id: v1(), name: 'Alex', followed: false, status: 'I\'am man ',
+           id: v1(), name: 'Alex', followed: true, status: 'I\'am man ',
            location: {
                cityName: 'Moscow',
                country: 'Russia'
@@ -48,7 +48,7 @@ export const usersReduser = (state = initialState, action: AllType) => {
             return {
                 ...state,
                 users: state.users.map(item => {
-                    return item.id === action.userID ? item.followed = true : item
+                    return item.id === action.userID ? {...item, followed: false} : item
                 })
             }
 
@@ -56,7 +56,7 @@ export const usersReduser = (state = initialState, action: AllType) => {
             return {
                 ...state,
                 users: state.users.map(item => {
-                    return item.id === action.userID ? item.followed = false : item
+                    return item.id === action.userID ? {...item, followed: true} : item
                 })
             }
 
