@@ -5,7 +5,7 @@ import userPhoto from "../image/avatar photo for profile.png"
 
 export type UserType =     {
     "name": string,
-    "id": number | string,
+    "id": number ,
     "uniqueUrlName": string,
     "photos": {
         "small":  string,
@@ -20,8 +20,8 @@ export type MapStateToPropsUsersType = {
     users: Array<UserType>
 }
 type MapDispatchToPropsType = {
-    follow: (userID: string | number) => void
-    unFollow: (userId: string | number) => void
+    follow: (userID:  number) => void
+    unFollow: (userId:  number) => void
     setUsers: (users: Array<UserType>) => void
 
 }

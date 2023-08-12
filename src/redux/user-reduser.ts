@@ -1,4 +1,3 @@
-import {v1} from "uuid";
 import {UserType} from "../users/users";
 
 const FOLLOW = 'FOLLOW'
@@ -40,11 +39,11 @@ export const usersReduser = (state:InitialAtateType = initialState, action: AllT
     return state
 }
 
-export const followAC = (userID: string | number) => ({type: FOLLOW, userID} as const)
+export const followAC = (userID: number) => ({type: FOLLOW, userID} as const)
 
-export const unFollowAC = (userID: string | number) => ({type: UNFOLLOW, userID} as const)
+export const unFollowAC = (userID: number) => ({type: UNFOLLOW, userID} as const)
 
-export const setUsersAC = (users: any) => ({type: SET_USERS, users} as const)
+export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users} as const)
 
 type followACType = ReturnType<typeof followAC>
 type unFollowACType = ReturnType<typeof unFollowAC>
