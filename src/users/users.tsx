@@ -1,24 +1,17 @@
 import u from './users.module.css'
-import {v1} from "uuid";
-import {useEffect} from "react";
 import axios from "axios";
 
 
-export type UserType = {
-    id: string
-    name: string,
-    followed: boolean,
-    status: string | null,
-    location: {
-        cityName: string,
-        country: string
+export type UserType =     {
+    "name": string,
+    "id": number | string,
+    "uniqueUrlName": string,
+    "photos": {
+        "small":  boolean,
+        "large":  string
     },
-    photo: {
-        large: null
-        small: null
-    },
-    uniqueUrlName: null
-
+    "status":  string,
+    "followed": boolean
 }
 type StatePropsType = MapStateToPropsUsersType & MapDispatchToPropsType
 
@@ -26,8 +19,8 @@ export type MapStateToPropsUsersType = {
     users: Array<UserType>
 }
 type MapDispatchToPropsType = {
-    follow: (userID: string) => void
-    unFollow: (userId: string) => void
+    follow: (userID: string | number) => void
+    unFollow: (userId: string | number) => void
     setUsers: (users: Array<UserType>) => void
 
 }
@@ -35,8 +28,8 @@ type MapDispatchToPropsType = {
 export const Users = (props: StatePropsType) => {
     if (props.users.length === 0) {
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => //props.setUsers(response.data.items) )
-                console.log(response.data.items))
+            .then(response => props.setUsers(response.data.items) )
+                //console.log(response.data.items))
     }
 
     // useEffect(() => {
@@ -80,13 +73,13 @@ export const Users = (props: StatePropsType) => {
         <div>
             {props.users.map(item => {
                 return <div key={item.id} className={u.appearance}>
-                    {/*<img src={item.photo} className={u.img}/>*/}
+                    <img src={item.photos.large} className={u.img}/>
                     {item.followed
                         ? <button onClick={() => props.follow(item.id)}>follow</button>
                         : <button onClick={() => props.unFollow(item.id)}>unFollow</button>}
                     <span>{item.status}</span>
-                    <span>{item.location.country}</span>
-                    <span>{item.location.cityName}</span>
+                    {/*<span>{item.location.country}</span>*/}
+                    {/*<span>{item.location.cityName}</span>*/}
                 </div>
             })}
         </div>

@@ -73,9 +73,9 @@ export const usersReduser = (state:InitialAtateType = initialState, action: AllT
     return state
 }
 
-export const followAC = (userID: string) => ({type: FOLLOW, userID} as const)
+export const followAC = (userID: string | number) => ({type: FOLLOW, userID} as const)
 
-export const unFollowAC = (userID: string) => ({type: UNFOLLOW, userID} as const)
+export const unFollowAC = (userID: string | number) => ({type: UNFOLLOW, userID} as const)
 
 export const setUsersAC = (users: any) => ({type: SET_USERS, users} as const)
 
