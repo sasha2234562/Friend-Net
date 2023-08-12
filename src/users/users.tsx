@@ -1,5 +1,6 @@
 import u from './users.module.css'
 import axios from "axios";
+import userPhoto from "../image/avatar photo for profile.png"
 
 
 export type UserType =     {
@@ -7,7 +8,7 @@ export type UserType =     {
     "id": number | string,
     "uniqueUrlName": string,
     "photos": {
-        "small":  boolean,
+        "small":  string,
         "large":  string
     },
     "status":  string,
@@ -73,7 +74,7 @@ export const Users = (props: StatePropsType) => {
         <div>
             {props.users.map(item => {
                 return <div key={item.id} className={u.appearance}>
-                    <img src={item.photos.large} className={u.img}/>
+                    <img src={item.photos.small ? item.photos.small : userPhoto} className={u.img}/>
                     {item.followed
                         ? <button onClick={() => props.follow(item.id)}>follow</button>
                         : <button onClick={() => props.unFollow(item.id)}>unFollow</button>}
