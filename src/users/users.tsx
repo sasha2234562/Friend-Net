@@ -38,7 +38,7 @@ export const Users = (props: StatePropsType) => {
                 return <div key={item.id} className={u.appearance}>
                     <img src={item.photos.small ? item.photos.small : userPhoto} className={u.img}/>
                     {item.followed
-                        ? <button onClick={() => props.follow(item.id)}>follow</button>
+                        ? <button onClick={() => props.follow(item.id)}>Follow</button>
                         : <button onClick={() => props.unFollow(item.id)}>unFollow</button>}
                     <span>{item.status}</span>
                     {/*<span>{item.location.country}</span>*/}
