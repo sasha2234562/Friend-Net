@@ -3,15 +3,15 @@ import {UserType} from "../users/users";
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
-type InitialAtateType = {
+type InitialStateType = {
     users: UserType[]
 }
-const initialState: InitialAtateType = {
+const initialState: InitialStateType = {
    users:  []
 }
 
 
-export const usersReduser = (state:InitialAtateType = initialState, action: AllType):InitialAtateType => {
+export const usersReduser = (state:InitialStateType = initialState, action: AllType):InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
