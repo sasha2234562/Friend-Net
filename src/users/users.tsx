@@ -27,7 +27,7 @@ type MapDispatchToPropsType = {
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
 
- class Users extends React.Component<PropsType> {
+class Users extends React.Component<PropsType> {
 
 
     componentDidMount() {
