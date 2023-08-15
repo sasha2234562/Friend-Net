@@ -28,6 +28,8 @@ type MapDispatchToPropsType = {
 type PropsType = StatePropsType & MapDispatchToPropsType;
 
  class Users extends React.Component<PropsType> {
+
+
     componentDidMount() {
         if (this.props.users.length === 0) {
             axios.get("https://social-network.samuraijs.com/api/1.0/users")
