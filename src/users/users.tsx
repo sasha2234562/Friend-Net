@@ -67,7 +67,6 @@ class Users extends React.Component<PropsType> {
                             onClick={() => this.onPageHandler(item)}>
                             {item}
                         </span>
-
                     })}
                 </div>
 
@@ -79,8 +78,6 @@ class Users extends React.Component<PropsType> {
                             ? <button onClick={() => this.props.follow(item.id)}>Follow</button>
                             : <button onClick={() => this.props.unFollow(item.id)}>unFollow</button>}
                         <span>{item.name}</span>
-                        {/*<span>{item.location.country}</span>*/}
-                        {/*<span>{item.location.cityName}</span>*/}
                     </div>
                 ))}
             </div>

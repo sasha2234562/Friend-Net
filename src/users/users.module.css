@@ -23,20 +23,38 @@
     height: 12vh;
 }
 
+.numberPage {
+    display: flex;
+    align-items: center;
+}
+
 .numberPage span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 23px;
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     cursor: pointer;
-    margin: 0 3px;
+    margin: 0 5px;
+    /*background-color: #ffd502;*/
+    border-radius: 50px;
+    width: 33px;
+    height: 33px;
+
+
 }
 
 .numberPage span:hover {
-    color: #37ef5b;
+    color: #00942b;
 }
-.numberPage span:active{
-    color: #ffd502;
+
+.numberPage span:active {
+    color: #83088c;
 }
-.active{
+
+
+.active {
+    background-color: #00ff2a;
     color: red;
     font-family: "Arial Black";
 }
