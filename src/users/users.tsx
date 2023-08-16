@@ -35,12 +35,16 @@ class Users extends React.Component<PropsType> {
 
 
     componentDidMount() {
-        if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-                .then(response => this.props.setUsers(response.data.items));
-        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => this.props.setUsers(response.data.items));
     }
 
+
+    onPageHandler(page: number) {
+        this.props.setCurrentPage(page)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+            .then(response => this.props.setUsers(response.data.items));
+    }
 
     render() {
         let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
@@ -55,7 +59,7 @@ class Users extends React.Component<PropsType> {
                         return <span
                             className={this.props.currentPage === item ? u.active : ''}
                             key={index}
-                            onClick={() => this.props.setCurrentPage(item)}>
+                            onClick={() => this.onPageHandler(item)}>
                             {item}
                         </span>
 
