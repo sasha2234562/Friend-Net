@@ -26,6 +26,7 @@ type MapDispatchToPropsType = {
     follow: (userID: number) => void;
     unFollow: (userId: number) => void;
     setUsers: (users: Array<UserType>) => void;
+    setCurrentPage: (page: number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -35,7 +36,7 @@ class Users extends React.Component<PropsType> {
 
     componentDidMount() {
         if (this.props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
                 .then(response => this.props.setUsers(response.data.items));
         }
     }
@@ -51,7 +52,12 @@ class Users extends React.Component<PropsType> {
             <div>
                 <div className={u.numberPage}>
                     {pages.map((item, index) => {
-                        return <span key={index}>{item}</span>
+                        return <span
+                            className={this.props.currentPage === item ? u.active : ''}
+                            key={index}
+                            onClick={() => this.props.setCurrentPage(item)}>
+                            {item}
+                        </span>
 
                     })}
                 </div>

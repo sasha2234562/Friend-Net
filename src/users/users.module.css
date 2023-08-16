@@ -33,3 +33,10 @@
 .numberPage span:hover {
     color: #37ef5b;
 }
+.numberPage span:active{
+    color: #ffd502;
+}
+.active{
+    color: red;
+    font-family: "Arial Black";
+}
