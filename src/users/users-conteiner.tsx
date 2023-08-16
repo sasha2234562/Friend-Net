@@ -7,7 +7,10 @@ import Users, {UserType} from "./users";
 
 const mapStateToProps = (state: AppStateType) => {
     return {
-        users: state.users.users
+        users: state.users.users,
+        pageSize: state.users.pageSize,
+        totalUsersCount: state.users.totalUsersCount,
+        currentPage: state.users.currentPage
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {

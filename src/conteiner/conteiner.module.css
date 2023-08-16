@@ -2,9 +2,12 @@
     margin: 0;
     padding: 0;
 }
-.conteiner{
+.container{
     margin: 15px;
     padding: 15px;
     background-color: #37ef5b;
+    border-radius: 13px;
+}
+.container div{
     border-radius: 13px;
 }

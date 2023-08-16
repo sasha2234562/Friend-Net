@@ -17,6 +17,9 @@ export type UserType = {
 
 type StatePropsType = {
     users: Array<UserType>;
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
 }
 
 type MapDispatchToPropsType = {
@@ -37,13 +40,20 @@ class Users extends React.Component<PropsType> {
         }
     }
 
+
     render() {
+        let pageCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+        for (let i = 1; i <= pageCount; i++) {
+            pages.push(i);
+        }
         return (
             <div>
                 <div className={u.numberPage}>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
+                    {pages.map((item, index) => {
+                        return <span key={index}>{item}</span>
+
+                    })}
                 </div>
 
                 {this.props.users.map(item => (

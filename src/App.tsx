@@ -5,7 +5,7 @@ import c from "./conteiner/conteiner.module.css"
 function App() {
 
     return (
-        <div className={c.conteiner}>
+        <div className={c.container}>
             <Conteiner/>
         </div>
     );
