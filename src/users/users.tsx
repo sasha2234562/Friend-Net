@@ -40,6 +40,12 @@ class Users extends React.Component<PropsType> {
     render() {
         return (
             <div>
+                <div className={u.numberPage}>
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
+
                 {this.props.users.map(item => (
                     <div key={item.id} className={u.appearance}>
                         <img src={item.photos.small ? item.photos.small : userPhoto} className={u.img}

@@ -7,11 +7,12 @@ type InitialStateType = {
     users: UserType[]
 }
 const initialState: InitialStateType = {
-   users:  []
+    users: []
 }
 
 
-export const usersReduser = (state:InitialStateType = initialState, action: AllType):InitialStateType => {
+export const usersReduser = (state: InitialStateType = initialState, action: AllType): InitialStateType => {
+
     switch (action.type) {
         case FOLLOW:
             return {
