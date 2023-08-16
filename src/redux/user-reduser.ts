@@ -45,6 +45,7 @@ export const usersReduser = (state: InitialStateType = initialState, action: All
                 ...state, users: action.users
             }
         case CURRENT_PAGE:
+            console.log(action.page)
             return {...state, currentPage: action.page}
 
         case Set_Total_Count:

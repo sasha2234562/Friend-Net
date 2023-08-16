@@ -7,68 +7,67 @@ import axios from "axios";
 import {Users} from "./users";
 
 
+export type UserType = {
+    name: string;
+    id: number;
+    uniqueUrlName: string;
+    photos: {
+        small: string;
+        large: string;
+    };
+    status: string;
+    followed: boolean;
+}
 
-    export type UserType = {
-        name: string;
-        id: number;
-        uniqueUrlName: string;
-        photos: {
-            small: string;
-            large: string;
-        };
-        status: string;
-        followed: boolean;
-    }
-
-    type StatePropsType = {
-        users: Array<UserType>;
-        totalUsersCount: number
-        pageSize: number
-        currentPage: number
-    }
+type StatePropsType = {
+    users: Array<UserType>;
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+}
 
 export    type MapDispatchToPropsType = {
-        follow: (userID: number) => void;
-        unFollow: (userId: number) => void;
-        setUsers: (users: Array<UserType>) => void;
-        setCurrentPage: (page: number) => void;
-        setTotalCount: (count: number) => void
-    }
+    follow: (userID: number) => void;
+    unFollow: (userId: number) => void;
+    setUsers: (users: Array<UserType>) => void;
+    setCurrentPage: (page: number) => void;
+    setTotalCount: (count: number) => void
+}
 
-    type PropsType = StatePropsType & MapDispatchToPropsType;
+type PropsType = StatePropsType & MapDispatchToPropsType;
 
-    class UsersContainerAPI extends React.Component<PropsType> {
-
-
-        componentDidMount() {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-                .then(response => {
-                    this.props.setUsers(response.data.items)
-                    // this.props.setTotalCount(response.data.totalCount)
-                    console.log(response.data)
-                });
-        }
+class UsersContainerAPI extends React.Component<PropsType> {
 
 
-        onPageHandler(page: number) {
-            this.props.setCurrentPage(page)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-                .then(response => this.props.setUsers(response.data.items));
-        }
-        render() {
-            return <Users
-                totalUsersCount={this.props.totalUsersCount}
-                currentPage={this.props.currentPage}
-                users={this.props.users}
-                pageSize={this.props.pageSize}
-                onPageHandler={this.onPageHandler}
-                follow={this.props.follow}
-                unFollow={this.props.unFollow}
-            />
-        }
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                // this.props.setTotalCount(response.data.totalCount)
+                console.log(response.data)
+            });
     }
 
 
+    onPageChanged(page: number) {
+        console.log(page)
+        this.props.setCurrentPage(page)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+            .then(response => this.props.setUsers(response.data.items));
+    }
+
+    render() {
+        return <Users
+            totalUsersCount={this.props.totalUsersCount}
+            currentPage={this.props.currentPage}
+            users={this.props.users}
+            pageSize={this.props.pageSize}
+            onPageChanged={this.onPageChanged}
+            follow={this.props.follow}
+            unFollow={this.props.unFollow}
+        />
+    }
+}
 
 
 const mapStateToProps = (state: AppStateType) => {

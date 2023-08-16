@@ -1,29 +1,26 @@
-
 import u from "./users.module.css";
 import userPhoto from "../image/avatar photo for profile.png";
 import React from "react";
 import {UserType} from "./users-conteiner";
+
 type UsersType = {
     users: Array<UserType>
     currentPage: number
     totalUsersCount: number
     pageSize: number
-
     follow: (userID: number) => void;
     unFollow: (userId: number) => void;
-    // setUsers: (users: Array<UserType>) => void;
-    // setCurrentPage: (page: number) => void;
-    // setTotalCount: (count: number) => void
-    onPageHandler: (page: number)=> void
+    onPageChanged: (page: number) => void
 }
 
-export const Users = (props: UsersType)=>{
+export const Users = (props: UsersType) => {
 
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
     }
+
     return (
         <div>
             <div className={u.numberPage}>
@@ -31,7 +28,7 @@ export const Users = (props: UsersType)=>{
                     return <span
                         className={props.currentPage === item ? u.active : ''}
                         key={index}
-                        onClick={() => props.onPageHandler(item)}>
+                        onClick={() => props.onPageChanged(item)}>
                             {item}
                         </span>
                 })}
@@ -50,7 +47,6 @@ export const Users = (props: UsersType)=>{
         </div>
     );
 }
-
 
 
 // import React from 'react';
