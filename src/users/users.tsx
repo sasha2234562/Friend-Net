@@ -26,7 +26,8 @@ type MapDispatchToPropsType = {
     follow: (userID: number) => void;
     unFollow: (userId: number) => void;
     setUsers: (users: Array<UserType>) => void;
-    setCurrentPage: (page: number) => void
+    setCurrentPage: (page: number) => void;
+    setTotalCount: (count: number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -36,7 +37,11 @@ class Users extends React.Component<PropsType> {
 
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => this.props.setUsers(response.data.items));
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                // this.props.setTotalCount(response.data.totalCount)
+                console.log(response.data)
+            });
     }
 
 
