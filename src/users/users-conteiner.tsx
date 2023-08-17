@@ -49,7 +49,7 @@ class UsersContainerAPI extends React.Component<PropsType> {
     }
 
 
-    onPageChanged(page: number) {
+    onPageChanged = (page: number) =>  {
         console.log(page)
         this.props.setCurrentPage(page)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)

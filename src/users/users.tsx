@@ -10,7 +10,7 @@ type UsersType = {
     pageSize: number
     follow: (userID: number) => void;
     unFollow: (userId: number) => void;
-    onPageChanged: (page: number) => void
+    onPageChanged: (page: number, pageSize: number) => void
 }
 
 export const Users = (props: UsersType) => {
@@ -28,7 +28,7 @@ export const Users = (props: UsersType) => {
                     return <span
                         className={props.currentPage === item ? u.active : ''}
                         key={index}
-                        onClick={() => props.onPageChanged(item)}>
+                        onClick={() => props.onPageChanged(item, props.pageSize)}>
                             {item}
                         </span>
                 })}

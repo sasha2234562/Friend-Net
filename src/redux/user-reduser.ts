@@ -17,7 +17,7 @@ const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 101,
-    currentPage: 1
+    currentPage: 2
 }
 
 
