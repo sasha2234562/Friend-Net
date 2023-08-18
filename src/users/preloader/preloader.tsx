@@ -1,8 +1,8 @@
 import p from "./preloader.module.css"
 
-export const Preloader = ()=> {
+export const Preloader = () => {
 
-    return(
+    return (
         <div className={p.mkSpinnerWrap}>
             <div className={p.mkSpinnerPie}></div>
         </div>
