@@ -2,6 +2,7 @@ import u from "./users.module.css";
 import userPhoto from "../image/avatar photo for profile.png";
 import React from "react";
 import {UserType} from "./users-conteiner";
+import {Prelouder} from "./preloader/prelouder";
 
 type UsersType = {
     users: Array<UserType>
@@ -23,6 +24,7 @@ export const Users = (props: UsersType) => {
 
     return (
         <div>
+            <Prelouder/>
             <div className={u.numberPage}>
                 {pages.map((item, index) => {
                     return <span
