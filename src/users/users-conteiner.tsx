@@ -62,7 +62,6 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
     onPageChanged = (page: number) => {
         this.props.setPreloader(true)
-        this.props.setPreloader(true)
         this.props.setCurrentPage(page)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
             .then(response => {
