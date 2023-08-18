@@ -1,6 +1,6 @@
-import p from "./prelouder.module.css"
+import p from "./preloader.module.css"
 
-export const Prelouder = ()=> {
+export const Preloader = ()=> {
 
     return(
         <div className={p.mkSpinnerWrap}>

@@ -2,7 +2,7 @@ import u from "./users.module.css";
 import userPhoto from "../image/avatar photo for profile.png";
 import React from "react";
 import {UserType} from "./users-conteiner";
-import {Prelouder} from "./preloader/prelouder";
+import {Preloader} from "./preloader/preloader";
 
 type UsersType = {
     users: Array<UserType>
@@ -12,6 +12,7 @@ type UsersType = {
     follow: (userID: number) => void;
     unFollow: (userId: number) => void;
     onPageChanged: (page: number, pageSize: number) => void
+    preloader: boolean
 }
 
 export const Users = (props: UsersType) => {
@@ -24,7 +25,7 @@ export const Users = (props: UsersType) => {
 
     return (
         <div>
-            <Prelouder/>
+            {props.preloader && <Preloader/>}
             <div className={u.numberPage}>
                 {pages.map((item, index) => {
                     return <span
