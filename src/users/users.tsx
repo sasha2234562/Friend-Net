@@ -14,7 +14,6 @@ type UsersType = {
     unFollow: (userId: number) => void;
     onPageChanged: (page: number, pageSize: number) => void
     preloader: boolean
-    pageId: (pageId: null | number)=> void
 }
 
 export const Users = (props: UsersType) => {
@@ -42,10 +41,9 @@ export const Users = (props: UsersType) => {
                 <div key={item.id} className={u.appearance}>
                     <div className={u.avatar}>
                         {!props.preloader ?
-                            <NavLink to={'/profile'}>
+                            <NavLink to={`/profile/${item.id}`}>
                                 <img src={item.photos.small ? item.photos.small : userPhoto}
                                      className={u.img}
-                                     onClick={()=> props.pageId(item.id)}
                                      alt="user avatar"/>
                             </NavLink>
                             : <Preloader/>}

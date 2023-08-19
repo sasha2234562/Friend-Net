@@ -31,7 +31,6 @@ type StatePropsType = {
     pageSize: number
     currentPage: number,
     preloader: boolean
-    pageId: null | number
 }
 
 export    type MapDispatchToPropsType = {
@@ -41,7 +40,6 @@ export    type MapDispatchToPropsType = {
     setCurrentPageAC: (page: number) => void
     setPreloaderAC: (preloader: boolean) => void
     setTotalCountAC: (count: number) => void
-    setPageIdAC: (pageId: null | number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -80,7 +78,6 @@ class UsersContainerAPI extends React.Component<PropsType> {
             follow={this.props.followAC}
             unFollow={this.props.unFollowAC}
             preloader={this.props.preloader}
-            pageId={this.props.setPageIdAC}
         />
     }
 }
@@ -104,5 +101,4 @@ export const UsersContainer = connect(mapStateToProps,
         setCurrentPageAC,
         setPreloaderAC,
         setTotalCountAC,
-        setPageIdAC
     })(UsersContainerAPI)
