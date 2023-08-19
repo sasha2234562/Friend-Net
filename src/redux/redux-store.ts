@@ -4,7 +4,6 @@ import {messageReducer} from "./message-reduser";
 import {usersReduser} from "./user-reduser";
 
 
-
 let reducers = combineReducers({
     profilePage:profileReducer,
     dialogsPage: messageReducer,
@@ -14,4 +13,4 @@ let reducers = combineReducers({
 export type AppStateType = ReturnType<typeof reducers>
 export let store = createStore(reducers)
 
-export type AppDispatch = typeof store.dispatch
+// export type AppDispatch = typeof store.dispatch

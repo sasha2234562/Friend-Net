@@ -1,17 +1,41 @@
 import Beach from "./well-beach/beach";
 import {ContainerPosts} from "./posts/posts-conteiner";
-import StoreContext from "../../../store-context";
+import React from "react";
+import {PageUser} from "./well-beach/PageUser";
+import axios from "axios";
 
+// type mapStateToPropsType = {
+//     pageUser: UserType[]
+// }
+// type mapDispatchToProps = {
+//     userPage: (userPage: UserType)=>void
+// }
+// type propsType= mapStateToPropsType & mapDispatchToProps
+export class WellContainer extends React.Component<any> {
 
-function Well() {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/proofile/20000`)
+            .then(response => {
+                this.props.userPage(response.data)
+            });
+    }
+
+    render() {
         return <div>
-                <Beach/>
-                <ContainerPosts
-                    // newPostText={store.getState().profilePage.newPostText}
-                    // dispatch={store.dispatch}
-                    // posts={store.getState().profilePage.posts}
-                />
-            </div>
+            <Beach/>
+            <PageUser/>
+            <ContainerPosts/>
+        </div>
+    }
 }
 
-export default Well;
+
+
+// function Well() {
+//         return <div>
+//                 <Beach/>
+//                 <ContainerPosts/>
+//             </div>
+// }
+//
+// export default Well;

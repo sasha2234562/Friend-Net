@@ -6,7 +6,7 @@ import {
     setUsersAC,
     unFollowAC,
     setTotalCountAC,
-    setPreloaderAC
+    setPreloaderAC, setPageIdAC
 } from "../redux/user-reduser";
 import React from "react";
 import axios from "axios";
@@ -31,15 +31,17 @@ type StatePropsType = {
     pageSize: number
     currentPage: number,
     preloader: boolean
+    pageId: null | number
 }
 
 export    type MapDispatchToPropsType = {
-    followAC : (userID: number)=> void
-    unFollowAC: (userId: number)=> void
-    setUsersAC: (users: Array<UserType>)=> void
-    setCurrentPageAC: (page: number)=> void
-    setPreloaderAC:  (preloader: boolean)=> void
-    setTotalCountAC: (count: number)=> void
+    followAC: (userID: number) => void
+    unFollowAC: (userId: number) => void
+    setUsersAC: (users: Array<UserType>) => void
+    setCurrentPageAC: (page: number) => void
+    setPreloaderAC: (preloader: boolean) => void
+    setTotalCountAC: (count: number) => void
+    setPageIdAC: (pageId: null | number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -48,7 +50,7 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
 
     componentDidMount() {
-this.props.setPreloaderAC(true)
+        this.props.setPreloaderAC(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setPreloaderAC(false)
@@ -78,6 +80,7 @@ this.props.setPreloaderAC(true)
             follow={this.props.followAC}
             unFollow={this.props.unFollowAC}
             preloader={this.props.preloader}
+            pageId={this.props.setPageIdAC}
         />
     }
 }
@@ -89,7 +92,17 @@ const mapStateToProps = (state: AppStateType) => {
         pageSize: state.users.pageSize,
         totalUsersCount: state.users.totalUsersCount,
         currentPage: state.users.currentPage,
-        preloader: state.users.preloader
+        preloader: state.users.preloader,
+        pageId: state.users.pageId
     }
 }
-export const UsersContainer = connect(mapStateToProps, {followAC, unFollowAC, setUsersAC, setCurrentPageAC, setPreloaderAC, setTotalCountAC})(UsersContainerAPI)
+export const UsersContainer = connect(mapStateToProps,
+    {
+        followAC,
+        unFollowAC,
+        setUsersAC,
+        setCurrentPageAC,
+        setPreloaderAC,
+        setTotalCountAC,
+        setPageIdAC
+    })(UsersContainerAPI)
