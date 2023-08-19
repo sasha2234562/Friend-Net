@@ -23,8 +23,7 @@ export const Posts = (props: MapPropsType) => {
     }
 
     function onClickHandler() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/profile/29842').then(r=> console.log(r.data))
-       props.newPostText && props.addPost(props.newPostText);
+        props.newPostText && props.addPost(props.newPostText);
     }
 
     return (

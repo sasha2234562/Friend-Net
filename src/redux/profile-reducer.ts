@@ -1,10 +1,39 @@
-import {UserType} from "../users/users-conteiner";
-
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
 const PROFILE_PAGE = 'PROFILE_PAGE'
 
-let initialState = {
+export type pageType = {
+    "aboutMe": string,
+    "contacts": {
+        "facebook": string,
+        "website": null | string,
+        "vk": null | string,
+        "twitter": null | string,
+        "instagram": null | string,
+        "youtube": null | string,
+        "github": null | string,
+        "mainLink": null | string
+    },
+    "lookingForAJob": boolean,
+    "lookingForAJobDescription": string,
+    "fullName": string,
+    "userId": number,
+    "photos": {
+        "small":  string,
+        "large":  string
+    }
+}
+
+export type initialStateType = {
+    posts: {
+        img: string
+        comment: string
+    }[]
+    newPostText: string
+    profilePage: pageType | null
+}
+
+let initialState : initialStateType = {
     posts: [
         {
             img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
@@ -28,7 +57,7 @@ let initialState = {
 }
 
 
-export const profileReducer = (state = initialState, action: ACType) => {
+export const profileReducer = (state: initialStateType = initialState, action: ACType): initialStateType => {
 
     switch (action.type) {
         case ADD_POST:
@@ -48,6 +77,9 @@ export const profileReducer = (state = initialState, action: ACType) => {
                 newPostText: action.newText
             }
         case PROFILE_PAGE :
+            return {
+                ...state, profilePage: action.page
+            }
 
     }
     return state
@@ -58,7 +90,7 @@ export const AddPostAC = (text: string) => ({type: ADD_POST, text} as const)
 
 export const ChangeNewPostTextAC = (newText: string) => ({type: CHANGE_NEW_POST_TEXT, newText} as const)
 
-export const ProfilePageAC = (page: UserType) => ({type: PROFILE_PAGE, page} as const)
+export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as const)
 type  AddPostACType = ReturnType<typeof AddPostAC>
 type ChangeNewPostTextACType = ReturnType<typeof ChangeNewPostTextAC>
 type ProfilePageACType = ReturnType<typeof ProfilePageAC>
