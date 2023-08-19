@@ -64,7 +64,6 @@ this.props.setPreloaderAC(true)
             .then(response => {
                 this.props.setPreloaderAC(false)
                 this.props.setUsersAC(response.data.items)
-                console.log(response.data)
             });
     }
 

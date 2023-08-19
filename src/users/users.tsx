@@ -25,7 +25,7 @@ export const Users = (props: UsersType) => {
 
     return (
         <div>
-            {props.preloader && <Preloader/>}
+            {/*{props.preloader && <Preloader/>}*/}
             <div className={u.numberPage}>
                 {pages.map((item, index) => {
                     return <span
@@ -39,8 +39,10 @@ export const Users = (props: UsersType) => {
 
             {props.users.map(item => (
                 <div key={item.id} className={u.appearance}>
-                    <img src={item.photos.small ? item.photos.small : userPhoto} className={u.img}
-                         alt="user avatar"/>
+                    <div className={u.avatar}>
+                    {!props.preloader ? <img src={item.photos.small ? item.photos.small : userPhoto} className={u.img}
+                                             alt="user avatar"/> : <Preloader/>}
+                    </div>
                     {item.followed
                         ? <button onClick={() => props.follow(item.id)}>Follow</button>
                         : <button onClick={() => props.unFollow(item.id)}>unFollow</button>}

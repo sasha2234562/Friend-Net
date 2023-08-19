@@ -1,5 +1,7 @@
 import p from "./posts.module.css"
 import React, {ChangeEvent} from "react";
+import axios from "axios";
+import {log} from "util";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
