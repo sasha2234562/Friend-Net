@@ -14,16 +14,16 @@ function Content() {
         <div className={c.nawbar}>
             <ProfileNavigation/>
             <div className={c.content}>
-                <Route path={'/profile/:userId'} render={() =>
-                    <WithRouteContainerWell />
+                <Route path={'/profile/:userId?'} render={() =>
+                    <WithRouteContainerWell/>
                 }/>
-                <Route path={'/dialogs'} render={() =>
-                    <Dialogs
-                    />}/>
+                <Route path={'/dialogs:userId'} render={() =>
+                    <Dialogs/>
+                }/>
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>
                 <Route path={'/settings'} render={() => <Settings/>}/>
-                <Route path={'/users'} render={()=> <UsersContainer/>}/>
+                <Route path={'/users'} render={() => <UsersContainer/>}/>
             </div>
         </div>
     )

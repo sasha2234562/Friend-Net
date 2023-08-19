@@ -25,10 +25,12 @@ type ownPropsType = RouteComponentProps<pathParamsType> & PropsType
 export class Well extends React.Component<ownPropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
+        if(!userId) {
+            userId = '3'
+        }
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {
                 this.props.page(response.data)
-                console.log(response.data)
             });
     }
     render() {
