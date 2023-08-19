@@ -48,12 +48,3 @@ const MapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 export const WellContainer = connect(MapStateToProps, MapDispatchToProps)(Well)
-
-// function Well() {
-//         return <div>
-//                 <Beach/>
-//                 <ContainerPosts/>
-//             </div>
-// }
-//
-// export default Well;

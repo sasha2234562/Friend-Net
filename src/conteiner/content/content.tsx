@@ -14,7 +14,7 @@ function Content() {
         <div className={c.nawbar}>
             <ProfileNavigation/>
             <div className={c.content}>
-                <Route path={'/profile'} render={() =>
+                <Route path={'/profile/'} render={() =>
                     <WellContainer />
                 }/>
                 <Route path={'/dialogs'} render={() =>
