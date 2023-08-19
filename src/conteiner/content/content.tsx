@@ -1,5 +1,5 @@
 import ProfileNavigation from "../navigashion/ profile-navigation";
-import {WellContainer} from "./well/well";
+import {WithRouteContainerWell} from "./well/well";
 import c from "./content.module.css";
 import Dialogs from "./dialogs/dialogs";
 import {Route} from "react-router-dom";
@@ -14,8 +14,8 @@ function Content() {
         <div className={c.nawbar}>
             <ProfileNavigation/>
             <div className={c.content}>
-                <Route path={'/profile/'} render={() =>
-                    <WellContainer />
+                <Route path={'/profile/:userId'} render={() =>
+                    <WithRouteContainerWell />
                 }/>
                 <Route path={'/dialogs'} render={() =>
                     <Dialogs

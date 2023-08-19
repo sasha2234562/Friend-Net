@@ -7,6 +7,11 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {pageType, ProfilePageAC} from "../../../redux/profile-reducer";
 import axios from "axios";
+import {RouteComponentProps, withRouter} from "react-router-dom";
+
+type pathParamsType = {
+    userId: string
+}
 
 type mapStateToPropsType = {
     pageUser: pageType | null
@@ -16,16 +21,16 @@ type mapDispatchToProps = {
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
-export class Well extends React.Component<PropsType> {
-
+type ownPropsType = RouteComponentProps<pathParamsType> & PropsType
+export class Well extends React.Component<ownPropsType> {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+        let userId = this.props.match.params.userId
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {
                 this.props.page(response.data)
                 console.log(response.data)
             });
     }
-
     render() {
         return <div>
             <Beach/>
@@ -48,3 +53,4 @@ const MapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 export const WellContainer = connect(MapStateToProps, MapDispatchToProps)(Well)
+export const  WithRouteContainerWell = withRouter(WellContainer)
