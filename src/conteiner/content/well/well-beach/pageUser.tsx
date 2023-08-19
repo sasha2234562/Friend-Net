@@ -1,5 +1,5 @@
 import {pageType} from "../../../../redux/profile-reducer";
-import photo from "../../../../image/a-3d-human-character-a-word-no-stock-illustration_csp19967382.webp"
+import photo from "../../../../image/Donald_Duck3Fpppp.webp"
 
 
 export const PageUser = (props: { page:  pageType | null  }) => {
