@@ -1,4 +1,4 @@
-import Header from "./header/header-bacground";
+import Header from "./header/header-background";
 import Content from "./content/content";
 
 

@@ -1,9 +1,9 @@
-
-
-export  const Login = () => {
+export const Login = ()=> {
 
 
     return(
-        <div></div>
+        <div>
+            crete Login
+        </div>
     )
 }

@@ -1,10 +1,9 @@
 .header {
     background-image: url("https://kalix.club/uploads/posts/2022-12/thumbs/1671700528_kalix-club-p-fon-dlya-prezentatsii-marketing-instagram-6.jpg");
-    background-position: 0 0;
     background-repeat: no-repeat;
     background-size: 100% 190%;
     width: 100%;
     padding: 2% 0 ;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
 }
