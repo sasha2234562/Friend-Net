@@ -46,18 +46,6 @@ export class Login_ContainerAuthMe extends React.Component<PropsType> {
                 Login
             </div>
         )
-        // return (
-        //     <NavLink to={'/login'}>
-        //         <div
-        //             style={{
-        //             marginRight: '1%',
-        //             color: 'white',
-        //             cursor: 'pointer'
-        //         }}>Login
-        //         </div>
-        //     </NavLink>
-
-        // )
     }
 }
 

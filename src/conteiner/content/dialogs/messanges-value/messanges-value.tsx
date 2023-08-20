@@ -38,7 +38,7 @@ export const MessagesValue = (props: MapPropsType) => {
             <div>
                 <ButtonUniversal
                     placeholderValue={props.newMessage}
-                    title={'Send messange'} onClick={onClickHandler}
+                    title={'Send message'} onClick={onClickHandler}
                     onChange={onChangeHandler}
                     value={props.newMessage}
                 />

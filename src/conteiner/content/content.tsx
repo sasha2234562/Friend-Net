@@ -17,7 +17,7 @@ function Content() {
                 <Route path={'/profile/:userId?'} render={() =>
                     <WithRouteContainerWell/>
                 }/>
-                <Route path={'/dialogs:userId'} render={() =>
+                <Route path={'/dialogs:userId?'} render={() =>
                     <Dialogs/>
                 }/>
                 <Route path={'/news'} render={() => <News/>}/>
