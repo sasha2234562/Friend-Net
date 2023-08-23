@@ -1,10 +1,10 @@
 import u from "./users.module.css";
-import userPhoto from "../image/avatar photo for profile.png";
+import userPhoto from "../image/1683353683_kartinkof-club-p-kartinki-smurfikov-23.png";
 import React from "react";
 import {UserType} from "./users-conteiner";
 import {Preloader} from "./preloader/preloader";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {followApi, unFollowApi} from "../api/api";
 
 type UsersType = {
     users: Array<UserType>
@@ -51,23 +51,16 @@ export const Users = (props: UsersType) => {
                     </div>
                     {item.followed
                         ? <button onClick={() => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {
-                                withCredentials: true,
-                                headers: {'API-KEY': '8a5c1830-8604-4983-b9a4-0d09b4b6ff34'}
-                            })
-                                .then(res => {
-                                    if (res.data.resultCode == 0) {
+                            unFollowApi(item.id).then(res => {
+                                    if (res.resultCode == 0) {
                                         props.follow(item.id)
                                     }
                                 })
                             props.follow(item.id)
                         }}>unFollow</button>
                         : <button onClick={() =>{
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`,{}, {
-                                withCredentials: true,
-                                headers: {'API-KEY': '8a5c1830-8604-4983-b9a4-0d09b4b6ff34'}
-                            })
-                                .then(res => {
+
+                            followApi(item.id).then(res => {
                                     console.log(res.data.resultCode)
                                     if (res.data.resultCode == 0) {
                                         props.unFollow(item.id)

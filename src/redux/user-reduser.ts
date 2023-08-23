@@ -22,7 +22,7 @@ const initialState: InitialStateType = {
     pageId: null,
     pageSize: 5,
     totalUsersCount: 101,
-    currentPage: 2,
+    currentPage: 1,
     preloader: false
 }
 

@@ -1,15 +1,14 @@
 import {connect} from "react-redux";
 import {AppStateType} from "../redux/redux-store";
 import {
-    setCurrentPageAC,
     followAC,
-    setUsersAC,
-    unFollowAC,
+    setCurrentPageAC,
+    setPreloaderAC,
     setTotalCountAC,
-    setPreloaderAC, setPageIdAC
+    setUsersAC,
+    unFollowAC
 } from "../redux/user-reduser";
 import React from "react";
-import axios from "axios";
 import {Users} from "./users";
 import {getUsers} from "../api/api";
 
@@ -35,8 +34,8 @@ type StatePropsType = {
 }
 
 export    type MapDispatchToPropsType = {
-    followAC: (userID: number) => void
-    unFollowAC: (userId: number) => void
+    unFollowAC: (userID: number) => void
+    followAC: (userId: number) => void
     setUsersAC: (users: Array<UserType>) => void
     setCurrentPageAC: (page: number) => void
     setPreloaderAC: (preloader: boolean) => void
