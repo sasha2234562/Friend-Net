@@ -2,14 +2,16 @@ import {pageType} from "../../../../redux/profile-reducer";
 import photo from "../../../../image/Donald_Duck3Fpppp.webp"
 
 
-export const PageUser = (props: { page:  pageType | null  }) => {
+export const PageUser = (props: { page: pageType | null }) => {
 
-    return(
+    return (
         <div>
-            {props && <div>
-                <img src={props.page?.photos.large
-                    ? props.page?.photos.large
-                    : photo} />
+            {props && <div style={{fontSize: '2.7vh'}}>
+                <img
+                    style={{width: '21%'}}
+                    src={props.page?.photos.large
+                        ? props.page?.photos.large
+                        : photo}/>
                 <p>Name : {props.page?.fullName}</p>
                 <div>
                     CONTACTS :
@@ -19,7 +21,7 @@ export const PageUser = (props: { page:  pageType | null  }) => {
                         <p>"vk": {props.page?.contacts.vk}</p>
                     </div>
                 </div>
-            </div>  }
+            </div>}
         </div>
     )
 }

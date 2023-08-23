@@ -11,6 +11,7 @@ import {
 import React from "react";
 import axios from "axios";
 import {Users} from "./users";
+import {getUsers} from "../api/api";
 
 
 export type UserType = {
@@ -49,22 +50,20 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
     componentDidMount() {
         this.props.setPreloaderAC(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setPreloaderAC(false)
-                this.props.setUsersAC(response.data.items)
-            });
+        getUsers(this.props.currentPage, this.props.pageSize).then(response => {
+            this.props.setPreloaderAC(false)
+            this.props.setUsersAC(response.items)
+        });
     }
 
 
     onPageChanged = (page: number) => {
         this.props.setPreloaderAC(true)
         this.props.setCurrentPageAC(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setPreloaderAC(false)
-                this.props.setUsersAC(response.data.items)
-            });
+        getUsers(page, this.props.pageSize).then(response => {
+            this.props.setPreloaderAC(false)
+            this.props.setUsersAC(response.items)
+        });
     }
 
 
