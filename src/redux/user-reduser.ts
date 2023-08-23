@@ -8,6 +8,7 @@ const CURRENT_PAGE = 'CURRENT_PAGE'
 const Set_Total_Count = 'Set_Total_Count'
 const Set_Preloader = 'Set_Preloader'
 const SET_PAGE_ID = 'SET_PAGE_ID'
+const Toggle_Following_Progress = 'Toggle_Following_Progress'
 
 type InitialStateType = {
     users: UserType[]
@@ -16,6 +17,7 @@ type InitialStateType = {
     currentPage: number
     preloader: boolean
     pageId: null | number
+    followingProgress: number[]
 }
 const initialState: InitialStateType = {
     users: [],
@@ -23,7 +25,8 @@ const initialState: InitialStateType = {
     pageSize: 5,
     totalUsersCount: 101,
     currentPage: 1,
-    preloader: false
+    preloader: false,
+    followingProgress: []
 }
 
 
@@ -59,23 +62,31 @@ export const usersReduser = (state: InitialStateType = initialState, action: All
             return {...state, preloader: action.preloader}
         case SET_PAGE_ID :
             return {...state, pageId: action.pageId}
+        case Toggle_Following_Progress:
+            return {
+                ...state,
+                followingProgress: action.progress
+                    ? [...state.followingProgress, action?.userId]
+                    : [...state.followingProgress.filter(i => i != action.userId)]
+            }
+
     }
 
     return state
 }
 
 export const followAC = (userID: number) => ({type: FOLLOW, userID} as const)
-
 export const unFollowAC = (userID: number) => ({type: UNFOLLOW, userID} as const)
-
 export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users} as const)
-
 export const setCurrentPageAC = (page: number) => ({type: CURRENT_PAGE, page} as const)
-
 export const setTotalCountAC = (count: number) => ({type: Set_Total_Count, count} as const)
-
 export const setPreloaderAC = (preloader: boolean) => ({type: Set_Preloader, preloader} as const)
 export const setPageIdAC = (pageId: null | number) => ({type: SET_PAGE_ID, pageId} as const)
+export const toggleFollowingProgressAC = (userId: number, progress: boolean) => ({
+    type: Toggle_Following_Progress,
+    userId,
+    progress
+} as const)
 
 type followACType = ReturnType<typeof followAC>
 type unFollowACType = ReturnType<typeof unFollowAC>
@@ -83,8 +94,8 @@ type setUsersACType = ReturnType<typeof setUsersAC>
 type setCurrentPageACType = ReturnType<typeof setCurrentPageAC>
 type setTotalCountACType = ReturnType<typeof setTotalCountAC>
 type setPreloaderACType = ReturnType<typeof setPreloaderAC>
-type setPageIdAC = ReturnType<typeof setPageIdAC>
-
+type setPageIdACType = ReturnType<typeof setPageIdAC>
+type toggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgressAC>
 
 type AllType = followACType
     | unFollowACType
@@ -92,4 +103,5 @@ type AllType = followACType
     | setCurrentPageACType
     | setTotalCountACType
     | setPreloaderACType
-    | setPageIdAC
+    | setPageIdACType
+    | toggleFollowingProgressACType

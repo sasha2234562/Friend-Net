@@ -5,7 +5,7 @@ import {
     setCurrentPageAC,
     setPreloaderAC,
     setTotalCountAC,
-    setUsersAC,
+    setUsersAC, toggleFollowingProgressAC,
     unFollowAC
 } from "../redux/user-reduser";
 import React from "react";
@@ -29,17 +29,19 @@ type StatePropsType = {
     users: Array<UserType>;
     totalUsersCount: number
     pageSize: number
-    currentPage: number,
+    currentPage: number
     preloader: boolean
+    followingProgress: number[]
 }
 
-export    type MapDispatchToPropsType = {
+export type MapDispatchToPropsType = {
     unFollowAC: (userID: number) => void
     followAC: (userId: number) => void
     setUsersAC: (users: Array<UserType>) => void
     setCurrentPageAC: (page: number) => void
     setPreloaderAC: (preloader: boolean) => void
     setTotalCountAC: (count: number) => void
+    toggleFollowingProgressAC: (userId: number, progress: boolean)=> void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -76,6 +78,8 @@ class UsersContainerAPI extends React.Component<PropsType> {
             follow={this.props.followAC}
             unFollow={this.props.unFollowAC}
             preloader={this.props.preloader}
+            followingProgress={this.props.followingProgress}
+            toggleFollowingProgressAC={this.props.toggleFollowingProgressAC}
         />
     }
 }
@@ -88,7 +92,8 @@ const mapStateToProps = (state: AppStateType) => {
         totalUsersCount: state.users.totalUsersCount,
         currentPage: state.users.currentPage,
         preloader: state.users.preloader,
-        pageId: state.users.pageId
+        pageId: state.users.pageId,
+        followingProgress: state.users.followingProgress
     }
 }
 export const UsersContainer = connect(mapStateToProps,
@@ -99,4 +104,5 @@ export const UsersContainer = connect(mapStateToProps,
         setCurrentPageAC,
         setPreloaderAC,
         setTotalCountAC,
+        toggleFollowingProgressAC
     })(UsersContainerAPI)

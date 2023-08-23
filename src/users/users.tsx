@@ -15,6 +15,8 @@ type UsersType = {
     unFollow: (userId: number) => void;
     onPageChanged: (page: number, pageSize: number) => void
     preloader: boolean
+    followingProgress: number[]
+    toggleFollowingProgressAC: (userId: number, progress: boolean) => void
 }
 
 export const Users = (props: UsersType) => {
@@ -50,22 +52,24 @@ export const Users = (props: UsersType) => {
                             : <Preloader/>}
                     </div>
                     {item.followed
-                        ? <button onClick={() => {
+                        ? <button disabled={props.followingProgress.some(i=> i === item.id)} onClick={() => {
+                            props.toggleFollowingProgressAC(item.id, true)
                             unFollowApi(item.id).then(res => {
-                                    if (res.resultCode == 0) {
-                                        props.follow(item.id)
-                                    }
-                                })
+                                if (res.resultCode == 0) {
+                                    props.follow(item.id)
+                                }
+                                props.toggleFollowingProgressAC(item.id, false)
+                            })
                             props.follow(item.id)
                         }}>unFollow</button>
-                        : <button onClick={() =>{
-
+                        : <button disabled={props.followingProgress.some(i=> i === item.id)} onClick={() => {
+                            props.toggleFollowingProgressAC(item.id, true)
                             followApi(item.id).then(res => {
-                                    console.log(res.data.resultCode)
-                                    if (res.data.resultCode == 0) {
-                                        props.unFollow(item.id)
-                                    }
-                                })
+                                if (res.data.resultCode == 0) {
+                                    props.unFollow(item.id)
+                                }
+                                props.toggleFollowingProgressAC(item.id, false)
+                            })
                             props.unFollow(item.id)
                         }}>Follow</button>}
                     <span>{item.name}</span>
