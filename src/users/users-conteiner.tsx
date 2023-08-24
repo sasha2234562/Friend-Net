@@ -1,16 +1,20 @@
 import {connect} from "react-redux";
 import {AppStateType} from "../redux/redux-store";
 import {
+    AllUsersActionType,
     followAC,
+    getUsersThunkCreator,
     setCurrentPageAC,
     setPreloaderAC,
     setTotalCountAC,
-    setUsersAC, toggleFollowingProgressAC,
+    setUsersAC,
+    toggleFollowingProgressAC,
     unFollowAC
 } from "../redux/user-reduser";
 import React from "react";
 import {Users} from "./users";
 import {getUsers} from "../api/api";
+import {Dispatch} from "redux";
 
 
 export type UserType = {
@@ -20,7 +24,7 @@ export type UserType = {
     photos: {
         small: string;
         large: string;
-    };
+    }
     status: string;
     followed: boolean;
 }
@@ -41,7 +45,8 @@ export type MapDispatchToPropsType = {
     setCurrentPageAC: (page: number) => void
     setPreloaderAC: (preloader: boolean) => void
     setTotalCountAC: (count: number) => void
-    toggleFollowingProgressAC: (userId: number, progress: boolean)=> void
+    toggleFollowingProgressAC: (userId: number, progress: boolean) => void
+    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -50,11 +55,13 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
 
     componentDidMount() {
-        this.props.setPreloaderAC(true)
-        getUsers(this.props.currentPage, this.props.pageSize).then(response => {
-            this.props.setPreloaderAC(false)
-            this.props.setUsersAC(response.items)
-        });
+        // console.log(this.props.getUsersThunkCreator)
+        // this.props.setPreloaderAC(true)
+        // getUsers(this.props.currentPage, this.props.pageSize).then(response => {
+        //     this.props.setPreloaderAC(false)
+        //     this.props.setUsersAC(response.items)
+        // });
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
     }
 
 
@@ -104,5 +111,6 @@ export const UsersContainer = connect(mapStateToProps,
         setCurrentPageAC,
         setPreloaderAC,
         setTotalCountAC,
-        toggleFollowingProgressAC
+        toggleFollowingProgressAC,
+        getUsersThunkCreator
     })(UsersContainerAPI)

@@ -1,4 +1,6 @@
 import {UserType} from "../users/users-conteiner";
+import {getUsers} from "../api/api";
+import {Dispatch} from "redux";
 
 
 const FOLLOW = 'FOLLOW'
@@ -30,7 +32,7 @@ const initialState: InitialStateType = {
 }
 
 
-export const usersReduser = (state: InitialStateType = initialState, action: AllType): InitialStateType => {
+export const usersReduser = (state: InitialStateType = initialState, action: AllUsersActionType): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
@@ -88,6 +90,22 @@ export const toggleFollowingProgressAC = (userId: number, progress: boolean) => 
     progress
 } as const)
 
+
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+
+
+    return (dispatch: Dispatch<AllUsersActionType>) => {
+
+        dispatch(setPreloaderAC(true))
+        getUsers(currentPage, pageSize).then(response => {
+
+
+            dispatch(setPreloaderAC(false))
+            dispatch(setUsersAC(response.items))
+        });
+    }
+}
+
 type followACType = ReturnType<typeof followAC>
 type unFollowACType = ReturnType<typeof unFollowAC>
 type setUsersACType = ReturnType<typeof setUsersAC>
@@ -97,7 +115,7 @@ type setPreloaderACType = ReturnType<typeof setPreloaderAC>
 type setPageIdACType = ReturnType<typeof setPageIdAC>
 type toggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgressAC>
 
-type AllType = followACType
+export  type AllUsersActionType = followACType
     | unFollowACType
     | setUsersACType
     | setCurrentPageACType
@@ -105,3 +123,4 @@ type AllType = followACType
     | setPreloaderACType
     | setPageIdACType
     | toggleFollowingProgressACType
+

@@ -1,18 +1,17 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {profileReducer} from "./profile-reducer";
 import {messageReducer} from "./message-reduser";
 import {usersReduser} from "./user-reduser";
 import {authReducer} from "./auth-reduser";
+import thunk from "redux-thunk";
 
 
 let reducers = combineReducers({
-    profilePage:profileReducer,
+    profilePage: profileReducer,
     dialogsPage: messageReducer,
     users: usersReduser,
     authReducer: authReducer
 })
 
 export type AppStateType = ReturnType<typeof reducers>
-export let store = createStore(reducers)
-
-// export type AppDispatch = typeof store.dispatch
+export let store = createStore(reducers, applyMiddleware(thunk))
