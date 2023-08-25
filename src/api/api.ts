@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const instants = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -17,4 +18,7 @@ export const unFollowApi = (id: number) => {
 export const followApi = (id: number) => {
     return instants.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`)
         .then(resolve => resolve.data)
+}
+export const profileApi = (userId: string) => {
+    return instants.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
 }

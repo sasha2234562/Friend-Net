@@ -1,3 +1,6 @@
+import {Dispatch} from "redux";
+import {profileApi} from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
 const PROFILE_PAGE = 'PROFILE_PAGE'
@@ -19,8 +22,8 @@ export type pageType = {
     "fullName": string,
     "userId": number,
     "photos": {
-        "small":  string,
-        "large":  string
+        "small": string,
+        "large": string
     }
 }
 
@@ -33,7 +36,7 @@ export type initialStateType = {
     profilePage: pageType | null
 }
 
-let initialState : initialStateType = {
+let initialState: initialStateType = {
     posts: [
         {
             img: 'https://variety.com/wp-content/uploads/2022/12/MCDAVTH_WD063.jpg',
@@ -96,3 +99,11 @@ type ChangeNewPostTextACType = ReturnType<typeof ChangeNewPostTextAC>
 type ProfilePageACType = ReturnType<typeof ProfilePageAC>
 
 type ACType = AddPostACType | ChangeNewPostTextACType | ProfilePageACType
+
+
+// export const profoleRediserThunkCreatot = (userId: string, page: pageType) => {
+//     return (dispatch: Dispatch) => {
+//         ProfilePageAC(page)
+//         profileApi(userId)
+//     }
+// }

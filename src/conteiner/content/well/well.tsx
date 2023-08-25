@@ -6,8 +6,8 @@ import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {pageType, ProfilePageAC} from "../../../redux/profile-reducer";
-import axios from "axios";
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import {profileApi} from "../../../api/api";
 
 type pathParamsType = {
     userId: string
@@ -26,12 +26,9 @@ export class Well extends React.Component<ownPropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if(!userId) {
-            userId = '3'
+            userId = '1'
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                this.props.page(response.data)
-            });
+       (profileApi(userId).then(response => this.props.page(response.data)))
     }
     render() {
         return <div>

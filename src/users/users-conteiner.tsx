@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import {AppStateType} from "../redux/redux-store";
 import {
-    AllUsersActionType,
     followAC,
     getUsersThunkCreator,
     setCurrentPageAC,
@@ -14,7 +13,6 @@ import {
 import React from "react";
 import {Users} from "./users";
 import {getUsers} from "../api/api";
-import {Dispatch} from "redux";
 
 
 export type UserType = {
@@ -55,12 +53,6 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
 
     componentDidMount() {
-        // console.log(this.props.getUsersThunkCreator)
-        // this.props.setPreloaderAC(true)
-        // getUsers(this.props.currentPage, this.props.pageSize).then(response => {
-        //     this.props.setPreloaderAC(false)
-        //     this.props.setUsersAC(response.items)
-        // });
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
     }
 
