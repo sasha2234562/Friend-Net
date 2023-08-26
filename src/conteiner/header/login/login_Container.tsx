@@ -21,29 +21,28 @@ export class Login_ContainerAuthMe extends React.Component<PropsType> {
 
     componentDidMount() {
         authAPI.me().then(res => {
-                this.props.getAuthData(res.data.data.id, res.data.data.login, res.data.data.email)
-            })
+            this.props.getAuthData(res.data.data.id, res.data.data.login, res.data.data.email)
+        })
     }
 
     render() {
         if (this.props.login.id && this.props.login.login && this.props.login.email) {
             return (
-                <NavLink to={'/login'}>
-                    <div
-                        style={{
-                            marginRight: '1%',
-                            color: 'white',
-                            cursor: 'pointer'
-                        }}>Login
-                    </div>
-                </NavLink>
-
+                <div style={{color: 'wheat', cursor: 'pointer'}}>
+                    Login
+                </div>
             )
         }
         return (
-            <div>
-                Login
-            </div>
+            <NavLink to={'/login'}>
+                <div
+                    style={{
+                        marginRight: '1%',
+                        color: 'white',
+                        cursor: 'pointer'
+                    }}>Login
+                </div>
+            </NavLink>
         )
     }
 }
