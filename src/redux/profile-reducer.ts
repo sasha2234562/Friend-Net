@@ -1,3 +1,7 @@
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
+import dialogs from "../conteiner/content/dialogs/dialogs";
+
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
 const PROFILE_PAGE = 'PROFILE_PAGE'
@@ -98,9 +102,8 @@ type ProfilePageACType = ReturnType<typeof ProfilePageAC>
 type ACType = AddPostACType | ChangeNewPostTextACType | ProfilePageACType
 
 
-// export const profoleRediserThunkCreatot = (userId: string, page: pageType) => {
-//     return (dispatch: Dispatch) => {
-//         ProfilePageAC(page)
-//         profileApi(userId)
-//     }
-// }
+export const getUserProfileThunkCreator = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        usersAPI.profileApi(userId).then(response => dispatch(ProfilePageAC(response.data)))
+    }
+}

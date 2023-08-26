@@ -4,10 +4,8 @@ import React from "react";
 import {PageUser} from "./well-beach/pageUser";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
-import {Dispatch} from "redux";
-import {pageType, ProfilePageAC} from "../../../redux/profile-reducer";
+import {getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {usersAPI} from "../../../api/api";
 
 type pathParamsType = {
     userId: string
@@ -17,7 +15,7 @@ type mapStateToPropsType = {
     pageUser: pageType | null
 }
 type mapDispatchToProps = {
-    page: (userPage: pageType) => void
+    getUserProfileThunkCreator: (userId: string) => void
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
@@ -28,7 +26,7 @@ export class Well extends React.Component<ownPropsType> {
         if(!userId) {
             userId = '1'
         }
-       (usersAPI.profileApi(userId).then(response => this.props.page(response.data)))
+        this.props.getUserProfileThunkCreator(userId)
     }
     render() {
         return <div>
@@ -44,12 +42,5 @@ const MapStateToProps = (state: AppStateType) => {
         pageUser: state.profilePage.profilePage
     }
 }
-const MapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        page: (page: pageType) => {
-            dispatch(ProfilePageAC(page))
-        }
-    }
-}
-export const WellContainer = connect(MapStateToProps, MapDispatchToProps)(Well)
+export const WellContainer = connect(MapStateToProps, {getUserProfileThunkCreator})(Well)
 export const  WithRouteContainerWell = withRouter(WellContainer)

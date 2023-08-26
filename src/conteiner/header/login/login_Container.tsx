@@ -1,28 +1,25 @@
 import React from "react";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
-import {getAuthData} from "../../../redux/auth-reduser";
+import {authThunkCreator} from "../../../redux/auth-reduser";
 import {NavLink} from "react-router-dom";
-import {authAPI} from "../../../api/api";
 
 type MapStateToPropsType = {
     login: {
-        id: string | null
-        login: string | null
-        email: string | null
+        id: string
+        login: string
+        email: string
     }
 }
 type MapDispatchToProps = {
-    getAuthData: (id: string, login: string, email: string) => void
+    authThunkCreator: () => void
 }
 type PropsType = MapStateToPropsType & MapDispatchToProps
 
 export class Login_ContainerAuthMe extends React.Component<PropsType> {
 
     componentDidMount() {
-        authAPI.me().then(res => {
-            this.props.getAuthData(res.data.data.id, res.data.data.login, res.data.data.email)
-        })
+        this.props.authThunkCreator()
     }
 
     render() {
@@ -53,4 +50,4 @@ const MapStateToProps = (state: AppStateType) => {
     }
 }
 
-export const LoginContainer = connect(MapStateToProps, {getAuthData})(Login_ContainerAuthMe)
+export const LoginContainer = connect(MapStateToProps, {authThunkCreator})(Login_ContainerAuthMe)

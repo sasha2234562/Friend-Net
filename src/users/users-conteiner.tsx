@@ -3,10 +3,7 @@ import {AppStateType} from "../redux/redux-store";
 import {
     followAC,
     getUsersThunkCreator,
-    setCurrentPageAC,
-    setPreloaderAC,
     setTotalCountAC,
-    setUsersAC,
     toggleFollowingProgressAC,
     unFollowAC
 } from "../redux/user-reduser";
@@ -38,9 +35,6 @@ type StatePropsType = {
 export type MapDispatchToPropsType = {
     unFollowAC: (userID: number) => void
     followAC: (userId: number) => void
-    setUsersAC: (users: Array<UserType>) => void
-    setCurrentPageAC: (page: number) => void
-    setPreloaderAC: (preloader: boolean) => void
     setTotalCountAC: (count: number) => void
     toggleFollowingProgressAC: (userId: number, progress: boolean) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number, page: number) => void
@@ -93,9 +87,6 @@ export const UsersContainer = connect(mapStateToProps,
     {
         followAC,
         unFollowAC,
-        setUsersAC,
-        setCurrentPageAC,
-        setPreloaderAC,
         setTotalCountAC,
         toggleFollowingProgressAC,
         getUsersThunkCreator
