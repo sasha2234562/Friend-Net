@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {pageType, ProfilePageAC} from "../../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {profileApi} from "../../../api/api";
+import {usersAPI} from "../../../api/api";
 
 type pathParamsType = {
     userId: string
@@ -28,7 +28,7 @@ export class Well extends React.Component<ownPropsType> {
         if(!userId) {
             userId = '1'
         }
-       (profileApi(userId).then(response => this.props.page(response.data)))
+       (usersAPI.profileApi(userId).then(response => this.props.page(response.data)))
     }
     render() {
         return <div>

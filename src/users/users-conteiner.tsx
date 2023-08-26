@@ -12,7 +12,6 @@ import {
 } from "../redux/user-reduser";
 import React from "react";
 import {Users} from "./users";
-import {getUsers} from "../api/api";
 
 
 export type UserType = {
@@ -44,7 +43,7 @@ export type MapDispatchToPropsType = {
     setPreloaderAC: (preloader: boolean) => void
     setTotalCountAC: (count: number) => void
     toggleFollowingProgressAC: (userId: number, progress: boolean) => void
-    getUsersThunkCreator: (currentPage: number, pageSize: number) => void
+    getUsersThunkCreator: (currentPage: number, pageSize: number, page: number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -53,17 +52,12 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
 
     componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, this.props.currentPage)
     }
 
 
     onPageChanged = (page: number) => {
-        this.props.setPreloaderAC(true)
-        this.props.setCurrentPageAC(page)
-        getUsers(page, this.props.pageSize).then(response => {
-            this.props.setPreloaderAC(false)
-            this.props.setUsersAC(response.items)
-        });
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, page)
     }
 
 

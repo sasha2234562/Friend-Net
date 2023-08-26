@@ -4,7 +4,7 @@ import React from "react";
 import {UserType} from "./users-conteiner";
 import {Preloader} from "./preloader/preloader";
 import {NavLink} from "react-router-dom";
-import {followApi, unFollowApi} from "../api/api";
+import {usersAPI} from "../api/api";
 
 type UsersType = {
     users: Array<UserType>
@@ -54,7 +54,7 @@ export const Users = (props: UsersType) => {
                     {item.followed
                         ? <button disabled={props.followingProgress.some(i=> i === item.id)} onClick={() => {
                             props.toggleFollowingProgressAC(item.id, true)
-                            unFollowApi(item.id).then(res => {
+                            usersAPI.unFollowApi(item.id).then(res => {
                                 if (res.resultCode == 0) {
                                     props.follow(item.id)
                                 }
@@ -64,7 +64,7 @@ export const Users = (props: UsersType) => {
                         }}>unFollow</button>
                         : <button disabled={props.followingProgress.some(i=> i === item.id)} onClick={() => {
                             props.toggleFollowingProgressAC(item.id, true)
-                            followApi(item.id).then(res => {
+                            usersAPI.followApi(item.id).then(res => {
                                 if (res.data.resultCode == 0) {
                                     props.unFollow(item.id)
                                 }

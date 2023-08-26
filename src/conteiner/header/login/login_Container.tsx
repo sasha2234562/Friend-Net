@@ -2,8 +2,8 @@ import React from "react";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {getAuthData} from "../../../redux/auth-reduser";
-import axios from "axios";
 import {NavLink} from "react-router-dom";
+import {authAPI} from "../../../api/api";
 
 type MapStateToPropsType = {
     login: {
@@ -20,8 +20,7 @@ type PropsType = MapStateToPropsType & MapDispatchToProps
 export class Login_ContainerAuthMe extends React.Component<PropsType> {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {withCredentials: true})
-            .then(res => {
+        authAPI.me().then(res => {
                 this.props.getAuthData(res.data.data.id, res.data.data.login, res.data.data.email)
             })
     }

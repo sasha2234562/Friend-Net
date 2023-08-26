@@ -1,5 +1,5 @@
 import {UserType} from "../users/users-conteiner";
-import {getUsers} from "../api/api";
+import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
 
 
@@ -91,15 +91,14 @@ export const toggleFollowingProgressAC = (userId: number, progress: boolean) => 
 } as const)
 
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number, page: number) => {
 
 
     return (dispatch: Dispatch<AllUsersActionType>) => {
 
         dispatch(setPreloaderAC(true))
-        getUsers(currentPage, pageSize).then(response => {
-
-
+        dispatch(setCurrentPageAC(page))
+        usersAPI.getUsers(currentPage, pageSize).then(response => {
             dispatch(setPreloaderAC(false))
             dispatch(setUsersAC(response.items))
         });

@@ -1,6 +1,3 @@
-import {Dispatch} from "redux";
-import {profileApi} from "../api/api";
-
 const ADD_POST = "ADD-POST";
 const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
 const PROFILE_PAGE = 'PROFILE_PAGE'

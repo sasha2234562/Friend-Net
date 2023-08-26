@@ -5,20 +5,25 @@ const instants = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {'API-KEY': '8a5c1830-8604-4983-b9a4-0d09b4b6ff34'}
 })
-export const getUsers = (page: number, pageSize: number) => {
-    return instants.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${pageSize}`)
-        .then(response => response.data)
+export const usersAPI = {
+    getUsers (page: number, pageSize: number) {
+        return instants.get(`users?page=${page}&count=${pageSize}`)
+            .then(response => response.data)
+    },
+    unFollowApi (id: number) {
+        return instants.delete(`follow/${id}`)
+            .then(resolve => resolve.data)
+    },
+    followApi (id: number) {
+        return instants.post(`follow/${id}`)
+            .then(resolve => resolve.data)
+    },
+    profileApi (userId: string) {
+        return instants.get(`profile/${userId}`)
+    }
 }
-
-export const unFollowApi = (id: number) => {
-    return instants.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`)
-        .then(resolve => resolve.data)
-}
-
-export const followApi = (id: number) => {
-    return instants.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`)
-        .then(resolve => resolve.data)
-}
-export const profileApi = (userId: string) => {
-    return instants.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+export const authAPI = {
+    me() {
+        return instants.get('auth/me')
+    }
 }
