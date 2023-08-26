@@ -3,12 +3,14 @@ import React from "react";
 import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
+import {Redirect} from "react-router-dom";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 
 type MapStateToPropsType = {
     messages: Array<{ value: string, id: string }>
     newMessage: string
+    isAuth: boolean
 }
 type MapDispatchToProps= {
     onChange: (e: string) => void
@@ -26,6 +28,7 @@ export const MessagesValue = (props: MapPropsType) => {
     }
 
 
+    if(props.isAuth === false) return <Redirect to={'/login'}/>
     return (
         <div>
             {props.messages.map((item) => {

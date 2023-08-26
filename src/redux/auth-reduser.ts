@@ -7,12 +7,14 @@ export type initialStateType = {
     id:string
     login: string
     email: string
+    isAuth: boolean
 }
 
 const initialState: initialStateType = {
     id: '',
     login: '',
-    email: ''
+    email: '',
+    isAuth: false
 }
 
 export const authReducer = (state: initialStateType = initialState, action: AuthLoginType) => {
@@ -31,7 +33,8 @@ return state
 export const getAuthData = (id: string, login: string, email: string) => ({
     type: AUTH_LOGIN,
     data: {
-        id, login, email
+        id, login, email,
+        isAuth: true
     }
 } as const);
 export const authThunkCreator = ()=> {

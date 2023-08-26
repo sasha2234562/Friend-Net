@@ -5,7 +5,7 @@ import {PageUser} from "./well-beach/pageUser";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
-import {RouteComponentProps, withRouter} from "react-router-dom";
+import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
 
 type pathParamsType = {
     userId: string
@@ -13,6 +13,7 @@ type pathParamsType = {
 
 type mapStateToPropsType = {
     pageUser: pageType | null
+    isAuth: boolean
 }
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
@@ -29,6 +30,7 @@ export class Well extends React.Component<ownPropsType> {
         this.props.getUserProfileThunkCreator(userId)
     }
     render() {
+        if(this.props.isAuth === false) return <Redirect to={'/login'}/>
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
@@ -39,7 +41,8 @@ export class Well extends React.Component<ownPropsType> {
 
 const MapStateToProps = (state: AppStateType) => {
     return {
-        pageUser: state.profilePage.profilePage
+        pageUser: state.profilePage.profilePage,
+        isAuth: state.authReducer.isAuth
     }
 }
 export const WellContainer = connect(MapStateToProps, {getUserProfileThunkCreator})(Well)
