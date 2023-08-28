@@ -2,10 +2,11 @@ import Beach from "./well-beach/beach";
 import {ContainerPosts} from "./posts/posts-conteiner";
 import React from "react";
 import {PageUser} from "./well-beach/pageUser";
-import {AppStateType} from "../../../redux/redux-store";
+import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
-import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
+import {RouteComponentProps, withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 type pathParamsType = {
     userId: string
@@ -13,7 +14,7 @@ type pathParamsType = {
 
 type mapStateToPropsType = {
     pageUser: pageType | null
-    isAuth: boolean
+    // isAuth: boolean
 }
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
@@ -30,7 +31,7 @@ export class Well extends React.Component<ownPropsType> {
         this.props.getUserProfileThunkCreator(userId)
     }
     render() {
-        if(this.props.isAuth === false) return <Redirect to={'/login'}/>
+        // if(this.props.isAuth === false) return <Redirect to={'/login'}/>
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
@@ -39,11 +40,14 @@ export class Well extends React.Component<ownPropsType> {
     }
 }
 
-const MapStateToProps = (state: AppStateType) => {
+const MapStateToProps = (state: AppStoreType) => {
     return {
         pageUser: state.profilePage.profilePage,
-        isAuth: state.authReducer.isAuth
+        // isAuth: state.authReducer.isAuth
     }
 }
-export const WellContainer = connect(MapStateToProps, {getUserProfileThunkCreator})(Well)
-export const  WithRouteContainerWell = withRouter(WellContainer)
+
+// const withAuthRedirect = (connect(MapStateToProps, {getUserProfileThunkCreator})(Well))
+ const  WithRouteContainerWell = withRouter(Well)
+
+export  default withAuthRedirect( connect(MapStateToProps, {getUserProfileThunkCreator})(WithRouteContainerWell))

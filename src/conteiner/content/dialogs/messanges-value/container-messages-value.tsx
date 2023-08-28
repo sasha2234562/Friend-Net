@@ -1,10 +1,10 @@
 import {MessagesValue} from "./messanges-value";
-import {AppStateType} from "../../../../redux/redux-store";
+import {AppStoreType} from "../../../../redux/redux-store";
 import {connect} from "react-redux";
 import {AddMessageAC, changeMessageAC} from "../../../../redux/message-reduser";
 import {Dispatch} from "redux";
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStoreType) => {
     return {
         messages: state.dialogsPage.messages,
         newMessage: state.dialogsPage.newMessage,

@@ -1,10 +1,10 @@
 import {Posts} from "./posts";
 import {connect} from "react-redux";
-import {AppStateType} from "../../../../redux/redux-store";
+import {AppStoreType} from "../../../../redux/redux-store";
 import {Dispatch} from "redux";
 import {AddPostAC, ChangeNewPostTextAC} from "../../../../redux/profile-reducer";
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStoreType) => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText

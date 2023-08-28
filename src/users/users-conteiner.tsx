@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {AppStateType} from "../redux/redux-store";
+import {AppStoreType} from "../redux/redux-store";
 import {
     followAC,
     getUsersThunkCreator,
@@ -72,7 +72,7 @@ class UsersContainerAPI extends React.Component<PropsType> {
 }
 
 
-const mapStateToProps = (state: AppStateType) => {
+const mapStateToProps = (state: AppStoreType) => {
     return {
         users: state.users.users,
         pageSize: state.users.pageSize,

@@ -1,5 +1,5 @@
 import React from "react";
-import {AppStateType} from "../../../redux/redux-store";
+import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {authThunkCreator} from "../../../redux/auth-reduser";
 import {NavLink} from "react-router-dom";
@@ -44,7 +44,7 @@ export class Login_ContainerAuthMe extends React.Component<PropsType> {
     }
 }
 
-const MapStateToProps = (state: AppStateType) => {
+const MapStateToProps = (state: AppStoreType) => {
     return {
         login: state.authReducer
     }

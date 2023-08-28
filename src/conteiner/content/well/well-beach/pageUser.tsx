@@ -6,7 +6,7 @@ export const PageUser = (props: { page: pageType | null }) => {
 
     return (
         <div>
-            {props && <div style={{fontSize: '2.7vh'}}>
+            {props.page && <div style={{fontSize: '2.7vh'}}>
                 <img
                     style={{width: '21%'}}
                     src={props.page?.photos.large
