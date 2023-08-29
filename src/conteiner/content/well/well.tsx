@@ -1,17 +1,17 @@
 import Beach from "./well-beach/beach";
 import {ContainerPosts} from "./posts/posts-conteiner";
-import React from "react";
+import React, {ComponentType} from "react";
 import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 type pathParamsType = {
     userId: string
 }
-
 type mapStateToPropsType = {
     pageUser: pageType | null
 }
@@ -21,14 +21,16 @@ type mapDispatchToProps = {
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
 type ownPropsType = RouteComponentProps<pathParamsType> & PropsType
+
 export class Well extends React.Component<ownPropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if(!userId) {
+        if (!userId) {
             userId = '1'
         }
         this.props.getUserProfileThunkCreator(userId)
     }
+
     render() {
         return <div>
             <Beach/>
@@ -43,7 +45,8 @@ const MapStateToProps = (state: AppStoreType) => {
         pageUser: state.profilePage.profilePage,
     }
 }
-
- const  WithRouteContainerWell = withRouter(Well)
-
-export  default withAuthRedirect( connect(MapStateToProps, {getUserProfileThunkCreator})(WithRouteContainerWell))
+export default compose<ComponentType>(
+    connect(MapStateToProps, {getUserProfileThunkCreator}),
+    withRouter,
+    withAuthRedirect
+)(Well)

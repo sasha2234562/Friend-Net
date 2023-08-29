@@ -2,8 +2,9 @@ import {MessagesValue} from "./messanges-value";
 import {AppStoreType} from "../../../../redux/redux-store";
 import {connect} from "react-redux";
 import {AddMessageAC, changeMessageAC} from "../../../../redux/message-reduser";
-import {Dispatch} from "redux";
 import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
+import {compose} from "redux";
+import React from "react";
 
 let mapStateToProps = (state: AppStoreType) => {
     return {
@@ -12,14 +13,7 @@ let mapStateToProps = (state: AppStoreType) => {
         isAuth: state.authReducer.isAuth
     }
 }
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        onChange: (newText: string) => {
-            dispatch(changeMessageAC(newText));
-        },
-        addPost: (text: string) => {
-            dispatch(AddMessageAC(text))
-        }
-    }
-}
-export default withAuthRedirect (connect(mapStateToProps, mapDispatchToProps)(MessagesValue));
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {changeMessageAC, AddMessageAC}),
+    withAuthRedirect
+)(MessagesValue)
