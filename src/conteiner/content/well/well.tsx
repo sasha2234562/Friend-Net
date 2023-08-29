@@ -14,7 +14,6 @@ type pathParamsType = {
 
 type mapStateToPropsType = {
     pageUser: pageType | null
-    // isAuth: boolean
 }
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
@@ -31,7 +30,6 @@ export class Well extends React.Component<ownPropsType> {
         this.props.getUserProfileThunkCreator(userId)
     }
     render() {
-        // if(this.props.isAuth === false) return <Redirect to={'/login'}/>
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
@@ -43,11 +41,9 @@ export class Well extends React.Component<ownPropsType> {
 const MapStateToProps = (state: AppStoreType) => {
     return {
         pageUser: state.profilePage.profilePage,
-        // isAuth: state.authReducer.isAuth
     }
 }
 
-// const withAuthRedirect = (connect(MapStateToProps, {getUserProfileThunkCreator})(Well))
  const  WithRouteContainerWell = withRouter(Well)
 
 export  default withAuthRedirect( connect(MapStateToProps, {getUserProfileThunkCreator})(WithRouteContainerWell))

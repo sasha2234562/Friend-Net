@@ -1,6 +1,6 @@
 import React from "react";
 import d from "./dialogs.module.css"
-import {ContainerMessagesValue} from "./messanges-value/container-messages-value";
+import ContainerMessagesValue from "./messanges-value/container-messages-value";
 
 
 function Dialogs () {

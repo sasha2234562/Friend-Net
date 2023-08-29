@@ -3,6 +3,7 @@ import {AppStoreType} from "../../../../redux/redux-store";
 import {connect} from "react-redux";
 import {AddMessageAC, changeMessageAC} from "../../../../redux/message-reduser";
 import {Dispatch} from "redux";
+import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
 
 let mapStateToProps = (state: AppStoreType) => {
     return {
@@ -21,4 +22,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         }
     }
 }
-export const ContainerMessagesValue = connect(mapStateToProps, mapDispatchToProps)(MessagesValue);
+export default withAuthRedirect (connect(mapStateToProps, mapDispatchToProps)(MessagesValue));
