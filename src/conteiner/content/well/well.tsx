@@ -8,7 +8,7 @@ import {getUserProfileThunkCreator, pageType} from "../../../redux/profile-reduc
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {MyProfile} from "./my profile/My Profile";
+import {MyProfile} from "./my profile/my profile";
 
 type pathParamsType = {
     userId: string
@@ -36,7 +36,7 @@ export class Well extends React.Component<ownPropsType> {
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
-            <MyProfile/>
+            <MyProfile />
             <ContainerPosts/>
         </div>
     }
