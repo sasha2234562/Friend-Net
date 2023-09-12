@@ -5,7 +5,9 @@ type StateType = {
     value: string;
 };
 
-export class MyProfile extends React.Component<{}, StateType> {
+export class MyProfile extends React.Component<{status: string}, StateType> {
+
+
     state: StateType = {
         status: true,
         value: 'Hello People',
@@ -35,15 +37,16 @@ export class MyProfile extends React.Component<{}, StateType> {
                     <div onDoubleClick={this.onDoubleClick.bind(this)} style={{
                         fontSize: '22px'
                     }}>
-                        <span>{this.state.value}</span>
+                        <span>{this.props.status || this.state.value}</span>
                     </div>
                 ) : (
                     <div onBlur={this.onBlur.bind(this)}>
                         <div>
                             <input
                                 type="text"
-                                value={this.state.value}
+                                value={this.state.value }
                                 onChange={this.onChange.bind(this)}
+                                placeholder={this.props.status }
                                 autoFocus/>
                         </div>
                         <div style={{margin: '11px 0 0 15px'}}>

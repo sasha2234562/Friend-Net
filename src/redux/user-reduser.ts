@@ -25,7 +25,7 @@ const initialState: InitialStateType = {
     users: [],
     pageId: null,
     pageSize: 5,
-    totalUsersCount: 101,
+    totalUsersCount: 57,
     currentPage: 1,
     preloader: false,
     followingProgress: []

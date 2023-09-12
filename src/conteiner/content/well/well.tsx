@@ -4,7 +4,7 @@ import React, {ComponentType} from "react";
 import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
-import {getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
+import {getStatusThunkCreator, getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -15,9 +15,11 @@ type pathParamsType = {
 }
 type mapStateToPropsType = {
     pageUser: pageType | null
+    status: string
 }
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
+    getStatusThunkCreator: (userId: string) => void
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
@@ -27,16 +29,17 @@ export class Well extends React.Component<ownPropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = '1'
+            userId = '2'
         }
         this.props.getUserProfileThunkCreator(userId)
+        this.props.getStatusThunkCreator(userId)
     }
 
     render() {
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
-            <MyProfile />
+            <MyProfile status={this.props.status}/>
             <ContainerPosts/>
         </div>
     }
@@ -45,10 +48,11 @@ export class Well extends React.Component<ownPropsType> {
 const MapStateToProps = (state: AppStoreType) => {
     return {
         pageUser: state.profilePage.profilePage,
+        status: state.profilePage.status
     }
 }
 export default compose<ComponentType>(
-    connect(MapStateToProps, {getUserProfileThunkCreator}),
+    connect(MapStateToProps, {getUserProfileThunkCreator, getStatusThunkCreator}),
     withRouter,
-    withAuthRedirect
+    withAuthRedirect,
 )(Well)

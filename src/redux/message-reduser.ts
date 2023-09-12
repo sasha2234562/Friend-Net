@@ -1,8 +1,8 @@
 import {v1} from "uuid";
 
 
-const CHANGENEWMESSAGE = 'CHANGE-NEW-MESSAGE';
-const ADDMESSAGE = 'ADD-MESSAGE';
+const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
+const ADD_MESSAGE = 'ADD-MESSAGE';
 
 
 let initialState = {
@@ -45,13 +45,13 @@ let initialState = {
 
 export const messageReducer = (state = initialState, action: AllActions) => {
     switch (action.type) {
-        case CHANGENEWMESSAGE:
+        case CHANGE_NEW_MESSAGE:
             return  {
                 ...state,
                 newMessage: action.newText
             }
             break
-        case ADDMESSAGE:
+        case ADD_MESSAGE:
             let newMessage = {
                 value: action.text,
                 id: v1()
@@ -75,5 +75,5 @@ type ChangeMessageACType = ReturnType<typeof changeMessageAC>
 type AllActions = AddMessageACType | ChangeMessageACType
 
 
-export const AddMessageAC = (text: string) => ({type:ADDMESSAGE, text } as const )
-export const changeMessageAC = (newText: string) => ({type:CHANGENEWMESSAGE, newText } as const )
+export const AddMessageAC = (text: string) => ({type:ADD_MESSAGE, text } as const )
+export const changeMessageAC = (newText: string) => ({type:CHANGE_NEW_MESSAGE, newText } as const )
