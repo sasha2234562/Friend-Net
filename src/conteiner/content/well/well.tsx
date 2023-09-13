@@ -4,7 +4,12 @@ import React, {ComponentType} from "react";
 import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
-import {getStatusThunkCreator, getUserProfileThunkCreator, pageType} from "../../../redux/profile-reducer";
+import {
+    setStatusThunkCreator,
+    getUserProfileThunkCreator,
+    pageType,
+    UpdateStatusThunkCreator
+} from "../../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -19,7 +24,8 @@ type mapStateToPropsType = {
 }
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
-    getStatusThunkCreator: (userId: string) => void
+    setStatusThunkCreator: (userId: string) => void
+    UpdateStatusThunkCreator: (status:string)=> void
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
@@ -29,17 +35,17 @@ export class Well extends React.Component<ownPropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = '2'
+            userId = '1'
         }
         this.props.getUserProfileThunkCreator(userId)
-        this.props.getStatusThunkCreator(userId)
+        this.props.setStatusThunkCreator(userId)
     }
 
     render() {
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
-            <MyProfile status={this.props.status}/>
+            <MyProfile status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>
         </div>
     }
@@ -52,7 +58,7 @@ const MapStateToProps = (state: AppStoreType) => {
     }
 }
 export default compose<ComponentType>(
-    connect(MapStateToProps, {getUserProfileThunkCreator, getStatusThunkCreator}),
+    connect(MapStateToProps, {getUserProfileThunkCreator, setStatusThunkCreator,UpdateStatusThunkCreator}),
     withRouter,
     withAuthRedirect,
 )(Well)

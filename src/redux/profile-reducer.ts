@@ -58,7 +58,7 @@ let initialState: initialStateType = {
         },
     ],
     newPostText: 'Sasha is too lazy',
-    status: 'Hello Sashka',
+    status: '',
     profilePage: null
 }
 
@@ -89,7 +89,7 @@ export const profileReducer = (state: initialStateType = initialState, action: A
         case GET_STATUS:
             return {
                 ...state,
-                status: action.status
+                status: action.status || 'No status this person'
             }
     }
     return state
@@ -98,7 +98,7 @@ export const profileReducer = (state: initialStateType = initialState, action: A
 
 export const AddPostAC = (text: string) => ({type: ADD_POST, text} as const)
 
-export const GetStatusAC = (status: string) => ({type: GET_STATUS, status} as const)
+export const SetStatusAC = (status: string) => ({type: GET_STATUS, status} as const)
 
 export const ChangeNewPostTextAC = (newText: string) => ({type: CHANGE_NEW_POST_TEXT, newText} as const)
 
@@ -106,7 +106,7 @@ export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as 
 type  AddPostACType = ReturnType<typeof AddPostAC>
 type ChangeNewPostTextACType = ReturnType<typeof ChangeNewPostTextAC>
 type ProfilePageACType = ReturnType<typeof ProfilePageAC>
-type GetStatusACType = ReturnType<typeof GetStatusAC>
+type GetStatusACType = ReturnType<typeof SetStatusAC>
 
 type ACType = AddPostACType | ChangeNewPostTextACType | ProfilePageACType | GetStatusACType
 
@@ -117,9 +117,17 @@ export const getUserProfileThunkCreator = (userId: string) => {
     }
 }
 
-export const getStatusThunkCreator = (userId: string) => {
+export const setStatusThunkCreator = (userId: string) => {
     return (dispatch: Dispatch) => {
-        statusAPI.gesStatus(userId).then(resolve => dispatch(GetStatusAC(resolve.data))
+        statusAPI.getStatus(userId).then(resolve => dispatch(SetStatusAC(resolve.data))
         )
     }
+}
+export const UpdateStatusThunkCreator = (status: string) => (dispath: Dispatch) => {
+    return statusAPI.updateStatus(status).then(res => {
+        if (res.data.resultCode === 0) {
+            dispath(SetStatusAC(status))
+        }
+    })
+
 }

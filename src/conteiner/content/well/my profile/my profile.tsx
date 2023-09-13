@@ -5,48 +5,50 @@ type StateType = {
     value: string;
 };
 
-export class MyProfile extends React.Component<{status: string}, StateType> {
+export class MyProfile extends React.Component<{ status: string, updateStatus: (status: string) => void }, StateType> {
 
 
     state: StateType = {
         status: true,
-        value: 'Hello People',
+        value: this.props.status,
     };
-
-    onDoubleClick  ()  {
+    onDoubleClick() {
         this.setState({status: false});
     };
 
-    onBlur  ()  {
+    onBlur() {
         this.setState({status: true});
+        console.log(this.state.value)
+        this.props.updateStatus(this.state.value)
     };
-    saveClick  ()  {
+
+    saveClick() {
         this.setState({status: true});
     }
 
-    onChange  (e: ChangeEvent<HTMLInputElement>)  {
+    onChange(e: ChangeEvent<HTMLInputElement>) {
         this.setState({
             value: e.currentTarget.value
         })
     };
-
     render() {
+        console.log("STATUS:",this.props.status)
         return (
             <div style={{margin: '3%'}}>
                 {this.state.status ? (
                     <div onDoubleClick={this.onDoubleClick.bind(this)} style={{
                         fontSize: '22px'
                     }}>
-                        <span>{this.props.status || this.state.value}</span>
+                        <span>{this.props.status.toString()}</span>
                     </div>
                 ) : (
                     <div onBlur={this.onBlur.bind(this)}>
                         <div>
                             <input
                                 type="text"
-                                value={this.state.value }
+                                value={this.state.value}
                                 onChange={this.onChange.bind(this)}
-                                placeholder={this.props.status }
+                                placeholder={this.props.status}
                                 autoFocus/>
                         </div>
                         <div style={{margin: '11px 0 0 15px'}}>

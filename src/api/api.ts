@@ -19,7 +19,7 @@ export const usersAPI = {
             .then(resolve => resolve.data)
     },
     profileApi(userId: string) {
-        return instants.get(`profile/${userId}`)
+        return statusAPI.getProfile(userId)
     }
 }
 export const authAPI = {
@@ -29,7 +29,13 @@ export const authAPI = {
 }
 
 export const statusAPI = {
-    gesStatus(userId: string) {
+    getProfile(userId: string) {
+        return instants.get(`profile/${userId}`)
+    },
+    getStatus(userId: string) {
         return instants.get(`profile/status/${userId}`)
+    },
+    updateStatus(status: string) {
+        return instants.put<{data:{}, resultCode:number}>('profile/status', {status})
     }
 }
