@@ -16,14 +16,14 @@ type MapDispatchToProps = {
 }
 type PropsType = MapStateToPropsType & MapDispatchToProps
 
-export class Login_ContainerAuthMe extends React.Component<PropsType> {
+export class LoginContainerAuthMe extends React.Component<PropsType> {
 
     componentDidMount() {
         this.props.authThunkCreator()
     }
 
     render() {
-        if (this.props.login.id && this.props.login.login && this.props.login.email) {
+        if (!this.props.login.id && !this.props.login.login && !this.props.login.email) {
             return (
                 <div style={{color: 'wheat', cursor: 'pointer'}}>
                     Login
@@ -50,4 +50,4 @@ const MapStateToProps = (state: AppStoreType) => {
     }
 }
 
-export const LoginContainer = connect(MapStateToProps, {authThunkCreator})(Login_ContainerAuthMe)
+export const LoginContainer = connect(MapStateToProps, {authThunkCreator})(LoginContainerAuthMe)

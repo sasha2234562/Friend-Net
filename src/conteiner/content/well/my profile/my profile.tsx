@@ -12,13 +12,13 @@ export class MyProfile extends React.Component<{ status: string, updateStatus: (
         status: true,
         value: this.props.status,
     };
+
     onDoubleClick() {
         this.setState({status: false});
     };
 
     onBlur() {
         this.setState({status: true});
-        console.log(this.state.value)
         this.props.updateStatus(this.state.value)
     };
 
@@ -31,8 +31,17 @@ export class MyProfile extends React.Component<{ status: string, updateStatus: (
             value: e.currentTarget.value
         })
     };
+
+    // componentDidUpdate(prevProps: any, prevState: any) {
+    //     // debugger
+    //     if (prevProps.status !== prevState.value) {
+    //         this.setState({
+    //             value: this.props.status
+    //         })
+    //     }
+    // }
+
     render() {
-        console.log("STATUS:",this.props.status)
         return (
             <div style={{margin: '3%'}}>
                 {this.state.status ? (

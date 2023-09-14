@@ -1,9 +1,26 @@
-export const Login = ()=> {
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import React from "react";
+
+export type FormDataType = {
+    login: string
+    password: string
+    rememberMe: boolean
+}
+export const Loginform: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 
-    return(
+    return (
         <div>
-            crete Login
+            <form onSubmit={props.handleSubmit}>
+                <div><Field component={'input'} type={'text'} name={'login'}/></div>
+                <div><Field component={'input'} type={'password'} name={'password'}/></div>
+                <div><Field component={'input'} type={'checkbox'} name={'rememberMe'}/></div>
+                <div>
+                    <button>Login</button>
+                </div>
+            </form>
         </div>
     )
 }
+
+export const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(Loginform)
