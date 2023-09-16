@@ -1,35 +1,20 @@
 import d from "../dialogs.module.css";
 import React from "react";
-import {
-    ButtonUniversal
-} from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
-import {Redirect} from "react-router-dom";
-import {AddMessageAC, changeMessageAC} from "../../../../redux/message-reduser";
+import {CreateMessagePropsType, MessagesReduxForm} from "./MessagesForm";
+
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 
 type MapStateToPropsType = {
     messages: Array<{ value: string, id: string }>
-    newMessage: string
-    isAuth: boolean
 }
-type MapDispatchToProps= {
-    changeMessageAC: (e: string) => void
+type MapDispatchToProps = {
     AddMessageAC: (newPostText: string) => void
 }
 export const MessagesValue = (props: MapPropsType) => {
-
-
-    const onChangeHandler = (event: string) => {
-        props.changeMessageAC(event);
+    const onSubmit = (formData: CreateMessagePropsType) => {
+        props.AddMessageAC(formData.message)
     }
-
-    const onClickHandler = () => {
-        props.AddMessageAC(props.newMessage)
-    }
-
-
-    // if(props.isAuth === false) return <Redirect to={'/login'}/>
     return (
         <div>
             {props.messages.map((item) => {
@@ -40,13 +25,9 @@ export const MessagesValue = (props: MapPropsType) => {
                 )
             })}
             <div>
-                <ButtonUniversal
-                    placeholderValue={props.newMessage}
-                    title={'Send message'} onClick={onClickHandler}
-                    onChange={onChangeHandler}
-                    value={props.newMessage}
-                />
+                <MessagesReduxForm onSubmit={onSubmit}/>
             </div>
         </div>
     )
 }
+

@@ -39,18 +39,11 @@ let initialState = {
         {value: 'Good', id: v1()},
         {value: 'Yo', id: v1()},
         {value: 'Thank you', id: v1()},
-    ],
-    newMessage: "hello"
+    ]
 }
 
 export const messageReducer = (state = initialState, action: AllActions) => {
     switch (action.type) {
-        case CHANGE_NEW_MESSAGE:
-            return  {
-                ...state,
-                newMessage: action.newText
-            }
-            break
         case ADD_MESSAGE:
             let newMessage = {
                 value: action.text,
@@ -59,8 +52,7 @@ export const messageReducer = (state = initialState, action: AllActions) => {
             return  {
                 ...state,
                 messages: [...state.messages,
-                newMessage],
-                newMessage: ''
+                newMessage]
             }
             break
         default: return  state
@@ -68,12 +60,10 @@ export const messageReducer = (state = initialState, action: AllActions) => {
 }
 
 type AddMessageACType = ReturnType<typeof AddMessageAC>
-type ChangeMessageACType = ReturnType<typeof changeMessageAC>
 
 
 
-type AllActions = AddMessageACType | ChangeMessageACType
+type AllActions = AddMessageACType
 
 
 export const AddMessageAC = (text: string) => ({type:ADD_MESSAGE, text } as const )
-export const changeMessageAC = (newText: string) => ({type:CHANGE_NEW_MESSAGE, newText } as const )

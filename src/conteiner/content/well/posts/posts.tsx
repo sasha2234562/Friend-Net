@@ -1,7 +1,6 @@
 import p from "./posts.module.css"
 import React from "react";
 import {CreatePostType, CreateReduxPostForm} from "./create-post/create-post";
-import {AddPostAC} from "../../../../redux/profile-reducer";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
