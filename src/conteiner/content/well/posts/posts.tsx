@@ -1,6 +1,6 @@
 import p from "./posts.module.css"
 import React from "react";
-import {CreatePost} from "./create-post/create-post";
+import {CreatePostType, CreateReduxPostForm} from "./create-post/create-post";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
@@ -16,12 +16,15 @@ type MapDispatchToProps = {
 }
 
 export const Posts = (props: MapPropsType) => {
+    const onSubmit = (formData: CreatePostType) => {
+
+    }
 
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
 
-                <CreatePost newPostText={props.newPostText} onChange={props.onChange} addPost={props.addPost}/>
+                <CreateReduxPostForm onSubmit={onSubmit}/>
             </div>
             <div className={p.content_posts}>
                 {props.posts.map((item, index) => {
