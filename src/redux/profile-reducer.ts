@@ -2,7 +2,6 @@ import {Dispatch} from "redux";
 import {statusAPI, usersAPI} from "../api/api";
 
 const ADD_POST = "ADD-POST";
-const CHANGE_NEW_POST_TEXT = "CHANGE-NEW-POST-TEXT";
 const PROFILE_PAGE = 'PROFILE_PAGE'
 const GET_STATUS = 'GET_STATUS'
 
@@ -33,7 +32,6 @@ export type initialStateType = {
         img: string
         comment: string
     }[]
-    newPostText: string
     status: string
     profilePage: pageType | null
 }
@@ -57,7 +55,6 @@ let initialState: initialStateType = {
             comment: 'My fourth post'
         },
     ],
-    newPostText: 'Sasha is too lazy',
     status: '',
     profilePage: null
 }
@@ -73,14 +70,7 @@ export const profileReducer = (state: initialStateType = initialState, action: A
             }
             return {
                 ...state,
-                posts: [newPost, ...state.posts],
-                newPostText: ''
-            }
-
-        case CHANGE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
+                posts: [newPost, ...state.posts]
             }
         case PROFILE_PAGE :
             return {
@@ -99,16 +89,13 @@ export const profileReducer = (state: initialStateType = initialState, action: A
 export const AddPostAC = (text: string) => ({type: ADD_POST, text} as const)
 
 export const SetStatusAC = (status: string) => ({type: GET_STATUS, status} as const)
-
-export const ChangeNewPostTextAC = (newText: string) => ({type: CHANGE_NEW_POST_TEXT, newText} as const)
-
 export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as const)
+
 type  AddPostACType = ReturnType<typeof AddPostAC>
-type ChangeNewPostTextACType = ReturnType<typeof ChangeNewPostTextAC>
 type ProfilePageACType = ReturnType<typeof ProfilePageAC>
 type GetStatusACType = ReturnType<typeof SetStatusAC>
 
-type ACType = AddPostACType | ChangeNewPostTextACType | ProfilePageACType | GetStatusACType
+type ACType = AddPostACType  | ProfilePageACType | GetStatusACType
 
 
 export const getUserProfileThunkCreator = (userId: string) => {

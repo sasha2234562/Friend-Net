@@ -1,6 +1,7 @@
 import p from "./posts.module.css"
 import React from "react";
 import {CreatePostType, CreateReduxPostForm} from "./create-post/create-post";
+import {AddPostAC} from "../../../../redux/profile-reducer";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
@@ -8,16 +9,15 @@ type MapStateToPropsType = {
         img: string
         comment: string
     }>
-    newPostText: string
 }
 type MapDispatchToProps = {
-    onChange: (e: string) => void
-    addPost: (newPostText: string) => void
+    AddPostAC: (newPostText: string) => void
 }
 
 export const Posts = (props: MapPropsType) => {
     const onSubmit = (formData: CreatePostType) => {
-
+        console.log(formData.post)
+        props.AddPostAC(formData.post)
     }
 
     return (
