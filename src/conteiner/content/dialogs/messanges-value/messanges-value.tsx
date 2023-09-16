@@ -4,6 +4,7 @@ import {
     ButtonUniversal
 } from "../../../../universal-component-button-input(text)/universal-component-button-input(text)";
 import {Redirect} from "react-router-dom";
+import {AddMessageAC, changeMessageAC} from "../../../../redux/message-reduser";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 
@@ -13,22 +14,22 @@ type MapStateToPropsType = {
     isAuth: boolean
 }
 type MapDispatchToProps= {
-    onChange: (e: string) => void
-    addPost: (newPostText: string) => void
+    changeMessageAC: (e: string) => void
+    AddMessageAC: (newPostText: string) => void
 }
 export const MessagesValue = (props: MapPropsType) => {
 
 
     const onChangeHandler = (event: string) => {
-        props.onChange(event);
+        props.changeMessageAC(event);
     }
 
     const onClickHandler = () => {
-        props.addPost(props.newMessage)
+        props.AddMessageAC(props.newMessage)
     }
 
 
-    if(props.isAuth === false) return <Redirect to={'/login'}/>
+    // if(props.isAuth === false) return <Redirect to={'/login'}/>
     return (
         <div>
             {props.messages.map((item) => {
