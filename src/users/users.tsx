@@ -52,7 +52,7 @@ export const Users = (props: UsersType) => {
                             : <Preloader/>}
                     </div>
                     {item.followed
-                        ? <button disabled={props.followingProgress.some(i=> i === item.id)} onClick={() => {
+                        ? <button disabled={props.followingProgress.some(i => i === item.id)} onClick={() => {
                             props.toggleFollowingProgressAC(item.id, true)
                             usersAPI.unFollowApi(item.id).then(res => {
                                 if (res.resultCode == 0) {
@@ -62,7 +62,7 @@ export const Users = (props: UsersType) => {
                             })
                             props.follow(item.id)
                         }}>unFollow</button>
-                        : <button disabled={props.followingProgress.some(i=> i === item.id)} onClick={() => {
+                        : <button disabled={props.followingProgress.some(i => i === item.id)} onClick={() => {
                             props.toggleFollowingProgressAC(item.id, true)
                             usersAPI.followApi(item.id).then(res => {
                                 if (res.data.resultCode == 0) {

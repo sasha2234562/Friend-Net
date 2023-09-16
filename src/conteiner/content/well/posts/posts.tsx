@@ -1,7 +1,6 @@
 import p from "./posts.module.css"
-import React, {ChangeEvent} from "react";
-import axios from "axios";
-import {log} from "util";
+import React from "react";
+import {CreatePost} from "./create-post/create-post";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
@@ -18,23 +17,11 @@ type MapDispatchToProps = {
 
 export const Posts = (props: MapPropsType) => {
 
-    function onChangeHandler(event: ChangeEvent<HTMLTextAreaElement>) {
-        event.currentTarget.value && props.onChange(event.currentTarget.value);
-    }
-
-    function onClickHandler() {
-        props.newPostText && props.addPost(props.newPostText);
-    }
-
     return (
         <div className={p.posts}>
             <div className={p.textarea_input}>
-                <textarea
-                    value={props.newPostText}
-                    onChange={onChangeHandler}
-                    placeholder={"Enter new text"}
-                ></textarea>
-                <input onClick={onClickHandler} type={"button"} value={"Publication"}/>
+
+                <CreatePost newPostText={props.newPostText} onChange={props.onChange} addPost={props.addPost}/>
             </div>
             <div className={p.content_posts}>
                 {props.posts.map((item, index) => {
