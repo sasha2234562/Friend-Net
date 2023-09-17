@@ -1,4 +1,4 @@
-import {FormDataType, LoginReduxForm} from "./login";
+import {FormDataType, LoginReduxForm} from "../conteiner/header/login/login";
 
 export const Login = ()=> {
     const onSubmit = (formData: FormDataType)=> {

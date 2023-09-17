@@ -1,6 +1,6 @@
 import d from "../dialogs.module.css";
 import React from "react";
-import {CreateMessagePropsType, MessagesReduxForm} from "./MessagesForm";
+import {CreateMessagePropsType, MessagesReduxForm} from "../../../../form/MessagesForm";
 
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps

@@ -1,7 +1,4 @@
 import {v1} from "uuid";
-
-
-const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 
 

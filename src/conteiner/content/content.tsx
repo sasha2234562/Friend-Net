@@ -7,7 +7,7 @@ import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
 import {UsersContainer} from "../../users/users-conteiner";
-import {Login} from "../header/login/login-form";
+import {Login} from "../../form/login-form";
 
 
 function Content() {

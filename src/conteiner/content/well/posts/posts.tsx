@@ -1,6 +1,6 @@
 import p from "./posts.module.css"
 import React from "react";
-import {CreatePostType, CreateReduxPostForm} from "./create-post/create-post";
+import {CreatePostType, CreateReduxPostForm} from "../../../../form/post-form";
 
 type MapPropsType = MapStateToPropsType & MapDispatchToProps
 type MapStateToPropsType = {
