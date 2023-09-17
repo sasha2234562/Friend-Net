@@ -12,7 +12,7 @@ export const Loginform: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit}>
-                <div><Field component={'input'} type={'text'} name={'login'}/></div>
+                <div><Field component={'input'} type={'text'} name={'email'}/></div>
                 <div><Field component={'input'} type={'password'} name={'password'}/></div>
                 <div><Field component={'input'} type={'checkbox'} name={'rememberMe'}/></div>
                 <div>
@@ -23,4 +23,4 @@ export const Loginform: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     )
 }
 
-export const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(Loginform)
+export const LoginReduxForm = reduxForm<FormDataType>({form: 'email'})(Loginform)

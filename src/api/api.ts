@@ -25,6 +25,12 @@ export const usersAPI = {
 export const authAPI = {
     me() {
         return instants.get('auth/me')
+    },
+    login(email: string, password: string, rememberMe: boolean, captcha: boolean) {
+        return instants.post('login', {})
+    },
+    logout() {
+        return instants.delete('login')
     }
 }
 
@@ -36,6 +42,6 @@ export const statusAPI = {
         return instants.get(`profile/status/${userId}`)
     },
     updateStatus(status: string) {
-        return instants.put<{data:{}, resultCode:number}>('profile/status', {status})
+        return instants.put<{ data: {}, resultCode: number }>('profile/status', {status})
     }
 }

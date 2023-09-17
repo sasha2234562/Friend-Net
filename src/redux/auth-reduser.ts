@@ -33,8 +33,7 @@ return state
 export const getAuthData = (id: string, login: string, email: string) => ({
     type: AUTH_LOGIN,
     data: {
-        id, login, email,
-        isAuth: true
+        id, login, email
     }
 } as const);
 export const authThunkCreator = ()=> {
@@ -47,6 +46,16 @@ export const authThunkCreator = ()=> {
             }
         })
     }
+}
+
+const loginThunkCreator = (email: string, password: string, rememberMe: boolean, captcha: boolean)=> (dispatch: Dispatch)=> {
+    return  authAPI.login(email,password, rememberMe, captcha).then(res=>{
+        if(res.data.resultCode === 0) {
+            let{id, login, email } = res.data.data
+            dispatch(getAuthData(id, login, email))
+
+        }
+    })
 }
 
 type AuthLoginType = ReturnType<typeof getAuthData>
