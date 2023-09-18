@@ -48,9 +48,9 @@ export const authThunkCreator = () => {
     }
 }
 
-export const loginThunkCreator = (email: string, password: string, rememberMe: boolean, captcha: boolean) => {
+export const loginThunkCreator = (email: string, password: string, rememberMe: boolean) => {
     return (dispatch: Dispatch) => {
-        authAPI.login(email, password, rememberMe, captcha).then(res => {
+        authAPI.login(email, password, rememberMe).then(res => {
             if (res.data.resultCode === 0) {
                 // @ts-ignore
                 dispatch(authThunkCreator())

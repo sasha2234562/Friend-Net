@@ -26,7 +26,7 @@ export const authAPI = {
     me() {
         return instants.get('auth/me')
     },
-    login(email: string, password: string, rememberMe: boolean, captcha: boolean) {
+    login(email: string, password: string, rememberMe: boolean) {
         return instants.post('auth/login', {email, password, rememberMe})
     },
     logout() {
