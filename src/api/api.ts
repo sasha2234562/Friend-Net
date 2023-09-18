@@ -27,10 +27,10 @@ export const authAPI = {
         return instants.get('auth/me')
     },
     login(email: string, password: string, rememberMe: boolean, captcha: boolean) {
-        return instants.post('login', {})
+        return instants.post('auth/login', {email, password, rememberMe})
     },
     logout() {
-        return instants.delete('login')
+        return instants.delete('auth/login')
     }
 }
 

@@ -5,7 +5,7 @@ import {authThunkCreator} from "../../../redux/auth-reduser";
 import {NavLink} from "react-router-dom";
 
 type MapStateToPropsType = {
-    login: {
+    auth: {
         id: string
         login: string
         email: string
@@ -23,7 +23,7 @@ export class LoginContainerAuthMe extends React.Component<PropsType> {
     }
 
     render() {
-        if (!this.props.login.id && !this.props.login.login && !this.props.login.email) {
+        if (!this.props.auth.id && !this.props.auth.login && !this.props.auth.email) {
             return (
                 <div style={{color: 'wheat', cursor: 'pointer'}}>
                     Login
@@ -46,7 +46,7 @@ export class LoginContainerAuthMe extends React.Component<PropsType> {
 
 const MapStateToProps = (state: AppStoreType) => {
     return {
-        login: state.authReducer
+        auth: state.authReducer
     }
 }
 

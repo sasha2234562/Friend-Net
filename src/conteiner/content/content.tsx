@@ -7,7 +7,7 @@ import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
 import {UsersContainer} from "../../users/users-conteiner";
-import {Login} from "../../form/login-form";
+import {Login} from "../../form/login";
 
 
 function Content() {
@@ -25,7 +25,7 @@ function Content() {
                 <Route path={'/music'} render={() => <Music/>}/>
                 <Route path={'/settings'} render={() => <Settings/>}/>
                 <Route path={'/users'} render={() => <UsersContainer/>}/>
-                <Route path={'./login'} render={() => <Login/>}/>
+                <Route path={'./login'} render={() => <Login />}/>
             </div>
         </div>
     )
