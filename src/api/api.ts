@@ -29,7 +29,7 @@ export const authAPI = {
     login(email: string, password: string, rememberMe: boolean) {
         return instants.post('auth/login', {email, password, rememberMe})
     },
-    logout() {
+    logAut() {
         return instants.delete('auth/login')
     }
 }

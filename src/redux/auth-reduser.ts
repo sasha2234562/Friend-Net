@@ -30,7 +30,7 @@ export const authReducer = (state: initialStateType = initialState, action: Auth
 }
 
 
-export const getAuthData = (id: string, login: string, email: string) => ({
+export const getAuthData = (id: string, login: string, email: string, isAuth: boolean) => ({
     type: AUTH_LOGIN,
     data: {
         id, login, email
@@ -41,7 +41,7 @@ export const authThunkCreator = () => {
         authAPI.me().then(res => {
             if (res.data.resultCode === 0) {
                 let {id, login, email} = res.data.data
-                dispatch(getAuthData(id, login, email))
+                dispatch(getAuthData(id, login, email, true))
 
             }
         })
@@ -58,5 +58,13 @@ export const loginThunkCreator = (email: string, password: string, rememberMe: b
         })
     };
 }
-
+export const loginAutThunkCreator = () => {
+    return (dispatch: Dispatch) => {
+        authAPI.logAut().then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(getAuthData ('', '','', false))
+            }
+        })
+    };
+}
 type AuthLoginType = ReturnType<typeof getAuthData>
