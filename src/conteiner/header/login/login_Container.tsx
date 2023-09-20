@@ -1,7 +1,7 @@
 import React from "react";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect, useDispatch} from "react-redux";
-import {authThunkCreator, loginAutThunkCreator} from "../../../redux/auth-reduser";
+import {authThunkCreator, logAutThunkCreator} from "../../../redux/auth-reduser";
 import {NavLink} from "react-router-dom";
 
 type MapStateToPropsType = {
@@ -13,14 +13,14 @@ type MapStateToPropsType = {
 }
 type MapDispatchToProps = {
     authThunkCreator: () => void
-    loginAutThunkCreator: ()=> void
+    logAutThunkCreator: ()=> void
 }
 type PropsType = MapStateToPropsType & MapDispatchToProps
 
 export class LoginContainerAuthMe extends React.Component<PropsType> {
 
      logAut = ()=> {
-        this.props.loginAutThunkCreator()
+        this.props.logAutThunkCreator()
     }
 
     componentDidMount() {
@@ -55,4 +55,4 @@ const MapStateToProps = (state: AppStoreType) => {
     }
 }
 
-export const LoginContainer = connect(MapStateToProps, {authThunkCreator,loginAutThunkCreator})(LoginContainerAuthMe)
+export const LoginContainer = connect(MapStateToProps, {authThunkCreator,logAutThunkCreator})(LoginContainerAuthMe)

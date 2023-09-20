@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const AUTH_LOGIN = 'AUTH_LOGIN'
 
@@ -57,14 +58,18 @@ export const loginThunkCreator = (email: string, password: string, rememberMe: b
                 // @ts-ignore
                 dispatch(authThunkCreator())
             }
+            if (res.data.resultCode === 1) {
+                let action = stopSubmit('login', {_error: res.data.messages[0]})
+                dispatch(action)
+            }
         })
     };
 }
-export const loginAutThunkCreator = () => {
+export const logAutThunkCreator = () => {
     return (dispatch: Dispatch) => {
         authAPI.logAut().then(res => {
             if (res.data.resultCode === 0) {
-                dispatch(getAuthData ('', '','', false))
+                dispatch(getAuthData('', '', '', false))
             }
         })
     };
