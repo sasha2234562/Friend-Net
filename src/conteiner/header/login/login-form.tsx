@@ -2,6 +2,7 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import React from "react";
 import {useDispatch} from "react-redux";
 import {loginAutThunkCreator} from "../../../redux/auth-reduser";
+import {Redirect} from "react-router-dom";
 
 export type FormDataType = {
     email: string
@@ -10,10 +11,6 @@ export type FormDataType = {
 }
 export const Loginform: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
-const dispath = useDispatch()
-    const logAut = ()=> {
-    dispath(loginAutThunkCreator())
-    }
     return (
         <div>
             <form onSubmit={props.handleSubmit}>
@@ -24,7 +21,6 @@ const dispath = useDispatch()
                     <button>Login</button>
                 </div>
             </form>
-            <div><button onClick={logAut}>LogAut</button></div>
         </div>
     )
 }

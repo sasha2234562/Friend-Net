@@ -14,7 +14,7 @@ const initialState: initialStateType = {
     id: '',
     login: '',
     email: '',
-    isAuth: true
+    isAuth: false
 }
 
 export const authReducer = (state: initialStateType = initialState, action: AuthLoginType) => {
@@ -22,7 +22,8 @@ export const authReducer = (state: initialStateType = initialState, action: Auth
         case AUTH_LOGIN : {
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isAuth: action.isAuth
             }
         }
     }
@@ -34,7 +35,8 @@ export const getAuthData = (id: string, login: string, email: string, isAuth: bo
     type: AUTH_LOGIN,
     data: {
         id, login, email
-    }
+    },
+    isAuth
 } as const);
 export const authThunkCreator = () => {
     return (dispatch: Dispatch) => {

@@ -25,7 +25,7 @@ type mapStateToPropsType = {
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
     setStatusThunkCreator: (userId: string) => void
-    UpdateStatusThunkCreator: (status:string)=> void
+    UpdateStatusThunkCreator: (status: string) => void
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
@@ -58,7 +58,11 @@ const MapStateToProps = (state: AppStoreType) => {
     }
 }
 export default compose<ComponentType>(
-    connect(MapStateToProps, {getUserProfileThunkCreator, setStatusThunkCreator,UpdateStatusThunkCreator}),
+    connect(MapStateToProps, {
+        getUserProfileThunkCreator,
+        setStatusThunkCreator,
+        UpdateStatusThunkCreator
+    }),
     withRouter,
     withAuthRedirect,
 )(Well)

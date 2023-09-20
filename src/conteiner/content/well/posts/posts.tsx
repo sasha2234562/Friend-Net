@@ -15,7 +15,6 @@ type MapDispatchToProps = {
 
 export const Posts = (props: MapPropsType) => {
     const onSubmit = (formData: CreatePostType) => {
-        console.log(formData.post)
         props.AddPostAC(formData.post)
     }
 
