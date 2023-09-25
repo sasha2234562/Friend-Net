@@ -5,16 +5,15 @@ import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {
-    setStatusThunkCreator,
     getUserProfileThunkCreator,
     pageType,
+    setStatusThunkCreator,
     UpdateStatusThunkCreator
 } from "../../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
-import {MyProfile} from "./my profile/my profile";
-import {MyProfileWhithHooks} from "./my profile/my-profile-with-hooks";
+import {MyProfileWithHooks} from "./my profile/my-profile-with-hooks";
 
 type pathParamsType = {
     userId: string
@@ -47,7 +46,7 @@ export class Well extends React.Component<ownPropsType> {
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
-            <MyProfileWhithHooks status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
+            <MyProfileWithHooks status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>
         </div>
     }

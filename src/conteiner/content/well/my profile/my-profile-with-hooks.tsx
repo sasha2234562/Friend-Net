@@ -1,12 +1,18 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 type StatePropsType = {
     status: string,
     updateStatus: (status: string) => void
 };
-export const MyProfileWhithHooks = (props: StatePropsType) => {
+export const MyProfileWithHooks = (props: StatePropsType) => {
+
     const [status, setStatus] = useState<string>(props.status)
     const [editMode, setEditMode] = useState<boolean>(false)
+
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status])
+
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
@@ -33,7 +39,7 @@ export const MyProfileWhithHooks = (props: StatePropsType) => {
                             type="text"
                             value={status}
                             onChange={onChangeHandler}
-                            placeholder={status}
+                            placeholder={props.status}
                             autoFocus/>
                     </div>
                     <div style={{margin: '11px 0 0 15px'}}>
