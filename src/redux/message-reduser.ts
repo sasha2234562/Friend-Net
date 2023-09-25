@@ -39,7 +39,7 @@ let initialState = {
     ]
 }
 
-export const messageReducer = (state = initialState, action: AllActions) => {
+export const messageReducer = (state = initialState, action: MessageActionType) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
@@ -60,7 +60,7 @@ type AddMessageACType = ReturnType<typeof AddMessageAC>
 
 
 
-type AllActions = AddMessageACType
+export type MessageActionType = AddMessageACType
 
 
 export const AddMessageAC = (text: string) => ({type:ADD_MESSAGE, text } as const )

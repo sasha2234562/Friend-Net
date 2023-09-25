@@ -1,6 +1,8 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {ThunkAction} from "redux-thunk";
+import {AppActionsType, AppStoreType} from "./redux-store";
 
 const AUTH_LOGIN = 'AUTH_LOGIN'
 
@@ -51,16 +53,14 @@ export const authThunkCreator = () => {
     }
 }
 
-export const loginThunkCreator = (email: string, password: string, rememberMe: boolean) => {
-    return (dispatch: Dispatch) => {
+export const loginThunkCreator = (email: string, password: string, rememberMe: boolean): ThunkAction<void, AppStoreType, unknown, AppActionsType> => {
+    return (dispatch) => {
         authAPI.login(email, password, rememberMe).then(res => {
             if (res.data.resultCode === 0) {
-                // @ts-ignore
                 dispatch(authThunkCreator())
             }
             if (res.data.resultCode === 1) {
-                let action = stopSubmit('login', {_error: res.data.messages[0]})
-                dispatch(action)
+                dispatch(stopSubmit('login', {_error: res.data.messages[0]}))
             }
         })
     };
@@ -74,4 +74,4 @@ export const logAutThunkCreator = () => {
         })
     };
 }
-type AuthLoginType = ReturnType<typeof getAuthData>
+export type AuthLoginType = ReturnType<typeof getAuthData>

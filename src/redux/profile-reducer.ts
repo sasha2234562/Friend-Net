@@ -60,7 +60,7 @@ let initialState: initialStateType = {
 }
 
 
-export const profileReducer = (state: initialStateType = initialState, action: ACType): initialStateType => {
+export const profileReducer = (state: initialStateType = initialState, action: ProfileActionType): initialStateType => {
 
     switch (action.type) {
         case ADD_POST:
@@ -95,7 +95,7 @@ type  AddPostACType = ReturnType<typeof AddPostAC>
 type ProfilePageACType = ReturnType<typeof ProfilePageAC>
 type GetStatusACType = ReturnType<typeof SetStatusAC>
 
-type ACType = AddPostACType  | ProfilePageACType | GetStatusACType
+export type ProfileActionType = AddPostACType  | ProfilePageACType | GetStatusACType
 
 
 export const getUserProfileThunkCreator = (userId: string) => {

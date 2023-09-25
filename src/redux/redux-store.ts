@@ -1,10 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {profileReducer} from "./profile-reducer";
-import {messageReducer} from "./message-reduser";
-import {usersReduser} from "./user-reduser";
-import {authReducer} from "./auth-reduser";
+import {ProfileActionType, profileReducer} from "./profile-reducer";
+import {MessageActionType, messageReducer} from "./message-reduser";
+import {UsersActionType, usersReduser} from "./user-reduser";
+import {AuthLoginType, authReducer} from "./auth-reduser";
 import thunk from "redux-thunk";
-import {reducer as formReducer} from 'redux-form';
+import {FormAction, reducer as formReducer} from 'redux-form';
 
 
 let reducers = combineReducers({
@@ -16,4 +16,6 @@ let reducers = combineReducers({
 })
 
 export type AppStoreType = ReturnType<typeof reducers>
+
+export type AppActionsType = AuthLoginType | MessageActionType | ProfileActionType | UsersActionType | FormAction
 export let store = createStore(reducers, applyMiddleware(thunk))

@@ -32,7 +32,7 @@ const initialState: InitialStateType = {
 }
 
 
-export const usersReduser = (state: InitialStateType = initialState, action: AllUsersActionType): InitialStateType => {
+export const usersReduser = (state: InitialStateType = initialState, action: UsersActionType): InitialStateType => {
 
     switch (action.type) {
         case FOLLOW:
@@ -94,7 +94,7 @@ export const toggleFollowingProgressAC = (userId: number, progress: boolean) => 
 export const getUsersThunkCreator = (currentPage: number, pageSize: number, page: number) => {
 
 
-    return (dispatch: Dispatch<AllUsersActionType>) => {
+    return (dispatch: Dispatch<UsersActionType>) => {
 
         dispatch(setPreloaderAC(true))
         dispatch(setCurrentPageAC(page))
@@ -114,7 +114,7 @@ type setPreloaderACType = ReturnType<typeof setPreloaderAC>
 type setPageIdACType = ReturnType<typeof setPageIdAC>
 type toggleFollowingProgressACType = ReturnType<typeof toggleFollowingProgressAC>
 
-export  type AllUsersActionType = followACType
+export  type UsersActionType = followACType
     | unFollowACType
     | setUsersACType
     | setCurrentPageACType
