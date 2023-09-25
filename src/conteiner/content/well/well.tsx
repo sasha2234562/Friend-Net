@@ -36,6 +36,7 @@ export class Well extends React.Component<ownPropsType> {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = '1'
+            // this.props.history.push('/users')
         }
         this.props.getUserProfileThunkCreator(userId)
         this.props.setStatusThunkCreator(userId)

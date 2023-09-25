@@ -9,6 +9,12 @@ import {
 } from "../redux/user-reduser";
 import React from "react";
 import {Users} from "./users";
+import {
+    currentPageSelector, followingProgressSelector, pageIdSelector,
+    pageSizeSelector, preloaderSelector,
+    totalUsersCountSelector,
+    usersSelector
+} from "./selectors/users-selector";
 
 
 export type UserType = {
@@ -74,13 +80,13 @@ class UsersContainerAPI extends React.Component<PropsType> {
 
 const mapStateToProps = (state: AppStoreType) => {
     return {
-        users: state.users.users,
-        pageSize: state.users.pageSize,
-        totalUsersCount: state.users.totalUsersCount,
-        currentPage: state.users.currentPage,
-        preloader: state.users.preloader,
-        pageId: state.users.pageId,
-        followingProgress: state.users.followingProgress
+        users: usersSelector(state),
+        pageSize: pageSizeSelector(state),
+        totalUsersCount: totalUsersCountSelector(state),
+        currentPage: currentPageSelector(state),
+        preloader: preloaderSelector(state),
+        pageId: pageIdSelector(state),
+        followingProgress: followingProgressSelector(state)
     }
 }
 export const UsersContainer = connect(mapStateToProps,

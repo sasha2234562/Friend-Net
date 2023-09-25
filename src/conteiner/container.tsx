@@ -20,7 +20,7 @@ export class Container extends React.Component<PropsType> {
     }
 
     render() {
-        if (!this.props.initialize) return <Preloader/>
+        if (!this.props.initialize) return <div><Preloader/></div>
         return (
             <div>
                 <Header/>
