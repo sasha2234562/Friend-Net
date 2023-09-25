@@ -14,6 +14,7 @@ import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {MyProfile} from "./my profile/my profile";
+import {MyProfileWhithHooks} from "./my profile/my-profile-with-hooks";
 
 type pathParamsType = {
     userId: string
@@ -46,7 +47,7 @@ export class Well extends React.Component<ownPropsType> {
         return <div>
             <Beach/>
             <PageUser page={this.props.pageUser}/>
-            <MyProfile status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
+            <MyProfileWhithHooks status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>
         </div>
     }

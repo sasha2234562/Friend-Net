@@ -5,7 +5,7 @@ type StateType = {
     value: string;
 };
 
-export class MyProfile extends React.Component<{ status: string, updateStatus: (status: string) => void }, StateType> {
+export class MyProfile extends React.Component<{ status: string, updateStatus: (status: string) => void }> {
 
 
     state: StateType = {
