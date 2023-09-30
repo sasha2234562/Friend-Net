@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {AppStoreType} from "../redux/redux-store";
 import {
-    followAC,
+    followAC, followThunkCreator,
     getUsersThunkCreator,
     setTotalCountAC,
     toggleFollowingProgressAC,
@@ -44,6 +44,7 @@ export type MapDispatchToPropsType = {
     setTotalCountAC: (count: number) => void
     toggleFollowingProgressAC: (userId: number, progress: boolean) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number, page: number) => void
+    followThunkCreator: (userId: number)=> void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;
@@ -73,6 +74,7 @@ class UsersContainerAPI extends React.Component<PropsType> {
             preloader={this.props.preloader}
             followingProgress={this.props.followingProgress}
             toggleFollowingProgressAC={this.props.toggleFollowingProgressAC}
+            followThunkCreator={this.props.followThunkCreator}
         />
     }
 }
@@ -95,5 +97,6 @@ export const UsersContainer = connect(mapStateToProps,
         unFollowAC,
         setTotalCountAC,
         toggleFollowingProgressAC,
-        getUsersThunkCreator
+        getUsersThunkCreator,
+        followThunkCreator
     })(UsersContainerAPI)

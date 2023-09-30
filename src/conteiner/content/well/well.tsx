@@ -1,6 +1,6 @@
 import Beach from "./well-beach/beach";
 import {ContainerPosts} from "./posts/posts-conteiner";
-import React, {ComponentType} from "react";
+import React, {Component, ComponentType, PureComponent} from "react";
 import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
@@ -31,7 +31,8 @@ type PropsType = mapStateToPropsType & mapDispatchToProps
 
 type ownPropsType = RouteComponentProps<pathParamsType> & PropsType
 
-export class Well extends React.Component<ownPropsType> {
+export class Well extends PureComponent<ownPropsType> {
+
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
@@ -40,6 +41,10 @@ export class Well extends React.Component<ownPropsType> {
         }
         this.props.getUserProfileThunkCreator(userId)
         this.props.setStatusThunkCreator(userId)
+    }
+
+    shouldComponentUpdate(nextProps: Readonly<ownPropsType>, nextState: Readonly<{}>): boolean {
+        return nextProps !== this.props || nextState !== this.state
     }
 
     render() {

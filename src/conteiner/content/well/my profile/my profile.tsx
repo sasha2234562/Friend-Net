@@ -32,16 +32,8 @@ export class MyProfile extends React.Component<{ status: string, updateStatus: (
         })
     };
 
-    // componentDidUpdate(prevProps: any, prevState: any) {
-    //     // debugger
-    //     if (prevProps.status !== prevState.value) {
-    //         this.setState({
-    //             value: this.props.status
-    //         })
-    //     }
-    // }
-
     render() {
+        // console.log('rerender')
         return (
             <div style={{margin: '3%'}}>
                 {this.state.status ? (
