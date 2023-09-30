@@ -26,7 +26,7 @@ export const appReduser = (state: initialStateType = initialState, action: AppAc
 }
 export const initializedAC = () => ({type: INITIALISED_APP} as const)
 
-export const initializeApp = (): ThunkAction<void, AppStoreType, unknown, ActionsAllType> => (dispatch) => {
+export const initializeApp = (): ThunkAction<void, AppStoreType, unknown, ActionsAllType> => async (dispatch) => {
     const promise = dispatch(authThunkCreator())
     promise.then(() => {
         dispatch(initializedAC())
