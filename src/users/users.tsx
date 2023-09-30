@@ -5,7 +5,7 @@ import {UserType} from "./users-conteiner";
 import {Preloader} from "../components/preloader/preloader";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../api/api";
-import {followThunkCreator} from "../redux/user-reduser";
+import {followThunkCreator, unFollowThunkCreator} from "../redux/user-reduser";
 
 type UsersType = {
     users: Array<UserType>
@@ -19,12 +19,13 @@ type UsersType = {
     followingProgress: number[]
     toggleFollowingProgressAC: (userId: number, progress: boolean) => void
     followThunkCreator: (userId: number)=> void
+    unFollowThunkCreator: (userId: number)=> void
 }
 
 export const Users = React.memo((props: UsersType) => {
 
 
-    console.log('rerender')
+    // console.log('rerender')
 
     let pageCount = useMemo(() => {
         return Math.ceil(props.totalUsersCount / props.pageSize)
@@ -32,11 +33,9 @@ export const Users = React.memo((props: UsersType) => {
 
     const pages: number[] = []
 
-    const mem = useMemo(() => {
         for (let i = 1; i <= pageCount; i++) {
             pages.push(i);
         }
-    }, [pages.length])
 
     return (
         <div>
@@ -62,21 +61,17 @@ export const Users = React.memo((props: UsersType) => {
                             </NavLink>
                             : <Preloader/>}
                     </div>
+
                     {item.followed
+
                         ? <button
                             disabled={props.followingProgress.some(i => i === item.id)}
                             onClick={()=> props.followThunkCreator(item.id)
                         }>unFollow</button>
-                        : <button disabled={props.followingProgress.some(i => i === item.id)} onClick={() => {
-                            props.toggleFollowingProgressAC(item.id, true)
-                            usersAPI.followApi(item.id).then(res => {
-                                if (res.data.resultCode === 0) {
-                                    props.unFollow(item.id)
-                                }
-                                props.toggleFollowingProgressAC(item.id, false)
-                            })
-                            props.unFollow(item.id)
-                        }}>Follow</button>}
+                        : <button
+                            disabled={props.followingProgress.some(i => i === item.id)}
+                            onClick={()=> props.unFollowThunkCreator(item.id)}
+                        >Follow</button>}
                     <span>{item.name}</span>
                 </div>
             ))}

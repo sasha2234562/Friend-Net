@@ -113,8 +113,17 @@ export const followThunkCreator = (userId: number) => (dispatch: Dispatch<UsersA
         dispatch(toggleFollowingProgressAC(userId, false))
     })
 }
-
-
+export const unFollowThunkCreator = (userId: number) => (dispatch: Dispatch<UsersActionType>) => {
+    dispatch(toggleFollowingProgressAC(userId, true))
+    usersAPI.followApi(userId).then(res => {
+        console.log(res.resultCode)
+        if (res.resultCode === 0) {
+            dispatch(unFollowAC(userId))
+            dispatch(toggleFollowingProgressAC(userId, false))
+        }
+        dispatch(toggleFollowingProgressAC(userId, false))
+    })
+}
 type followACType = ReturnType<typeof followAC>
 type unFollowACType = ReturnType<typeof unFollowAC>
 type setUsersACType = ReturnType<typeof setUsersAC>
