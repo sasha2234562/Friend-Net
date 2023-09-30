@@ -69,13 +69,6 @@ export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as 
 
 export const DeletePostAC = (postId: string) => ({type: DELETE_POST, postId} as const)
 
-type  AddPostACType = ReturnType<typeof AddPostAC>
-type ProfilePageACType = ReturnType<typeof ProfilePageAC>
-type GetStatusACType = ReturnType<typeof SetStatusAC>
-type DeletePostACType = ReturnType<typeof DeletePostAC>
-
-export type ProfileActionType = AddPostACType | ProfilePageACType | GetStatusACType | DeletePostACType
-
 //thunks
 export const getUserProfileThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
     const response = await usersAPI.profileApi(userId)
@@ -131,3 +124,9 @@ export type initialStateType = {
     status: string
     profilePage: pageType | null
 }
+type  AddPostACType = ReturnType<typeof AddPostAC>
+type ProfilePageACType = ReturnType<typeof ProfilePageAC>
+type GetStatusACType = ReturnType<typeof SetStatusAC>
+type DeletePostACType = ReturnType<typeof DeletePostAC>
+
+export type ProfileActionType = AddPostACType | ProfilePageACType | GetStatusACType | DeletePostACType

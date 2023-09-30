@@ -2,25 +2,6 @@ import {UserType} from "../users/users-conteiner";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
 
-
-const FOLLOW = 'FOLLOW'
-const UNFOLLOW = 'UNFOLLOW'
-const SET_USERS = 'SET-USERS'
-const CURRENT_PAGE = 'CURRENT_PAGE'
-const Set_Total_Count = 'Set_Total_Count'
-const Set_Preloader = 'Set_Preloader'
-const SET_PAGE_ID = 'SET_PAGE_ID'
-const Toggle_Following_Progress = 'Toggle_Following_Progress'
-
-export type InitialStateType = {
-    users: UserType[]
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    preloader: boolean
-    pageId: null | number
-    followingProgress: number[]
-}
 const initialState: InitialStateType = {
     users: [],
     pageId: null,
@@ -31,7 +12,7 @@ const initialState: InitialStateType = {
     followingProgress: []
 }
 
-
+//reducer
 export const usersReduser = (state: InitialStateType = initialState, action: UsersActionType): InitialStateType => {
 
     switch (action.type) {
@@ -77,6 +58,7 @@ export const usersReduser = (state: InitialStateType = initialState, action: Use
     return state
 }
 
+//actions
 export const followAC = (userID: number) => ({type: FOLLOW, userID} as const)
 export const unFollowAC = (userID: number) => ({type: UNFOLLOW, userID} as const)
 export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users} as const)
@@ -90,40 +72,55 @@ export const toggleFollowingProgressAC = (userId: number, progress: boolean) => 
     progress
 } as const)
 
-
-export const getUsersThunkCreator = (currentPage: number, pageSize: number, page: number) => {
-
-
-    return (dispatch: Dispatch<UsersActionType>) => {
-
+//thunks
+export const getUsersThunkCreator = (currentPage: number, pageSize: number, page: number) =>
+    async (dispatch: Dispatch<UsersActionType>) => {
         dispatch(setPreloaderAC(true))
         dispatch(setCurrentPageAC(page))
-        usersAPI.getUsers(currentPage, pageSize).then(response => {
-            dispatch(setPreloaderAC(false))
-            dispatch(setUsersAC(response.items))
-        });
+        const resolve = await usersAPI.getUsers(currentPage, pageSize)
+        dispatch(setPreloaderAC(false))
+        dispatch(setUsersAC(resolve.items))
     }
-}
-export const followThunkCreator = (userId: number) => (dispatch: Dispatch<UsersActionType>) => {
+
+export const followThunkCreator = (userId: number) => async (dispatch: Dispatch<UsersActionType>) => {
     dispatch(toggleFollowingProgressAC(userId, true))
-    usersAPI.unFollowApi(userId).then(res => {
-        if (res.resultCode === 0) {
-            dispatch(followAC(userId))
-        }
-        dispatch(toggleFollowingProgressAC(userId, false))
-    })
+    const resolve = await usersAPI.unFollowApi(userId)
+    if (resolve.resultCode === 0) {
+        dispatch(followAC(userId))
+    }
+    dispatch(toggleFollowingProgressAC(userId, false))
 }
-export const unFollowThunkCreator = (userId: number) => (dispatch: Dispatch<UsersActionType>) => {
+export const unFollowThunkCreator = (userId: number) => async (dispatch: Dispatch<UsersActionType>) => {
     dispatch(toggleFollowingProgressAC(userId, true))
-    usersAPI.followApi(userId).then(res => {
-        console.log(res.resultCode)
-        if (res.resultCode === 0) {
-            dispatch(unFollowAC(userId))
-            dispatch(toggleFollowingProgressAC(userId, false))
-        }
+    const resolve = await usersAPI.followApi(userId)
+    if (resolve.resultCode === 0) {
+        dispatch(unFollowAC(userId))
         dispatch(toggleFollowingProgressAC(userId, false))
-    })
+    }
+    dispatch(toggleFollowingProgressAC(userId, false))
 }
+
+
+//types
+const FOLLOW = 'FOLLOW'
+const UNFOLLOW = 'UNFOLLOW'
+const SET_USERS = 'SET-USERS'
+const CURRENT_PAGE = 'CURRENT_PAGE'
+const Set_Total_Count = 'Set_Total_Count'
+const Set_Preloader = 'Set_Preloader'
+const SET_PAGE_ID = 'SET_PAGE_ID'
+const Toggle_Following_Progress = 'Toggle_Following_Progress'
+
+export type InitialStateType = {
+    users: UserType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    preloader: boolean
+    pageId: null | number
+    followingProgress: number[]
+}
+
 type followACType = ReturnType<typeof followAC>
 type unFollowACType = ReturnType<typeof unFollowAC>
 type setUsersACType = ReturnType<typeof setUsersAC>
