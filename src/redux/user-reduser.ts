@@ -1,6 +1,7 @@
 import {UserType} from "../users/users-conteiner";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {following} from "../components/following/following";
 
 const initialState: InitialStateType = {
     users: [],
@@ -17,20 +18,9 @@ export const usersReduser = (state: InitialStateType = initialState, action: Use
 
     switch (action.type) {
         case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(item => {
-                    return item.id === action.userID ? {...item, followed: false} : item
-                })
-            }
-
+            return following(state, false, action.userID)
         case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(item => {
-                    return item.id === action.userID ? {...item, followed: true} : item
-                })
-            }
+            return following(state, true, action.userID)
 
         case SET_USERS:
             return {

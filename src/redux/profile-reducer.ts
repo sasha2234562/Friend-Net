@@ -33,7 +33,7 @@ let initialState: initialStateType = {
 export const profileReducer = (state: initialStateType = initialState, action: ProfileActionType): initialStateType => {
 
     switch (action.type) {
-        case ADD_POST:
+        case 'ADD_POST':
             let newPost = {
                 img: 'https://images.kinorium.com/movie/cast/2716535/w150_2058926.jpg?1668595813',
                 comment: action.text,
@@ -43,16 +43,16 @@ export const profileReducer = (state: initialStateType = initialState, action: P
                 ...state,
                 posts: [newPost, ...state.posts]
             }
-        case PROFILE_PAGE :
+        case 'PROFILE_PAGE' :
             return {
                 ...state, profilePage: action.page
             }
-        case GET_STATUS:
+        case 'GET_STATUS':
             return {
                 ...state,
                 status: action.status || 'No status this person'
             }
-        case DELETE_POST: {
+        case 'DELETE_POST': {
             return {
                 ...state, posts: state.posts.filter(p => p.id !== action.postId)
             }
@@ -63,10 +63,8 @@ export const profileReducer = (state: initialStateType = initialState, action: P
 
 //actions
 export const AddPostAC = (text: string) => ({type: ADD_POST, text} as const)
-
 export const SetStatusAC = (status: string) => ({type: GET_STATUS, status} as const)
 export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as const)
-
 export const DeletePostAC = (postId: string) => ({type: DELETE_POST, postId} as const)
 
 //thunks
@@ -74,13 +72,11 @@ export const getUserProfileThunkCreator = (userId: string) => async (dispatch: D
     const response = await usersAPI.profileApi(userId)
     dispatch(ProfilePageAC(response.data))
 }
-
 export const setStatusThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
     const resolve = await statusAPI.getStatus(userId)
     dispatch(SetStatusAC(resolve.data)
     )
 }
-
 export const UpdateStatusThunkCreator = (status: string) => async (dispatch: Dispatch) => {
     const resolve = await statusAPI.updateStatus(status)
     if (resolve.data.resultCode === 0) {
@@ -89,7 +85,7 @@ export const UpdateStatusThunkCreator = (status: string) => async (dispatch: Dis
 }
 
 //types
-const ADD_POST = "ADD-POST";
+const ADD_POST = "ADD_POST";
 const PROFILE_PAGE = 'PROFILE_PAGE'
 const GET_STATUS = 'GET_STATUS'
 const DELETE_POST = 'DELETE_POST'
