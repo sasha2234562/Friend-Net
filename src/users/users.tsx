@@ -1,6 +1,6 @@
 import u from "./users.module.css";
 import userPhoto from "../image/1683353683_kartinkof-club-p-kartinki-smurfikov-23.png";
-import React, {useMemo} from "react";
+import React from "react";
 import {UserType} from "./users-conteiner";
 import {Preloader} from "../components/preloader/preloader";
 import {NavLink} from "react-router-dom";

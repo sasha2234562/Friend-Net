@@ -7,7 +7,7 @@ const initialState: InitialStateType = {
     users: [],
     pageId: null,
     pageSize: 5,
-    totalUsersCount: 57,
+    totalUsersCount: 5,
     currentPage: 1,
     preloader: false,
     followingProgress: []
@@ -68,6 +68,7 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number, page
         dispatch(setPreloaderAC(true))
         dispatch(setCurrentPageAC(page))
         const resolve = await usersAPI.getUsers(currentPage, pageSize)
+        dispatch(setTotalCountAC(resolve.totalCount))
         dispatch(setPreloaderAC(false))
         dispatch(setUsersAC(resolve.items))
     }
