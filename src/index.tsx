@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
-import App from "./App.js";
 import {store} from "./redux/redux-store"
 import React from "react";
 import {Provider} from "react-redux";
+import App from "./App";
 
 
 export const rerenderEntireTree = () => {

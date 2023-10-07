@@ -1,11 +1,9 @@
 import u from "./users.module.css";
 import userPhoto from "../image/1683353683_kartinkof-club-p-kartinki-smurfikov-23.png";
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useMemo} from "react";
 import {UserType} from "./users-conteiner";
 import {Preloader} from "../components/preloader/preloader";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../api/api";
-import {followThunkCreator, unFollowThunkCreator} from "../redux/user-reduser";
 
 type UsersType = {
     users: Array<UserType>
@@ -24,15 +22,11 @@ type UsersType = {
 
 export const Users = React.memo((props: UsersType) => {
 
-
-    // console.log('rerender')
-
     let pageCount = useMemo(() => {
         return Math.ceil(props.totalUsersCount / props.pageSize)
     }, [props.totalUsersCount, props.pageSize]);
 
     const pages: number[] = []
-
         for (let i = 1; i <= pageCount; i++) {
             pages.push(i);
         }

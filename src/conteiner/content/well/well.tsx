@@ -1,6 +1,6 @@
 import Beach from "./well-beach/beach";
 import {ContainerPosts} from "./posts/posts-conteiner";
-import React, {Component, ComponentType, PureComponent} from "react";
+import React, {ComponentType, PureComponent} from "react";
 import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
@@ -43,9 +43,9 @@ export class Well extends PureComponent<ownPropsType> {
         this.props.setStatusThunkCreator(userId)
     }
 
-    shouldComponentUpdate(nextProps: Readonly<ownPropsType>, nextState: Readonly<{}>): boolean {
-        return nextProps !== this.props || nextState !== this.state
-    }
+    // shouldComponentUpdate(nextProps: Readonly<ownPropsType>, nextState: Readonly<{}>): boolean {
+    //     return nextProps !== this.props || nextState !== this.state
+    // }
 
     render() {
         return <div>
