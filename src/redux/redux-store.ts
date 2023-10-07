@@ -21,6 +21,8 @@ let reducers = combineReducers({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  export const store = createStore(reducers,composeEnhancers(applyMiddleware(thunk)));
 
+
+
 export type AppThunk<ReturnType = void> = ThunkAction<void, AppStoreType, unknown, any>
 export type AppStoreType = ReturnType<typeof reducers>
 export type ActionsAllType = AuthLoginType
