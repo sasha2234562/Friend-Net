@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8ad10ef8.css",
+    "main.js": "/static/js/main.c0548d36.js",
+    "static/media/1683353683_kartinkof-club-p-kartinki-smurfikov-23.png": "/static/media/1683353683_kartinkof-club-p-kartinki-smurfikov-23.45730bd42072eb27323f.png",
+    "static/media/Donald_Duck3Fpppp.webp": "/static/media/Donald_Duck3Fpppp.e2de2967d0a60f52b178.webp",
+    "index.html": "/index.html",
+    "main.8ad10ef8.css.map": "/static/css/main.8ad10ef8.css.map",
+    "main.c0548d36.js.map": "/static/js/main.c0548d36.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8ad10ef8.css",
+    "static/js/main.c0548d36.js"
+  ]
+}
