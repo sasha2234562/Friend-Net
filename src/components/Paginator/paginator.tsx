@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from "react";
-import u from "../../users/users.module.css";
+import p from "./paginator.module.css";
 
 type PropsPaginatorType = {
     totalUsersCount: number
@@ -16,20 +16,21 @@ export const Paginator = (props: PropsPaginatorType) => {
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
     }
-    const portionSize: number = 6
+    const portionSize: number = 7
     const portionCount = Math.ceil(pageCount / portionSize)
     const [portionNumber, setPortionNumber] = useState<number>(1)
     const leftPortionNumber = (portionNumber - 1) * portionSize + 1
-    const rightPortionNumber = (portionNumber * portionSize) + 1
+    const rightPortionNumber = (portionNumber * portionSize)
+
     return (
-        <div className={u.numberPage}>
+        <div className={p.numberPages}>
             {portionNumber > 1 &&
                 <button onClick={() => {
                     setPortionNumber((portionNumber - 1))
-                }}>PREV</button>}
-            {pages.filter(p=> p >= leftPortionNumber && p <= rightPortionNumber).map((item, index) => {
+                }} className={p.next}>&#8656; PREV</button>}
+            {pages.filter(p => p >= leftPortionNumber && p <= rightPortionNumber).map((item, index) => {
                 return <span
-                    className={props.currentPage === item ? u.active : ''}
+                    className={props.currentPage === item ? p.active : ''}
                     key={index}
                     onClick={() => props.onPageChanged(item, props.pageSize)}>
                             {item}
@@ -38,7 +39,7 @@ export const Paginator = (props: PropsPaginatorType) => {
             {portionNumber < portionCount &&
                 <button onClick={() => {
                     setPortionNumber((portionNumber + 1))
-                }}>NEXT</button>}
+                }} className={p.prev}>NEXT &#8658;</button>}
         </div>
     )
 }
