@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/social-network/static/css/main.8ad10ef8.css",
-    "main.js": "/social-network/static/js/main.34d12daa.js",
+    "main.js": "/social-network/static/js/main.31af2d1d.js",
     "static/media/1683353683_kartinkof-club-p-kartinki-smurfikov-23.png": "/social-network/static/media/1683353683_kartinkof-club-p-kartinki-smurfikov-23.45730bd42072eb27323f.png",
     "static/media/Donald_Duck3Fpppp.webp": "/social-network/static/media/Donald_Duck3Fpppp.e2de2967d0a60f52b178.webp",
     "index.html": "/social-network/index.html",
     "main.8ad10ef8.css.map": "/social-network/static/css/main.8ad10ef8.css.map",
-    "main.34d12daa.js.map": "/social-network/static/js/main.34d12daa.js.map"
+    "main.31af2d1d.js.map": "/social-network/static/js/main.31af2d1d.js.map"
   },
   "entrypoints": [
     "static/css/main.8ad10ef8.css",
-    "static/js/main.34d12daa.js"
+    "static/js/main.31af2d1d.js"
   ]
 }
