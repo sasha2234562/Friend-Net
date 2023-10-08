@@ -1,4 +1,4 @@
-import {UserType} from "../users/users-conteiner";
+import {UserType} from "../users/users-container";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
 import {following} from "../components/following/following";

@@ -6,8 +6,11 @@ import {Route} from "react-router-dom";
 import News from "../navigashion/navigashion-button/news/news";
 import {Music} from "./music/music";
 import Settings from "../navigashion/navigashion-button/settings/settings";
-import {UsersContainer} from "../../users/users-conteiner";
-import {Login} from "../../form/login";
+import {UsersContainer} from "../../users/users-container";
+import {withSuspanse} from "../../hoc/suspanse";
+import React from "react";
+// const UsersContainer = React.lazy(()=> import("../../users/users-container"))
+const Login = React.lazy(()=> import("../../form/login"))
 
 
 function Content() {
@@ -15,17 +18,13 @@ function Content() {
         <div className={c.nawbar}>
             <ProfileNavigation/>
             <div className={c.content}>
-                <Route path={'/profile/:userId?'} render={() =>
-                    <WithRouteContainerWell/>
-                }/>
-                <Route path={'/dialogs:userId?'} render={() =>
-                    <Dialogs/>
-                }/>
-                <Route path={'/news'} render={() => <News/>}/>
+                <Route path={'/profile/:userId?'} render={() => <WithRouteContainerWell/>}/>
+                <Route path={'/dialogs:userId?'} render={withSuspanse(Dialogs)}/>
+                <Route path={'/news'} render={withSuspanse(News)}/>
                 <Route path={'/music'} render={() => <Music/>}/>
                 <Route path={'/settings'} render={() => <Settings/>}/>
-                <Route path={'/users'} render={() => <UsersContainer/>}/>
-                <Route path={'./login'} render={() => <Login />}/>
+                <Route path={'/users'} render={withSuspanse(UsersContainer)}/>
+                <Route path={'./login'} render={withSuspanse(Login)}/>
             </div>
         </div>
     )

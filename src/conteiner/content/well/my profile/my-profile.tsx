@@ -4,7 +4,7 @@ type StatePropsType = {
     status: string,
     updateStatus: (status: string) => void
 };
-export const MyProfileWithHooks = (props: StatePropsType) => {
+export const MyProfile = (props: StatePropsType) => {
 
     const [status, setStatus] = useState<string>(props.status)
     const [editMode, setEditMode] = useState<boolean>(false)
@@ -24,6 +24,7 @@ export const MyProfileWithHooks = (props: StatePropsType) => {
     const onDoubleClick = () => {
         setEditMode(true)
     }
+
     return (
         <div style={{margin: '3%'}}>
             {!editMode ? (

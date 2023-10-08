@@ -2,12 +2,16 @@ import {ProfileActionType, profileReducer} from "./profile-reducer";
 import {MessageActionType, messageReducer} from "./message-reduser";
 import {UsersActionType, usersReduser} from "./user-reduser";
 import {AuthLoginType, authReducer} from "./auth-reduser";
-import thunk, {ThunkAction} from "redux-thunk";
+import {ThunkAction} from "redux-thunk";
 import {FormAction, reducer as formReducer} from 'redux-form';
 import {AppActionsType, appReduser} from "./app-reduser";
-import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
+import {combineReducers, compose, createStore} from 'redux';
 
-
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: messageReducer,
@@ -17,9 +21,9 @@ let reducers = combineReducers({
     app: appReduser
 })
 
-// @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
- export const store = createStore(reducers,composeEnhancers(applyMiddleware(thunk)));
+// непосредственно создаём store
+export const store = createStore(reducers, composeEnhancers());
 
 
 
