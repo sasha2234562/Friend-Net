@@ -26,7 +26,27 @@ let initialState: initialStateType = {
         },
     ],
     status: '',
-    profilePage: null
+    profilePage: {
+        aboutMe: '',
+        contacts: {
+            facebook: '',
+            website: '',
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: '',
+            github: '',
+            mainLink: ''
+        },
+        lookingForAJob: false,
+        lookingForAJobDescription: '',
+        fullName: '',
+        userId: null,
+        photos: {
+            small: '',
+            large: ''
+        },
+    }
 }
 
 //reducer
@@ -57,8 +77,15 @@ export const profileReducer = (state: initialStateType = initialState, action: P
                 ...state, posts: state.posts.filter(p => p.id !== action.postId)
             }
         }
+        case 'GET_PHOTO': {
+            return {
+                ...state,
+                profilePage: {...state.profilePage,  photos:{small: action.photo.small, large: action.photo.large} }
+            }
+        }
+        default :
+            return state
     }
-    return state
 }
 
 //actions
@@ -66,6 +93,7 @@ export const AddPostAC = (text: string) => ({type: ADD_POST, text} as const)
 export const SetStatusAC = (status: string) => ({type: GET_STATUS, status} as const)
 export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as const)
 export const DeletePostAC = (postId: string) => ({type: DELETE_POST, postId} as const)
+export const GetPhotoAC = (photo: { small: string, large: string }) => ({type: GET_PHOTO, photo} as const)
 
 //thunks
 export const getUserProfileThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
@@ -83,11 +111,19 @@ export const UpdateStatusThunkCreator = (status: string) => async (dispatch: Dis
         dispatch(SetStatusAC(status))
     }
 }
+export const savePhotoThunkCreator = (photo: File) => async (dispatch: Dispatch) => {
+    const resolve = await statusAPI.savePhoto(photo)
+    if (resolve.data.resultCode === 0) {
+        debugger
+        dispatch(GetPhotoAC((resolve.data.data.photos)))
+    }
+}
 
 //types
 const ADD_POST = "ADD_POST";
 const PROFILE_PAGE = 'PROFILE_PAGE'
 const GET_STATUS = 'GET_STATUS'
+const GET_PHOTO = 'GET_PHOTO'
 const DELETE_POST = 'DELETE_POST'
 export type pageType = {
     "aboutMe": string,
@@ -104,11 +140,11 @@ export type pageType = {
     "lookingForAJob": boolean,
     "lookingForAJobDescription": string,
     "fullName": string,
-    "userId": number,
+    "userId": number|null,
     "photos": {
         "small": string,
         "large": string
-    }
+    },
 }
 
 export type initialStateType = {
@@ -118,11 +154,12 @@ export type initialStateType = {
         id: string
     }[]
     status: string
-    profilePage: pageType | null
+    profilePage: pageType
 }
-type  AddPostACType = ReturnType<typeof AddPostAC>
-type ProfilePageACType = ReturnType<typeof ProfilePageAC>
-type GetStatusACType = ReturnType<typeof SetStatusAC>
-type DeletePostACType = ReturnType<typeof DeletePostAC>
 
-export type ProfileActionType = AddPostACType | ProfilePageACType | GetStatusACType | DeletePostACType
+export type ProfileActionType = ReturnType<typeof AddPostAC>
+    | ReturnType<typeof ProfilePageAC>
+    | ReturnType<typeof ProfilePageAC>
+    | ReturnType<typeof DeletePostAC>
+    | ReturnType<typeof SetStatusAC>
+    | ReturnType<typeof GetPhotoAC>

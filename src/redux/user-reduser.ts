@@ -34,7 +34,8 @@ export const usersReduser = (state: InitialStateType = initialState, action: Use
         case Set_Preloader:
             return {...state, preloader: action.preloader}
         case SET_PAGE_ID :
-            return {...state, pageId: action.pageId}
+            return {...state,
+                pageId: action.pageId}
         case Toggle_Following_Progress:
             return {
                 ...state,

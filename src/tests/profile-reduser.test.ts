@@ -25,7 +25,27 @@ let initialState: initialStateType = {
         },
     ],
     status: '',
-    profilePage: null
+     profilePage: {
+    aboutMe: '',
+        contacts: {
+        facebook: '',
+            website: '',
+            vk: '',
+            twitter: '',
+            instagram: '',
+            youtube: '',
+            github: '',
+            mainLink: ''
+    },
+    lookingForAJob: false,
+        lookingForAJobDescription: '',
+        fullName: '',
+        userId: null,
+        photos: {
+        small: '',
+            large: ''
+    },
+}
 }
 
 test('new post', () => {

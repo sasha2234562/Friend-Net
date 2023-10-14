@@ -2,7 +2,7 @@ import {pageType} from "../../../../redux/profile-reducer";
 import photo from "../../../../image/Donald_Duck3Fpppp.webp"
 
 
-export const PageUser = (props: { page: pageType | null }) => {
+export const PageUser = (props: { page: pageType }) => {
 
     return (
         <div>

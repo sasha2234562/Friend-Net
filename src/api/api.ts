@@ -43,5 +43,15 @@ export const statusAPI = {
     },
     updateStatus(status: string) {
         return instants.put<{ data: {}, resultCode: number }>('profile/status', {status})
+    },
+    savePhoto(photo: File) {
+        const formData = new FormData()
+        formData.append('image', photo)
+        return instants.put('profile/photo', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        )
     }
 }

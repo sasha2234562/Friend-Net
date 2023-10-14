@@ -16,40 +16,6 @@ import {
     usersSelector
 } from "./selectors/users-selector";
 
-
-export type UserType = {
-    name: string;
-    id: number;
-    uniqueUrlName: string;
-    photos: {
-        small: string;
-        large: string;
-    }
-    status: string;
-    followed: boolean;
-}
-
-type StatePropsType = {
-    users: Array<UserType>;
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    preloader: boolean
-    followingProgress: number[]
-}
-
-export type MapDispatchToPropsType = {
-    unFollowAC: (userID: number) => void
-    followAC: (userId: number) => void
-    setTotalCountAC: (count: number) => void
-    toggleFollowingProgressAC: (userId: number, progress: boolean) => void
-    getUsersThunkCreator: (currentPage: number, pageSize: number, page: number) => void
-    followThunkCreator: (userId: number)=> void
-    unFollowThunkCreator: (userId: number)=> void
-}
-
-type PropsType = StatePropsType & MapDispatchToPropsType;
-
 class UsersContainerAPI extends React.Component<PropsType> {
 
 
@@ -103,3 +69,37 @@ export const UsersContainer = connect(mapStateToProps,
         followThunkCreator,
         unFollowThunkCreator
     })(UsersContainerAPI)
+
+//types
+export type UserType = {
+    name: string;
+    id: number;
+    uniqueUrlName: string;
+    photos: {
+        small: string;
+        large: string;
+    }
+    status: string;
+    followed: boolean;
+}
+
+type StatePropsType = {
+    users: Array<UserType>;
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    preloader: boolean
+    followingProgress: number[]
+}
+
+export type MapDispatchToPropsType = {
+    unFollowAC: (userID: number) => void
+    followAC: (userId: number) => void
+    setTotalCountAC: (count: number) => void
+    toggleFollowingProgressAC: (userId: number, progress: boolean) => void
+    getUsersThunkCreator: (currentPage: number, pageSize: number, page: number) => void
+    followThunkCreator: (userId: number)=> void
+    unFollowThunkCreator: (userId: number)=> void
+}
+
+type PropsType = StatePropsType & MapDispatchToPropsType;

@@ -6,7 +6,7 @@ import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {
     getUserProfileThunkCreator,
-    pageType,
+    pageType, savePhotoThunkCreator,
     setStatusThunkCreator,
     UpdateStatusThunkCreator
 } from "../../../redux/profile-reducer";
@@ -20,7 +20,7 @@ type pathParamsType = {
     userId: string
 }
 type mapStateToPropsType = {
-    pageUser: pageType | null
+    pageUser: pageType
     status: string
     me: string
 }
@@ -28,6 +28,7 @@ type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
     setStatusThunkCreator: (userId: string) => void
     UpdateStatusThunkCreator: (status: string) => void
+    savePhotoThunkCreator: (photo: File) => void
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
@@ -38,7 +39,6 @@ export class Well extends PureComponent<ownPropsType> {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.me
-            // this.props.history.push('/users')
         }
         if (!!userId) {
             this.props.getUserProfileThunkCreator(userId)
@@ -50,7 +50,7 @@ export class Well extends PureComponent<ownPropsType> {
         this.refreshProfile()
     }
 
-    componentDidUpdate(prevProps: Readonly<ownPropsType>, prevState: Readonly<{}>, snapshot?: any) {
+    componentDidUpdate(prevProps: Readonly<ownPropsType>) {
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.refreshProfile()
         }
@@ -59,7 +59,8 @@ export class Well extends PureComponent<ownPropsType> {
     render() {
         return <div>
             <Beach/>
-            {this.props.me ? <MyPage page={this.props.pageUser}/> : <PageUser page={this.props.pageUser}/>}
+            {this.props.me ? <MyPage savePhoto={this.props.savePhotoThunkCreator} page={this.props.pageUser}/> :
+                <PageUser page={this.props.pageUser}/>}
             <MyProfile status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>
         </div>
@@ -77,7 +78,8 @@ export default compose<ComponentType>(
     connect(MapStateToProps, {
         getUserProfileThunkCreator,
         setStatusThunkCreator,
-        UpdateStatusThunkCreator
+        UpdateStatusThunkCreator,
+        savePhotoThunkCreator
     }),
     withRouter,
     withAuthRedirect,
