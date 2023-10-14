@@ -3,7 +3,7 @@ import axios from "axios";
 const instants = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {'API-KEY': '8a5c1830-8604-4983-b9a4-0d09b4b6ff34'}
+    headers: {'API-KEY': '02801dc9-c643-40b7-9ded-224fb486763d'}
 })
 export const usersAPI = {
     getUsers(page: number, pageSize: number) {

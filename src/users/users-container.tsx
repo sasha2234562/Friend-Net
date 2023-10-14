@@ -17,18 +17,12 @@ import {
 } from "./selectors/users-selector";
 
 class UsersContainerAPI extends React.Component<PropsType> {
-
-
     componentDidMount() {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, this.props.currentPage)
     }
-
-
     onPageChanged = (page: number) => {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize, page)
     }
-
-
     render() {
         return <Users
             totalUsersCount={this.props.totalUsersCount}
@@ -98,8 +92,8 @@ export type MapDispatchToPropsType = {
     setTotalCountAC: (count: number) => void
     toggleFollowingProgressAC: (userId: number, progress: boolean) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number, page: number) => void
-    followThunkCreator: (userId: number)=> void
-    unFollowThunkCreator: (userId: number)=> void
+    followThunkCreator: (userId: number) => void
+    unFollowThunkCreator: (userId: number) => void
 }
 
 type PropsType = StatePropsType & MapDispatchToPropsType;

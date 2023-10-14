@@ -114,7 +114,6 @@ export const UpdateStatusThunkCreator = (status: string) => async (dispatch: Dis
 export const savePhotoThunkCreator = (photo: File) => async (dispatch: Dispatch) => {
     const resolve = await statusAPI.savePhoto(photo)
     if (resolve.data.resultCode === 0) {
-        debugger
         dispatch(GetPhotoAC((resolve.data.data.photos)))
     }
 }
