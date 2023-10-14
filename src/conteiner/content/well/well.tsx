@@ -14,6 +14,7 @@ import {RouteComponentProps, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {MyProfile} from "./my profile/my-profile";
+import {MyPage} from "./my-page";
 
 type pathParamsType = {
     userId: string
@@ -21,6 +22,7 @@ type pathParamsType = {
 type mapStateToPropsType = {
     pageUser: pageType | null
     status: string
+    me: string
 }
 type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
@@ -32,25 +34,32 @@ type PropsType = mapStateToPropsType & mapDispatchToProps
 type ownPropsType = RouteComponentProps<pathParamsType> & PropsType
 
 export class Well extends PureComponent<ownPropsType> {
-
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = '1'
+            userId = this.props.me
             // this.props.history.push('/users')
         }
-        this.props.getUserProfileThunkCreator(userId)
-        this.props.setStatusThunkCreator(userId)
+        if (!!userId) {
+            this.props.getUserProfileThunkCreator(userId)
+            this.props.setStatusThunkCreator(userId)
+        }
     }
 
-    // shouldComponentUpdate(nextProps: Readonly<ownPropsType>, nextState: Readonly<{}>): boolean {
-    //     return nextProps !== this.props || nextState !== this.state
-    // }
+    componentDidMount() {
+        this.refreshProfile()
+    }
+
+    componentDidUpdate(prevProps: Readonly<ownPropsType>, prevState: Readonly<{}>, snapshot?: any) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.refreshProfile()
+        }
+    }
 
     render() {
         return <div>
             <Beach/>
-            <PageUser page={this.props.pageUser}/>
+            {this.props.me ? <MyPage page={this.props.pageUser}/> : <PageUser page={this.props.pageUser}/>}
             <MyProfile status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>
         </div>
@@ -60,7 +69,8 @@ export class Well extends PureComponent<ownPropsType> {
 const MapStateToProps = (state: AppStoreType) => {
     return {
         pageUser: state.profilePage.profilePage,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        me: state.authReducer.id
     }
 }
 export default compose<ComponentType>(
