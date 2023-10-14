@@ -6,7 +6,8 @@ import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {
     getUserProfileThunkCreator,
-    pageType, savePhotoThunkCreator,
+    pageType,
+    savePhotoThunkCreator,
     setStatusThunkCreator,
     UpdateStatusThunkCreator
 } from "../../../redux/profile-reducer";

@@ -1,7 +1,7 @@
 import {Posts} from "./posts";
 import {connect} from "react-redux";
 import {AppStoreType} from "../../../../redux/redux-store";
-import {AddPostAC} from "../../../../redux/profile-reducer";
+import {AddPostAC, DeletePostAC} from "../../../../redux/profile-reducer";
 
 let mapStateToProps = (state: AppStoreType) => {
     return {
@@ -9,4 +9,4 @@ let mapStateToProps = (state: AppStoreType) => {
     }
 }
 
-export const ContainerPosts = connect(mapStateToProps, {AddPostAC})(Posts)
+export const ContainerPosts = connect(mapStateToProps, {AddPostAC, DeletePostAC})(Posts)
