@@ -60,7 +60,8 @@ export class Well extends PureComponent<ownPropsType> {
     render() {
         return <div>
             <Beach/>
-            {this.props.me ? <MyPage savePhoto={this.props.savePhotoThunkCreator} page={this.props.pageUser}/> :
+            {this.props.me ?
+                <MyPage savePhoto={this.props.savePhotoThunkCreator} page={this.props.pageUser}/> :
                 <PageUser page={this.props.pageUser}/>}
             <MyProfile status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>

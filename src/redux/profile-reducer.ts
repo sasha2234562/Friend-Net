@@ -80,7 +80,7 @@ export const profileReducer = (state: initialStateType = initialState, action: P
         case 'GET_PHOTO': {
             return {
                 ...state,
-                profilePage: {...state.profilePage,  photos:{small: action.photo.small, large: action.photo.large} }
+                profilePage: {...state.profilePage, photos: {small: action.photo.small, large: action.photo.large}}
             }
         }
         default :
@@ -139,7 +139,7 @@ export type pageType = {
     "lookingForAJob": boolean,
     "lookingForAJobDescription": string,
     "fullName": string,
-    "userId": number|null,
+    "userId": number | null,
     "photos": {
         "small": string,
         "large": string
