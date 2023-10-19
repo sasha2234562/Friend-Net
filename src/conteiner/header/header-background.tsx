@@ -9,7 +9,7 @@ function Header() {
         <div className={h.header}>
             <Logo/>
             <Route
-            path={'/login'} render={()=><Login/>}
+            path={'/login'} render={()=><Login />}
             />
             <LoginContainer />
         </div>

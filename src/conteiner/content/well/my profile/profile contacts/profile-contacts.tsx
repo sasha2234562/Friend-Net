@@ -5,7 +5,7 @@ export const ProfileContacts = (props: contacts) => {
         {Object.keys(props.contacts).map((i) => {
             const contact = props.contacts[i as keyof ContactType]
             if (contact) {
-                return <div key={i} style={{marginLeft: '5%'}}><b>{i}: {contact ? contact : '" "'}</b>
+                return <div key={i} style={{marginLeft: '5%'}}><b>{i}: <a href={contact}>{i}</a></b>
                 </div>
             }
         })}

@@ -27,11 +27,17 @@ export const authAPI = {
     me() {
         return instants.get('auth/me')
     },
-    login(email: string, password: string, rememberMe: boolean) {
-        return instants.post('auth/login', {email, password, rememberMe})
+    login(email: string, password: string, rememberMe: boolean, captcha?: string) {
+        return instants.post('auth/login', {email, password, rememberMe, captcha})
     },
     logAut() {
         return instants.delete('auth/login')
+    }
+}
+
+export const securityAPI = {
+    captcha() {
+        return instants.get('security/get-captcha-url')
     }
 }
 

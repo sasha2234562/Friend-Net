@@ -9,8 +9,9 @@ import Settings from "../navigashion/navigashion-button/settings/settings";
 import {UsersContainer} from "../../users/users-container";
 import {withSuspanse} from "../../hoc/suspanse";
 import React from "react";
+import {Login} from "../../form/login";
+
 // const UsersContainer = React.lazy(()=> import("../../users/users-container"))
-const Login = React.lazy(()=> import("../../form/login"))
 
 
 function Content() {
@@ -24,7 +25,7 @@ function Content() {
                 <Route path={'/music'} render={() => <Music/>}/>
                 <Route path={'/settings'} render={() => <Settings/>}/>
                 <Route path={'/users'} render={withSuspanse(UsersContainer)}/>
-                <Route path={'./login'} render={withSuspanse(Login)}/>
+                <Route path={'./login'} render={() => <Login/>}/>
             </div>
         </div>
     )
