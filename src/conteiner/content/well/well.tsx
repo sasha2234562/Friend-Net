@@ -5,6 +5,7 @@ import {PageUser} from "./well-beach/pageUser";
 import {AppStoreType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {
+    changeProfileInformation,
     getUserProfileThunkCreator,
     pageType,
     savePhotoThunkCreator,
@@ -29,7 +30,8 @@ type mapDispatchToProps = {
     getUserProfileThunkCreator: (userId: string) => void
     setStatusThunkCreator: (userId: string) => void
     UpdateStatusThunkCreator: (status: string) => void
-    savePhotoThunkCreator: (photo: File) => void
+    savePhotoThunkCreator: (photo: File) => void,
+    changeProfileInformation: (information: any)=> void
 }
 type PropsType = mapStateToPropsType & mapDispatchToProps
 
@@ -61,7 +63,7 @@ export class Well extends PureComponent<ownPropsType> {
         return <div>
             <Beach/>
             {this.props.me ?
-                <MyPage savePhoto={this.props.savePhotoThunkCreator} page={this.props.pageUser}/> :
+                <MyPage getProfile={this.props.changeProfileInformation} savePhoto={this.props.savePhotoThunkCreator} page={this.props.pageUser}/> :
                 <PageUser page={this.props.pageUser}/>}
             <MyProfile status={this.props.status} updateStatus={this.props.UpdateStatusThunkCreator}/>
             <ContainerPosts/>
@@ -81,7 +83,8 @@ export default compose<ComponentType>(
         getUserProfileThunkCreator,
         setStatusThunkCreator,
         UpdateStatusThunkCreator,
-        savePhotoThunkCreator
+        savePhotoThunkCreator,
+        changeProfileInformation
     }),
     withRouter,
     withAuthRedirect,

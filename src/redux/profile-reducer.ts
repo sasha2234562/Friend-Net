@@ -83,6 +83,16 @@ export const profileReducer = (state: initialStateType = initialState, action: P
                 profilePage: {...state.profilePage, photos: {small: action.photo.small, large: action.photo.large}}
             }
         }
+        case 'GET_PROFILE' : {
+            return {...state, profilePage: {
+                ...state.profilePage,
+                    contacts: action.information.contacts,
+                    fullName: action.information.fullName,
+                    lookingForAJobDescription: action.information.lookingForAJobDescription,
+                    lookingForAJob: action.information.lookingForAJob,
+                    aboutMe: action.information.aboutMe
+            }}
+        }
         default :
             return state
     }
@@ -94,6 +104,7 @@ export const SetStatusAC = (status: string) => ({type: GET_STATUS, status} as co
 export const ProfilePageAC = (page: pageType) => ({type: PROFILE_PAGE, page} as const)
 export const DeletePostAC = (postId: string) => ({type: DELETE_POST, postId} as const)
 export const GetPhotoAC = (photo: { small: string, large: string }) => ({type: GET_PHOTO, photo} as const)
+export const GetProfileAC = (information: any) => ({type: GET_PROFILE, information} as const)
 
 //thunks
 export const getUserProfileThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
@@ -118,12 +129,22 @@ export const savePhotoThunkCreator = (photo: File) => async (dispatch: Dispatch)
     }
 }
 
+
+export const changeProfileInformation = (information: any) => {
+    return async (dispatch: Dispatch) => {
+        const resolve = await statusAPI.updateData(information)
+        if (resolve.data.resultCode === 0) {
+            dispatch(GetProfileAC(information))
+        }
+    }
+}
 //types
 const ADD_POST = "ADD_POST";
 const PROFILE_PAGE = 'PROFILE_PAGE'
 const GET_STATUS = 'GET_STATUS'
 const GET_PHOTO = 'GET_PHOTO'
 const DELETE_POST = 'DELETE_POST'
+const GET_PROFILE = 'GET_PROFILE'
 export type pageType = {
     "aboutMe": string,
     "contacts": {
@@ -162,3 +183,4 @@ export type ProfileActionType = ReturnType<typeof AddPostAC>
     | ReturnType<typeof DeletePostAC>
     | ReturnType<typeof SetStatusAC>
     | ReturnType<typeof GetPhotoAC>
+    | ReturnType<typeof GetProfileAC>

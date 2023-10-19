@@ -1,4 +1,5 @@
 import axios from "axios";
+import {FormDataType} from "../conteiner/content/well/my-page";
 
 const instants = axios.create({
     withCredentials: true,
@@ -53,5 +54,8 @@ export const statusAPI = {
                 }
             }
         )
+    },
+    updateData(information: FormDataType) {
+        return instants.put('profile', information)
     }
 }

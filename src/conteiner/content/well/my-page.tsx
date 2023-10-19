@@ -2,14 +2,51 @@ import {pageType} from "../../../redux/profile-reducer";
 import photo from "../../../image/Donald_Duck3Fpppp.webp";
 import React, {ChangeEvent, useState} from "react";
 import {Field, reduxForm} from "redux-form";
+import {statusAPI} from "../../../api/api";
+import {ProfileReduxForm} from "./my profile/profile form/profile-form";
+import {ProfileContacts} from "./my profile/profile contacts/profile-contacts";
 
-
-export const MyPage = (props: { page: pageType, savePhoto: (photo: File) => void }) => {
-    const onSubmit = (formData: any) => {
+export type  FormDataType = {
+    "aboutMe"?: string,
+    "facebook"?: string,
+    "website"?: null | string,
+    "vk"?: null | string,
+    "twitter"?: null | string,
+    "instagram"?: null | string,
+    "youtube"?: null | string,
+    "github"?: null | string,
+    "mainLink"?: null | string
+    "lookingForAJob"?: boolean,
+    "lookingForAJobDescription"?: string,
+    "fullName"?: string
+}
+export const MyPage = (props: {
+    page: pageType,
+    savePhoto: (photo: File) => void,
+    getProfile: (info: any) => void
+}) => {
+    const onSubmit = (formData: FormDataType) => {
         console.log(formData)
+        const data = {
+            "aboutMe": formData.aboutMe ? formData.aboutMe : props.page.aboutMe,
+            "lookingForAJob": formData.lookingForAJob ? formData.lookingForAJob : props.page.lookingForAJob,
+            "lookingForAJobDescription": formData.lookingForAJobDescription ? formData.lookingForAJobDescription : props.page.lookingForAJobDescription,
+            "fullName": formData.fullName ? formData.fullName : props.page.fullName,
+            "contacts": {
+                "facebook": formData.facebook ? formData.facebook : props.page.contacts.facebook,
+                "website": formData.website ? formData.website : props.page.contacts.website,
+                "vk": formData.vk ? formData.vk : props.page.contacts.vk,
+                "twitter": formData.twitter ? formData.twitter : props.page.contacts.twitter,
+                "instagram": formData.instagram ? formData.instagram : props.page.contacts.instagram,
+                "youtube": formData.youtube ? formData.youtube : props.page.contacts.youtube,
+                "github": formData.github ? formData.github : props.page.contacts.github,
+                "mainLink": formData.mainLink ? formData.mainLink : props.page.contacts.mainLink
+            }
+        }
+        props.getProfile(data)
     }
 
-    const [edit, setEdit] = useState<boolean>(true)
+    const [edit, setEdit] = useState<boolean>(false)
 
     const mainPhotoOn = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.files) {
@@ -19,7 +56,7 @@ export const MyPage = (props: { page: pageType, savePhoto: (photo: File) => void
 
     return (
         <div>
-            {props.page && <div style={{fontSize: '2.7vh'}}>
+            {props.page && <div style={{fontSize: '25px'}}>
                 <img alt={'don\'t working'}
                      style={{width: '21%', borderRadius: '50%'}}
                      src={props.page?.photos.large
@@ -27,20 +64,25 @@ export const MyPage = (props: { page: pageType, savePhoto: (photo: File) => void
                          : photo}/>
                 <input type="file" onChange={mainPhotoOn} style={{backgroundColor: 'green'}}/>
                 <div>
-                    <div>fullName:</div>
-                    <div>lookingForAJob:</div>
-                    <div>lookingForAJobDescription:</div>
-                    <div>lookingForAJobDescription:</div>
+                    <div>aboutMe: {props.page.aboutMe}</div>
+                    <div>fullName: {props.page.fullName}</div>
+                    <div>lookingForAJob: {props.page.lookingForAJob ? "Yes" : "No"}</div>
+                    <div style={{display: "flex"}}>
+                        <div>lookingForAJobDescription: {props.page.lookingForAJobDescription}</div>
+                        <div style={{margin: '0 3%'}}>
+                            <button
+                                style={{backgroundColor: 'blue', color: 'white', cursor: 'pointer', padding: '0 11px'}}
+                                onClick={() => setEdit(!edit)}
+                            >edit
+                            </button>
+                        </div>
+
+                    </div>
                     <div>
-                        <button
-                            style={{padding: '7px 15px', cursor: 'pointer'}}
-                            onClick={() => setEdit(!edit)}
-                        >edit
-                        </button>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>contacts: {
                         edit
-                            ? <ProfileReduxForm contacts={props.page.contacts}  onSubmit={onSubmit}/>
+                            ? <ProfileReduxForm contacts={props.page.contacts} onSubmit={onSubmit}/>
                             : <ProfileContacts contacts={props.page.contacts}/>
                     }</div>
                 </div>
@@ -48,52 +90,4 @@ export const MyPage = (props: { page: pageType, savePhoto: (photo: File) => void
         </div>
     )
 }
-type contacts = {
-    contacts: ContactType
-}
-type ContactType = {facebook: string,
-    website: string | null,
-    vk: string | null,
-    twitter: string | null,
-    instagram: string | null,
-    youtube: string | null,
-    github: string | null,
-    mainLink: string | null}
-const ProfileContacts = (props: contacts) => {
-    return <div>
-        {Object.keys(props.contacts).map((i) => {
-            const contact = props.contacts[i as keyof ContactType]
-            console.log(contact)
-            return <div key={i} style={{marginLeft: '5%'}}><b>{i}: {contact ? contact : '" "'}</b>
-            </div>
-        })}
-    </div>
-}
 
-interface ProfileFormProps {
-    contacts: {
-        facebook: string,
-        website: string | null,
-        vk: string | null,
-        twitter: string | null,
-        instagram: string | null,
-        youtube: string | null,
-        github: string | null,
-        mainLink: string | null
-    },
-    onSubmit: Function
-}
-
-const ProfileForm = (props: any) => {
-
-    return (
-        <div>
-            <form onSubmit={props.handleSubmit}>
-                <Field component={'input'} type={'text'} name={'facebook'}/>
-                <button>Click</button>
-            </form>
-        </div>
-    )
-}
-
-export const ProfileReduxForm = reduxForm<any, { contacts: any }>({form: 'profile'})(ProfileForm)
