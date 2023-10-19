@@ -17,7 +17,7 @@ const ProfileForm = (props: any) => {
                             margin: '7px 5%'
                         }}>{keys}: <Field component={'input'} type={'text'} name={keys}/></div>
                 })}
-                <button>Click</button>
+                <button>save</button>
             </form>
         </div>
     )

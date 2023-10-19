@@ -25,8 +25,9 @@ export const MyPage = (props: {
     savePhoto: (photo: File) => void,
     getProfile: (info: any) => void
 }) => {
+
+    const [edit, setEdit] = useState<boolean>(false)
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
         const data = {
             "aboutMe": formData.aboutMe ? formData.aboutMe : props.page.aboutMe,
             "lookingForAJob": formData.lookingForAJob ? formData.lookingForAJob : props.page.lookingForAJob,
@@ -43,10 +44,9 @@ export const MyPage = (props: {
                 "mainLink": formData.mainLink ? formData.mainLink : props.page.contacts.mainLink
             }
         }
+        setEdit(false)
         props.getProfile(data)
     }
-
-    const [edit, setEdit] = useState<boolean>(false)
 
     const mainPhotoOn = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.files) {
@@ -69,22 +69,22 @@ export const MyPage = (props: {
                     <div>lookingForAJob: {props.page.lookingForAJob ? "Yes" : "No"}</div>
                     <div style={{display: "flex"}}>
                         <div>lookingForAJobDescription: {props.page.lookingForAJobDescription}</div>
-                        <div style={{margin: '0 3%'}}>
-                            <button
-                                style={{backgroundColor: 'blue', color: 'white', cursor: 'pointer', padding: '0 11px'}}
-                                onClick={() => setEdit(!edit)}
-                            >edit
-                            </button>
-                        </div>
-
                     </div>
                     <div>
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>contacts: {
-                        edit
-                            ? <ProfileReduxForm contacts={props.page.contacts} onSubmit={onSubmit}/>
-                            : <ProfileContacts contacts={props.page.contacts}/>
-                    }</div>
+                    <div style={{display: 'flex', flexDirection: 'column'}}>contacts:
+                        <div style={{margin: '0 3%'}}>
+                            {!edit ? <button
+                                style={{backgroundColor: 'blue', color: 'white', cursor: 'pointer', padding: '0 11px'}}
+                                onClick={() => setEdit(!edit)}
+                            >edit
+                            </button> : null}
+                        </div>
+                        {
+                            edit
+                                ? <ProfileReduxForm contacts={props.page.contacts} onSubmit={onSubmit}/>
+                                : <ProfileContacts contacts={props.page.contacts}/>
+                        }</div>
                 </div>
             </div>}
         </div>
