@@ -1,6 +1,6 @@
 import React from "react";
 import {AppStoreType} from "../../../redux/redux-store";
-import {connect, useDispatch} from "react-redux";
+import {connect} from "react-redux";
 import {authThunkCreator, logAutThunkCreator} from "../../../redux/auth-reduser";
 import {NavLink} from "react-router-dom";
 

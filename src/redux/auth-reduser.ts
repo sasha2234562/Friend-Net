@@ -24,10 +24,8 @@ export const authReducer = (state: initialStateType = initialState, action: Auth
         case GET_CAPTCHA_URL_SUCCESS: {
             return {...state, captchaUrl: action.captcha}
         }
-
-
+        default: return  state
     }
-    return state
 }
 
 export const getCaptchaUrlTC = () => async (dispatch: Dispatch) => {

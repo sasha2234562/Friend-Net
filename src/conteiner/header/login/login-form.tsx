@@ -15,6 +15,9 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit}>
+                <p style={{color: 'white'}}>Вход используйте общие учетные данные<br/> тестовой учетной записи:<br/>
+                    Электронная почта: <span style={{color: 'red'}}>free@samuraijs.com</span><br/>
+                    Пароль: <span style={{color: 'red'}}>free</span></p>
                 <div><Field component={'input'} type={'text'} name={'email'}/></div>
                 <div><Field component={'input'} type={'password'} name={'password'}/></div>
                 <div style={{color: 'white'}}><Field component={'input'} type={'checkbox'} name={'rememberMe'}/> Remember me?</div>

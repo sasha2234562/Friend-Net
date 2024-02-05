@@ -1,8 +1,6 @@
 import {pageType} from "../../../redux/profile-reducer";
-import photo from "../../../image/Donald_Duck3Fpppp.webp";
+import photo from "../../../image/e50b2b2b71719b0892621e91c432cbee.jpg";
 import React, {ChangeEvent, useState} from "react";
-import {Field, reduxForm} from "redux-form";
-import {statusAPI} from "../../../api/api";
 import {ProfileReduxForm} from "./my profile/profile form/profile-form";
 import {ProfileContacts} from "./my profile/profile contacts/profile-contacts";
 
@@ -58,7 +56,7 @@ export const MyPage = (props: {
         <div>
             {props.page && <div style={{fontSize: '25px'}}>
                 <img alt={'don\'t working'}
-                     style={{width: '21%', borderRadius: '50%'}}
+                     style={{width: '21%', height: '20vh', borderRadius: '150px', margin: '2%'}}
                      src={props.page?.photos.large
                          ? props.page.photos.large
                          : photo}/>
