@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Friend-Net/static/css/main.879a42ac.css",
-    "main.js": "/Friend-Net/static/js/main.ef096613.js",
+    "main.js": "/Friend-Net/static/js/main.350ae935.js",
     "static/media/1683353683_kartinkof-club-p-kartinki-smurfikov-23.png": "/Friend-Net/static/media/1683353683_kartinkof-club-p-kartinki-smurfikov-23.45730bd42072eb27323f.png",
     "static/media/Donald_Duck3Fpppp.webp": "/Friend-Net/static/media/Donald_Duck3Fpppp.e2de2967d0a60f52b178.webp",
     "static/media/jpg": "/Friend-Net/static/media/e50b2b2b71719b0892621e91c432cbee.2d9d5007c85f23464405.jpg",
     "index.html": "/Friend-Net/index.html",
     "main.879a42ac.css.map": "/Friend-Net/static/css/main.879a42ac.css.map",
-    "main.ef096613.js.map": "/Friend-Net/static/js/main.ef096613.js.map"
+    "main.350ae935.js.map": "/Friend-Net/static/js/main.350ae935.js.map"
   },
   "entrypoints": [
     "static/css/main.879a42ac.css",
-    "static/js/main.ef096613.js"
+    "static/js/main.350ae935.js"
   ]
 }
