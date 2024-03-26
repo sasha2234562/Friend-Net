@@ -31,7 +31,7 @@ export const Posts = (props: MapPropsType) => {
                 {props.posts.map((item) => {
                     return (
                         <div key={item.id}>
-                            <img src={`${item.img}`}/>
+                            <img src={`${item.img}`} alt={'avatar posts'}/>
                             <span>{item.comment}</span>
                             <div className={p.delete} onClick={()=> props.DeletePostAC(item.id)}><span>&#8855;</span></div>
                         </div>

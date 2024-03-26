@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FormDataType} from "../conteiner/content/well/my-page";
+import {FormDataType} from "../conteiner/content/well/my-page/my-page.type";
 
 const instants = axios.create({
     withCredentials: true,

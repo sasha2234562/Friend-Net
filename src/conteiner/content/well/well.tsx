@@ -7,37 +7,19 @@ import {connect} from "react-redux";
 import {
     changeProfileInformation,
     getUserProfileThunkCreator,
-    pageType,
     savePhotoThunkCreator,
     setStatusThunkCreator,
     UpdateStatusThunkCreator
 } from "../../../redux/profile-reducer";
-import {RouteComponentProps, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {MyProfile} from "./my profile/my-profile";
-import {MyPage} from "./my-page";
+import {MyPage} from "./my-page/my-page";
+import {OwnPropsType} from "./well.type";
 
-type pathParamsType = {
-    userId: string
-}
-type mapStateToPropsType = {
-    pageUser: pageType
-    status: string
-    me: string
-}
-type mapDispatchToProps = {
-    getUserProfileThunkCreator: (userId: string) => void
-    setStatusThunkCreator: (userId: string) => void
-    UpdateStatusThunkCreator: (status: string) => void
-    savePhotoThunkCreator: (photo: File) => void,
-    changeProfileInformation: (information: any)=> void
-}
-type PropsType = mapStateToPropsType & mapDispatchToProps
 
-type ownPropsType = RouteComponentProps<pathParamsType> & PropsType
-
-export class Well extends PureComponent<ownPropsType> {
+export class Well extends PureComponent<OwnPropsType> {
     refreshProfile() {
         let userId = this.props.match.params.userId
         if (!userId) {
@@ -53,7 +35,7 @@ export class Well extends PureComponent<ownPropsType> {
         this.refreshProfile()
     }
 
-    componentDidUpdate(prevProps: Readonly<ownPropsType>) {
+    componentDidUpdate(prevProps: Readonly<OwnPropsType>) {
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.refreshProfile()
         }
